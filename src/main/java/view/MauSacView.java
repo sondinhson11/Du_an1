@@ -17,6 +17,7 @@ public class MauSacView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         txt_ngaytao.disable();
+        txt_ngaysua.disable();
         txt_ngaytao.setText(java.time.LocalDate.now().toString());
         Loadtabale();
 
@@ -45,12 +46,11 @@ public class MauSacView extends javax.swing.JFrame {
         String maMS = lbl_ma.getText().trim();
         String tenMS = txt_ten.getText().trim();
         String NgayTao = txt_ngaytao.getText().trim();
-        String NgaySua = txt_ngaysua.getText().trim();
         Date ngayTao = (Date.valueOf(NgayTao));
         Date ngaySua = (Date.valueOf(java.time.LocalDate.now()));
         int trangThai = TrangThai();
 
-        if (maMS.length() == 0 || tenMS.length() == 0 || NgaySua.length() == 0 || NgaySua.length() == 0) {
+        if (maMS.length() == 0 || tenMS.length() == 0 ) {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }

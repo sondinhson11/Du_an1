@@ -6,6 +6,7 @@ import model.ChucVu;
 import model.CLB;
 import model.HINHTHUCTHANHTOAN;
 import model.KICHTHUOC;
+import model.KhachHang;
 import model.MONTHETHAO;
 import model.MauSac;
 import model.SanPham;
@@ -29,7 +30,7 @@ public class HibernateConfig {
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1_QuanLyBanQuanAo");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
-//        properties.put(Environment.SHOW_SQL, "true");
+       properties.put(Environment.SHOW_SQL, "true");
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(ChucVu.class);
@@ -40,6 +41,7 @@ public class HibernateConfig {
         conf.addAnnotatedClass(CHATLIEU.class);
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HINHTHUCTHANHTOAN.class);
+        conf.addAnnotatedClass(KhachHang.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
