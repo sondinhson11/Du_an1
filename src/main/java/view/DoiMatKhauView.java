@@ -29,7 +29,7 @@ public class DoiMatKhauView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Register"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Change pass", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel1.setText("Mã Nhân Viên :");
 
@@ -174,6 +174,28 @@ public class DoiMatKhauView extends javax.swing.JFrame {
 
         return new DangNhap(maNV, mkOld);
     }
+     private DangNhap getFormNewPass() {
+        String maNV = this.txtMaNv.getText().trim();
+        String mk = this.txtMk.getText().trim();
+        String pass = this.txtNLMK.getText().trim();
+
+        if (maNV.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã Nhân Viên");
+            return null;
+        }
+        if (mk.length() == 0 || pass.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mật Khẩu");
+            return null;
+        }
+
+        if (!mk.equals(pass)) {
+            System.out.println(mk + "\n" + pass);
+            JOptionPane.showMessageDialog(this, "Mật khẩu phải trùng nhau");
+            return null;
+        }
+
+        return new DangNhap(maNV, pass);
+    }
     private void txtMkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMkActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMkActionPerformed
@@ -188,8 +210,8 @@ public class DoiMatKhauView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu cũ không đúng!");
             return;
         }
-        
-        this.dnImpl.update(dn);
+        DangNhap dnNew = this.getFormNewPass();
+        this.dnImpl.update(dnNew);
         Clear();
         new DangNhapView().setVisible(true);
         JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công");
