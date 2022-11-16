@@ -165,9 +165,9 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
            return;
        }
        if(acc.getMaCV()==2){
-           JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Nhân viên");
+           JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Sản Phẩm");
        }else{
-          JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Sản phẩm");
+          JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Nhân viên");
        }
        
    }//GEN-LAST:event_btnLoginActionPerformed
