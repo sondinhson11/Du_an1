@@ -25,26 +25,37 @@ public class ChiTietSanPham implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaCTSP")
     private Integer maCTSP;
+    
     @Column(name = "MaSP")
     private Integer maSanPham;
+   
     @Column(name = "MaLoai")
     private Integer maLoaiSanPham;
+   
     @Column(name = "MaMauSac")
     private Integer maMauSac;
+   
     @Column(name = "MaKichThuoc")
     private Integer maKichThuoc;
+   
     @Column(name = "MaChatLieu")
     private Integer maChatLieu;
+    
     @Column(name = "MaMTT")
     private Integer maMonTheThao;
+    
     @Column(name = "SoLuong")
     private Integer soLuong;
+    
     @Column(name = "Gia")
     private Double gia;
+    
     @Column(name = "NgayTao")
     private Date ngayTao;
+    
     @Column(name = "NgaySua")
     private Date ngaySua;
+    
     @Column(name = "TrangThai")
     private Integer trangThai;
 
