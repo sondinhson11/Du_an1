@@ -14,7 +14,7 @@ public class DangNhapRepository {
     String instance = "";
     String serverName = "localhost";
     String portNumber = "1433";
-    String dbName = "DuAn1_QuanLyBanQuanAo";
+    String dbName = "DuAn1_QuanLyBanQuanAo1";
     String userID = "sa";
     String password = "123456";
 
