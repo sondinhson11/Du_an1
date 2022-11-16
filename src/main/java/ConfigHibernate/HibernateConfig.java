@@ -4,9 +4,11 @@ import java.util.Properties;
 import model.CHATLIEU;
 import model.ChucVu;
 import model.CLB;
+import model.ChiTietSanPham;
 import model.HINHTHUCTHANHTOAN;
 import model.KICHTHUOC;
 import model.KhachHang;
+import model.LoaiSP;
 import model.MONTHETHAO;
 import model.MauSac;
 import model.SanPham;
@@ -27,11 +29,10 @@ public class HibernateConfig {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1_QuanLyBanQuanAo");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1_QuanLyBanQuanAo1");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
-       properties.put(Environment.SHOW_SQL, "true");
-
+        properties.put(Environment.SHOW_SQL, "true");
         conf.setProperties(properties);
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(CLB.class);
@@ -42,6 +43,8 @@ public class HibernateConfig {
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HINHTHUCTHANHTOAN.class);
         conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(ChiTietSanPham.class);
+        conf.addAnnotatedClass(LoaiSP.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

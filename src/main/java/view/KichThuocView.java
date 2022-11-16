@@ -34,7 +34,7 @@ public class KichThuocView extends javax.swing.JFrame {
         for (KICHTHUOC kichThuoc : kts.getListKT()) {
             defaultTableModel.addRow(new Object[]{
                 kichThuoc.getMaKichThuoc(), kichThuoc.getKichThuoc(),
-                kichThuoc.getNgayTao(), kichThuoc.getNgaySua(), kichThuoc.getTrangThai() == 1 ? "Lon" : "Nho"
+                kichThuoc.getNgayTao(), kichThuoc.getNgaySua(), kichThuoc.getTrangThai() == 1 ? "Lớn" : "Nhỏ"
             });
 
         }
@@ -51,17 +51,8 @@ public class KichThuocView extends javax.swing.JFrame {
 
     }
 
-//    public KICHTHUOC getData() {
-//        KICHTHUOC kichThuoc = new KICHTHUOC();
-//        kichThuoc.setMaKichThuoc(Integer.parseInt(txt_maKichThuoc.getText()));
-//        kichThuoc.setKichThuoc(txt_kichThuoc.getText());
-//        kichThuoc.setNgayTao(Date.valueOf(txt_ngayTao.getText()));
-//        kichThuoc.setNgaySua(Date.valueOf(txt_ngaySua.getText()));
-//        kichThuoc.setTrangThai(Integer.parseInt(cb_trangThai.getSelectedItem().toString()));
-//        return kichThuoc;
-//    }
+
     private KICHTHUOC getData() {
-//        int maKichThuoc = Integer.parseInt(txt_maKichThuoc.getText().trim());
         String kichThuoc = txt_kichThuoc.getText().trim();
         String NgayTao = txt_ngayTao.getText().trim();
         String NgaySua = txt_ngaySua.getText().trim();
