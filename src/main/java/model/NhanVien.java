@@ -18,8 +18,12 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String maNv) {
-        this.maNv = maNv;
+    public NhanVien(int maCV) {
+        this.maCV = maCV;
+    }
+
+    public NhanVien(String sdt) {
+        this.sdt = sdt;
     }
 
     public String getMaNv() {

@@ -22,7 +22,7 @@ public class DangKyView extends javax.swing.JFrame {
         String pass = this.txtNLMK.getText();
 
         if (maNV.length() == 0) {
-            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã Nhân Viên");
+            JOptionPane.showMessageDialog(this, "Bạn chưa nhập Số điện thoại");
             return null;
         }
         if (mk.length() == 0 || pass.length() == 0) {
@@ -69,7 +69,7 @@ public class DangKyView extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Register"));
 
-        jLabel1.setText("Mã Nhân Viên :");
+        jLabel1.setText("Số điện Thoại :");
 
         jLabel2.setText("Chức Vụ :");
 
@@ -194,15 +194,21 @@ public class DangKyView extends javax.swing.JFrame {
         if (dn == null) {
             return;
         }
+        
         String maNV = this.txtMaNv.getText().trim();
         int check = this.dnImpl.check(maNV).size();
         if (check != 0) {
-            JOptionPane.showMessageDialog(this, maNV + " Đã tồn tại");
+            JOptionPane.showMessageDialog(this, maNV + " Đã tồn tại tài khoản");
             return;
         }
         NhanVien nv = this.dnImpl.checkMa(maNV);
         if(nv == null){
-            JOptionPane.showMessageDialog(this, "Mã nhân viên không đúng");
+            JOptionPane.showMessageDialog(this, "Bạn chưa được quản lý thêm vào cửa hàng");
+            return;
+        }
+        NhanVien cv = this.dnImpl.checkChucVu(maNV);
+        if(cv == null){
+            JOptionPane.showMessageDialog(this, "Chức vụ của bạn không đúng");
             return;
         }
         this.dnImpl.insert(dn);

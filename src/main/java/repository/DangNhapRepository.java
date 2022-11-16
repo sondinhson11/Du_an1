@@ -14,7 +14,7 @@ public class DangNhapRepository {
     String instance = "";
     String serverName = "localhost";
     String portNumber = "1433";
-    String dbName = "DuAn1_QuanLyBanQuanAo1";
+    String dbName = "DuAn1_QuanLyBanQuanAo";
     String userID = "sa";
     String password = "123456";
 
@@ -30,14 +30,14 @@ public class DangNhapRepository {
     public DangNhap dangNhap(DangNhap dn) {
         try {
             Connection conn = getConnection();
-            String sql = "select * from userr where maNV = ?  and mk = ?";
+            String sql = "Select * from userr where SoDienThoai = ? and Mk = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, dn.getMaNV());
+            ps.setString(1, dn.getSdt());
             ps.setString(2, dn.getPass());
             ps.execute();
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
-                String manv = rs.getString("MaNV");
+                String manv = rs.getString("SoDienThoai");
                 int maCV = rs.getInt("MaCV");
                 String pass = rs.getString("mk");
                 return new DangNhap(manv, maCV, pass);
@@ -48,17 +48,17 @@ public class DangNhapRepository {
         return null;
     }
 
-    public ArrayList<DangNhap> check(String maNV) {
+    public ArrayList<DangNhap> check(String Sdt) {
         ArrayList<DangNhap> list = new ArrayList<>();
         try {
             Connection conn = getConnection();
-            String sql = "select * from userr where maNV = ?";
+            String sql = "select * from userr where SoDienThoai = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, maNV);
+            ps.setString(1, Sdt);
             ps.execute();
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
-                String manv = rs.getString("MaNV");
+                String manv = rs.getString("SoDienThoai");
                 int maCV = rs.getInt("MaCV");
                 String pass = rs.getString("mk");
                 list.add(new DangNhap(manv, maCV, pass));
@@ -73,13 +73,13 @@ public class DangNhapRepository {
         try {
             Connection conn = getConnection();
             String sql = "INSERT INTO [dbo].[USERR]\n"
-                    + "           ([MaNV]\n"
+                    + "           ([SoDienThoai]\n"
                     + "           ,[MaCV]\n"
                     + "           ,[Mk])\n"
                     + "     VALUES\n"
                     + "           (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, dn.getMaNV());
+            ps.setString(1, dn.getSdt());
             ps.setInt(2, dn.getMaCV());
             ps.setString(3, dn.getPass());
             ps.execute();
@@ -88,16 +88,16 @@ public class DangNhapRepository {
         }
     }
 
-    public NhanVien checkMa(String maNV) {
+    public NhanVien checkMa(String Sdt) {
         try {
             Connection conn = getConnection();
-            String sql = "select maNv from NhanVien where maNV = ?";
+            String sql = "select SoDienThoai from NhanVien where SoDienThoai = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, maNV);
+            ps.setString(1, Sdt);
             ps.execute();
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
-                String manv = rs.getString("MaNV");
+                String manv = rs.getString("SoDienThoai");
                 return new NhanVien(manv);
             }
         } catch (Exception e) {
@@ -111,13 +111,30 @@ public class DangNhapRepository {
             Connection conn = getConnection();
             String sql = "    UPDATE [dbo].[USERR]\n"
                     + "   SET [Mk] = ?\n"
-                    + " WHERE  [MaNV] = ?";
+                    + " WHERE  [SoDienThoai] = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(2, dn.getMaNV());
+            ps.setString(2, dn.getSdt());
             ps.setString(1, dn.getPass());
             ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public NhanVien checkChucVu(String Sdt){
+        try {
+            Connection conn = getConnection();
+            String sql = "select maCv from NhanVien where SoDienThoai = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Sdt);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next()) {
+                String maCva = rs.getString("maCv");
+                return new NhanVien(maCva);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

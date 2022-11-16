@@ -32,4 +32,7 @@ public class DangNhapimpl implements DangNhapService{
     public NhanVien checkMa(String manv){
         return this.dnrp.checkMa(manv);
     }
+    public NhanVien checkChucVu(String Sdt){
+        return this.dnrp.checkChucVu(Sdt);
+    }
 }
