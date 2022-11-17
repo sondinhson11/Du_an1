@@ -273,4 +273,8 @@ CREATE TABLE THONGKE(
 	FOREIGN KEY(MaDT) REFERENCES dbo.DoiTra(MaDT),
 
 )
-
+INSERT INTO [dbo].[NHANVIEN]
+     VALUES
+           ('1','ADMIN','ADMIn','1','ADMIN@gmail.com','1234567890','2022-01-01','2022-01-01','2022-01-01','1')
+GO
+insert into USERR values ('1234567890','1','1')
