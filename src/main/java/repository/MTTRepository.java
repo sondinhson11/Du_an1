@@ -30,7 +30,7 @@ public class MTTRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean updateMTTSQL(MONTHETHAO montt, int id) {
@@ -51,7 +51,7 @@ public class MTTRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean deleteMTTSQL(int id) {
@@ -66,6 +66,6 @@ public class MTTRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

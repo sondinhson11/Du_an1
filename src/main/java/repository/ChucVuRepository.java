@@ -30,7 +30,7 @@ public class ChucVuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(ChucVu chucVu, int id) {
@@ -51,7 +51,7 @@ public class ChucVuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -66,6 +66,6 @@ public class ChucVuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

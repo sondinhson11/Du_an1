@@ -30,7 +30,7 @@ public class CLBrepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(CLB CLB, int id) {
@@ -52,7 +52,7 @@ public class CLBrepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -67,6 +67,6 @@ public class CLBrepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

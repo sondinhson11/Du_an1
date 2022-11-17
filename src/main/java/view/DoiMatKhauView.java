@@ -3,14 +3,17 @@ package view;
 import javax.swing.JOptionPane;
 import model.DangNhap;
 import service.impl.DangNhapimpl;
+
 public class DoiMatKhauView extends javax.swing.JFrame {
+
     private DangNhapimpl dnImpl = new DangNhapimpl();
+
     public DoiMatKhauView() {
         initComponents();
         setLocationRelativeTo(null);
         this.Clear();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,14 +48,14 @@ public class DoiMatKhauView extends javax.swing.JFrame {
             }
         });
 
-        btnDK.setText("Update");
+        btnDK.setText("Xác Nhận");
         btnDK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDKActionPerformed(evt);
             }
         });
 
-        btncancer.setText("Cancer");
+        btncancer.setText("Hủy Bỏ");
         btncancer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btncancerActionPerformed(evt);
@@ -145,18 +148,19 @@ public class DoiMatKhauView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void Clear(){
+    public void Clear() {
         this.txtMaNv.setText("");
         this.txtMk.setText("");
         this.txtNLMK.setText("");
         this.txtMkOLD.setText("");
     }
-     private DangNhap getForm() {
+
+    private DangNhap getForm() {
         String maNV = this.txtMaNv.getText().trim();
         String mkOld = this.txtMkOLD.getText().trim();
         String mk = this.txtMk.getText().trim();
         String pass = this.txtNLMK.getText().trim();
-
+        
         if (maNV.length() == 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã Nhân Viên");
             return null;
@@ -165,20 +169,21 @@ public class DoiMatKhauView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mật Khẩu");
             return null;
         }
-
+        
         if (!mk.equals(pass)) {
             System.out.println(mk + "\n" + pass);
             JOptionPane.showMessageDialog(this, "Mật khẩu phải trùng nhau");
             return null;
         }
-
+        
         return new DangNhap(maNV, mkOld);
     }
-     private DangNhap getFormNewPass() {
+
+    private DangNhap getFormNewPass() {
         String maNV = this.txtMaNv.getText().trim();
         String mk = this.txtMk.getText().trim();
         String pass = this.txtNLMK.getText().trim();
-
+        
         if (maNV.length() == 0) {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mã Nhân Viên");
             return null;
@@ -187,13 +192,13 @@ public class DoiMatKhauView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bạn chưa nhập Mật Khẩu");
             return null;
         }
-
+        
         if (!mk.equals(pass)) {
             System.out.println(mk + "\n" + pass);
             JOptionPane.showMessageDialog(this, "Mật khẩu phải trùng nhau");
             return null;
         }
-
+        
         return new DangNhap(maNV, pass);
     }
     private void txtMkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMkActionPerformed
@@ -206,7 +211,7 @@ public class DoiMatKhauView extends javax.swing.JFrame {
             return;
         }
         DangNhap dnn = this.dnImpl.dangNhap(dn);
-        if(dnn == null){
+        if (dnn == null) {
             JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu cũ không đúng!");
             return;
         }
@@ -219,8 +224,7 @@ public class DoiMatKhauView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDKActionPerformed
 
     private void btncancerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancerActionPerformed
-        new DangNhapView().setVisible(true);
-        dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_btncancerActionPerformed
 
     private void txtMkOLDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMkOLDActionPerformed

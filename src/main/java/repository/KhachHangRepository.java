@@ -30,7 +30,7 @@ public class KhachHangRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(KhachHang KhachHang, int id) {
@@ -48,14 +48,14 @@ public class KhachHangRepository {
             kh.setTrangThai(KhachHang.getTrangThai());
 
             transaction = session.beginTransaction();
-            session.update(kh);
+            check = (Integer) session.save(kh);
             transaction.commit();
 
             return check > 0;
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -70,7 +70,7 @@ public class KhachHangRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
     
 }

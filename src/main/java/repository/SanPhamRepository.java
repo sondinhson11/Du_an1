@@ -30,7 +30,7 @@ public class SanPhamRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -45,7 +45,7 @@ public class SanPhamRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(SanPham sp, int id) {
@@ -66,6 +66,6 @@ public class SanPhamRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

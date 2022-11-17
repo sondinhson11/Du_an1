@@ -31,7 +31,7 @@ public class MauSacRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(MauSac mauSac, int id) {
@@ -52,7 +52,7 @@ public class MauSacRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -67,6 +67,6 @@ public class MauSacRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

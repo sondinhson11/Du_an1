@@ -38,7 +38,7 @@ public class LoaiSPRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(LoaiSP loaiSP, int id) {
@@ -58,7 +58,7 @@ public class LoaiSPRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -73,6 +73,6 @@ public class LoaiSPRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }

@@ -35,7 +35,6 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
         btnLogin = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
-        btnDoiMk = new javax.swing.JButton();
         btnQuen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,14 +66,7 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
             }
         });
 
-        btnDoiMk.setText("Change pass");
-        btnDoiMk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoiMkActionPerformed(evt);
-            }
-        });
-
-        btnQuen.setText("forgotten");
+        btnQuen.setText("Quên Mật Khẩu");
         btnQuen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuenActionPerformed(evt);
@@ -93,17 +85,13 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtPass)
+                        .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnQuen)
-                        .addGap(9, 9, 9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtUser)
-                        .addContainerGap())))
+                        .addComponent(btnQuen))
+                    .addComponent(txtUser))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 17, Short.MAX_VALUE)
-                .addComponent(btnDoiMk)
-                .addGap(18, 18, 18)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin)
@@ -128,8 +116,7 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnCancel)
-                    .addComponent(btnRegister)
-                    .addComponent(btnDoiMk))
+                    .addComponent(btnRegister))
                 .addGap(21, 21, 21))
         );
 
@@ -163,12 +150,9 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
            JOptionPane.showMessageDialog(this, "Tài khoản hoặc Mật khẩu không chính xác");
            return;
        }
-       if(acc.getMaCV()==2){
-           JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Sản Phẩm");
-       }else{
-          JOptionPane.showMessageDialog(this, "đã đăng nhập vào Quản lý Nhân viên");
-       }
-       
+       CuaSoChinh csc = new CuaSoChinh();
+       csc.setVisible(true);
+       JOptionPane.showMessageDialog(this, "đã đăng nhập thành công");
    }//GEN-LAST:event_btnLoginActionPerformed
 
    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -184,11 +168,6 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
     private void btnQuenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenActionPerformed
         JOptionPane.showMessageDialog(this, "Hãy gặp quản lý của bạn để lấy mật khẩu");
     }//GEN-LAST:event_btnQuenActionPerformed
-
-    private void btnDoiMkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMkActionPerformed
-        new DoiMatKhauView().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnDoiMkActionPerformed
 
    /**
     * @param args the command line arguments
@@ -228,7 +207,6 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnDoiMk;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnQuen;
     private javax.swing.JButton btnRegister;

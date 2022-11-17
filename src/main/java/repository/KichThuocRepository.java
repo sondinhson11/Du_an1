@@ -38,7 +38,7 @@ public class KichThuocRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(KICHTHUOC kichthuoc, int id) {
@@ -57,7 +57,7 @@ public class KichThuocRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -71,7 +71,7 @@ public class KichThuocRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
 }

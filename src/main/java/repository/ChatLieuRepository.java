@@ -38,7 +38,7 @@ public class ChatLieuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean update(CHATLIEU chatlieu, int id) {
@@ -58,7 +58,7 @@ public class ChatLieuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 
     public Boolean delete(int id) {
@@ -73,6 +73,6 @@ public class ChatLieuRepository {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return false;
     }
 }
