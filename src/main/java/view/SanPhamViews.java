@@ -33,7 +33,10 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
     private WebcamPanel panel = null;
     private Webcam webcam = null;
+
+    private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
+
     SanPhamService qls = new SanPhamServiceImpl();
     private DefaultTableModel defaultTableModel;
     private DefaultComboBoxModel defaultComboBoxModel;
@@ -52,13 +55,15 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
     private void initWebcam() {
         Dimension size = WebcamResolution.QVGA.getSize();
-        webcam = Webcam.getWebcams().get(0);
+        webcam = Webcam.getWebcams().get(0); //0 is default webcam
         webcam.setViewSize(size);
+
         panel = new WebcamPanel(webcam);
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
 
         camera.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 180));
+
         executor.execute(this);
     }
 
@@ -365,11 +370,13 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
             LuminanceSource source = new BufferedImageLuminanceSource(image);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
             try {
                 result = new MultiFormatReader().decode(bitmap);
             } catch (NotFoundException e) {
-                //no result
+                //No result...
             }
+
             if (result != null) {
                 qrTest.setText(result.getText());
             }
