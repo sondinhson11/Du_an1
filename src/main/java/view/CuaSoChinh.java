@@ -287,6 +287,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         manChinhPage.removeAll();
+        if (SanPhamViews.webcam != null) {
+            SanPhamViews.webcam.close();
+        }
         KhachHangViews ksf = new KhachHangViews();
         manChinhPage.add(ksf).setVisible(true);
     }//GEN-LAST:event_btnKhachHangActionPerformed

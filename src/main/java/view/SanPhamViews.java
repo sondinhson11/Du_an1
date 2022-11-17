@@ -31,11 +31,10 @@ import service.impl.SanPhamServiceImpl;
 
 public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable, ThreadFactory {
 
-    private WebcamPanel panel = null;
-    private Webcam webcam = null;
-
-    private static final long serialVersionUID = 6441489157408381878L;
-    private Executor executor = Executors.newSingleThreadExecutor(this);
+    public WebcamPanel panel = null;
+    public static Webcam webcam = null;
+    public static final long serialVersionUID = 6441489157408381878L;
+    public Executor executor = Executors.newSingleThreadExecutor();
 
     SanPhamService qls = new SanPhamServiceImpl();
     private DefaultTableModel defaultTableModel;
