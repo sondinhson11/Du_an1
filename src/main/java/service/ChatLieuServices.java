@@ -12,7 +12,7 @@ import model.CHATLIEU;
  * @author vuong
  */
 public interface ChatLieuServices {
-    ArrayList<CHATLIEU> getListKT();
+    ArrayList<CHATLIEU> getListCL();
 
     String add(CHATLIEU chatlieu);
 

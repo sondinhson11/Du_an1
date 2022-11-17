@@ -4,7 +4,7 @@ import java.util.Properties;
 import model.CHATLIEU;
 import model.ChucVu;
 import model.CLB;
-import model.ChiTietSanPham;
+import model.CHITIETSANPHAM;
 import model.HINHTHUCTHANHTOAN;
 import model.KICHTHUOC;
 import model.KhachHang;
@@ -44,7 +44,7 @@ public class HibernateConfig {
         conf.addAnnotatedClass(SanPham.class);
         conf.addAnnotatedClass(HINHTHUCTHANHTOAN.class);
         conf.addAnnotatedClass(KhachHang.class);
-        conf.addAnnotatedClass(ChiTietSanPham.class);
+        conf.addAnnotatedClass(CHITIETSANPHAM.class);
         conf.addAnnotatedClass(LoaiSP.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

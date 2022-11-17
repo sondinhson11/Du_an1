@@ -5,7 +5,7 @@
 package service.impl;
 
 import java.util.ArrayList;
-import model.ChiTietSanPham;
+import model.CHITIETSANPHAM;
 import repository.CTTSPRepository;
 import service.CTSPServices;
 
@@ -18,12 +18,12 @@ public class CTSPServicesImpl implements CTSPServices {
     private CTTSPRepository ctspR = new CTTSPRepository();
 
     @Override
-    public ArrayList<ChiTietSanPham> getAll() {
+    public ArrayList<CHITIETSANPHAM> getAll() {
         return ctspR.getList();
     }
 
     @Override
-    public String add(ChiTietSanPham ctsp) {
+    public String add(CHITIETSANPHAM ctsp) {
         if (ctspR.add(ctsp)) {
             return "Thêm Thành Công";
         } else {
@@ -32,7 +32,7 @@ public class CTSPServicesImpl implements CTSPServices {
     }
 
     @Override
-    public String update(ChiTietSanPham ctsp, int id) {
+    public String update(CHITIETSANPHAM ctsp, int id) {
         if (ctspR.update(ctsp, id)) {
             return "update Thành Công";
         } else {

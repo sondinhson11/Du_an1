@@ -7,7 +7,7 @@ package repository;
 import ConfigHibernate.HibernateConfig;
 import java.util.ArrayList;
 import javax.persistence.Query;
-import model.ChiTietSanPham;
+import model.CHITIETSANPHAM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,15 +18,14 @@ import org.hibernate.Transaction;
 public class CTTSPRepository {
 
     Session session = HibernateConfig.getFACTORY().openSession();
-
-    public ArrayList<ChiTietSanPham> getList() {
+    public ArrayList<CHITIETSANPHAM> getList() {
         session = HibernateConfig.getFACTORY().openSession();
         Query q = session.createQuery("From CHITIETSANPHAM");
-        ArrayList<ChiTietSanPham> list = (ArrayList<ChiTietSanPham>) q.getResultList();
+        ArrayList<CHITIETSANPHAM> list = (ArrayList<CHITIETSANPHAM>) q.getResultList();
         return list;
     }
 
-    public Boolean add(ChiTietSanPham ctsp) {
+    public Boolean add(CHITIETSANPHAM ctsp) {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
@@ -41,11 +40,11 @@ public class CTTSPRepository {
         return null;
     }
 
-    public Boolean update(ChiTietSanPham chiTietSanPham, int id) {
+    public Boolean update(CHITIETSANPHAM chiTietSanPham, int id) {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            ChiTietSanPham ctsp = session.get(ChiTietSanPham.class, id);
+            CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
             ctsp.setMaCTSP(chiTietSanPham.getMaCTSP());
             ctsp.setMaSanPham(chiTietSanPham.getMaSanPham());
             ctsp.setMaMauSac(chiTietSanPham.getMaMauSac());
@@ -71,7 +70,7 @@ public class CTTSPRepository {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            ChiTietSanPham ctsp = session.get(ChiTietSanPham.class, id);
+            CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
             transaction = session.beginTransaction();
             session.delete(ctsp);
             transaction.commit();

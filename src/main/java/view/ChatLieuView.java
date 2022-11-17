@@ -24,10 +24,10 @@ public class ChatLieuView extends javax.swing.JFrame {
     void LoadTable() {
         defaultTableModel = (DefaultTableModel) tb_chatLieu.getModel();
         defaultTableModel.setRowCount(0);
-        for (CHATLIEU cl : cls.getListKT()) {
+        for (CHATLIEU cl : cls.getListCL()) {
             defaultTableModel.addRow(new Object[]{
                 cl.getMaChatLieu(), cl.getTenChatLieu(), cl.getNgayTao(),
-                cl.getNgaySua(), cl.getTrangThai() == 1 ? "Xau" : "Dep"
+                cl.getNgaySua(), cl.getTrangThai() == 1 ? "Xấu" : "Đẹp"
             });
         }
     }

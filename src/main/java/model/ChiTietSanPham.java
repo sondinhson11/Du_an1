@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "CHITIETSANPHAM")
-public class ChiTietSanPham implements Serializable {
+public class CHITIETSANPHAM implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,10 +59,10 @@ public class ChiTietSanPham implements Serializable {
     @Column(name = "TrangThai")
     private Integer trangThai;
 
-    public ChiTietSanPham() {
+    public CHITIETSANPHAM() {
     }
 
-    public ChiTietSanPham(Integer maCTSP, Integer maSanPham, Integer maLoaiSanPham, Integer maMauSac, Integer maKichThuoc, Integer maChatLieu, Integer maMonTheThao, Integer soLuong, Double gia, Date ngayTao, Date ngaySua, Integer trangThai) {
+    public CHITIETSANPHAM(Integer maCTSP, Integer maSanPham, Integer maLoaiSanPham, Integer maMauSac, Integer maKichThuoc, Integer maChatLieu, Integer maMonTheThao, Integer soLuong, Double gia, Date ngayTao, Date ngaySua, Integer trangThai) {
         this.maCTSP = maCTSP;
         this.maSanPham = maSanPham;
         this.maLoaiSanPham = maLoaiSanPham;

@@ -19,7 +19,7 @@ public class ChatLieuServicesImpl implements ChatLieuServices {
 
     @Override
 
-    public ArrayList<CHATLIEU> getListKT() {
+    public ArrayList<CHATLIEU> getListCL() {
         return clr.getList();
 
     }

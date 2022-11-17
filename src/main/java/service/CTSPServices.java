@@ -5,7 +5,7 @@
 package service;
 
 import java.util.ArrayList;
-import model.ChiTietSanPham;
+import model.CHITIETSANPHAM;
 
 /**
  *
@@ -13,11 +13,11 @@ import model.ChiTietSanPham;
  */
 public interface CTSPServices {
 
-    ArrayList<ChiTietSanPham> getAll();
+    ArrayList<CHITIETSANPHAM> getAll();
 
-    String add(ChiTietSanPham ctsp);
+    String add(CHITIETSANPHAM ctsp);
 
-    String update(ChiTietSanPham ctsp, int id);
+    String update(CHITIETSANPHAM ctsp, int id);
 
     String delete(int id);
 }
