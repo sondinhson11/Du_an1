@@ -387,91 +387,10 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
     }//GEN-LAST:event_txtNgaySuaActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
-        File excelFile;
-        String currentDirectory = "C:\\Desktop";
-        FileInputStream excelFis = null;
-        JFileChooser excelFileChooser = new JFileChooser(currentDirectory);
-        int excelChooser = excelFileChooser.showOpenDialog(null);
-        if (excelChooser == JFileChooser.APPROVE_OPTION) {
-            excelFile = excelFileChooser.getSelectedFile();
-            BufferedInputStream excelBis = null;
-            XSSFWorkbook excelJTableImport = null;
-            try {
-                excelFis = new FileInputStream(excelFile);
-                excelBis = new BufferedInputStream(excelFis);
-                excelJTableImport = new XSSFWorkbook();
-                XSSFSheet excelSheet = excelJTableImport.getSheetAt(0);
-                for (int row = 0; row < excelSheet.getLastRowNum(); row++) {
-                    XSSFRow exFRow = excelSheet.getRow(row);
-                    for (int column = 0; column < exFRow.getLastCellNum(); column++) {
-                        XSSFCell cell = exFRow.getCell(column);
-                    }
-                }
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            } finally {
-                try {
-                    if (excelFis != null) {
-                        excelFis.close();
-                    }
-                    if (excelBis != null) {
-                        excelBis.close();
-                    }
-                    if (excelJTableImport != null) {
-                        excelJTableImport.close();
-                    }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
 
-        }
     }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        String currentDirectory = "C:\\Desktop";
-        JFileChooser excelFileChooser = new JFileChooser(currentDirectory);
-        excelFileChooser.setDialogTitle("Save As");
-        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILE", "xls", "xlsx", "xlsm");
-        excelFileChooser.setFileFilter(fnef);
-        int excelChooser = excelFileChooser.showSaveDialog(null);
-        if (excelChooser == JFileChooser.APPROVE_OPTION) {
-            FileOutputStream fos = null;
-            BufferedOutputStream bos = null;
-            XSSFWorkbook exFWorkbook = null;
-            try {
-                exFWorkbook = new XSSFWorkbook();
-                XSSFSheet fSheet = exFWorkbook.createSheet("JTable Sheet");
-                for (int i = 0; i < tbSanpham.getRowCount(); i++) {
-                    XSSFRow fRow = fSheet.createRow(i);
-                    for (int j = 0; j < tbSanpham.getRowCount(); j++) {
-                        XSSFCell fCell = fRow.createCell(j);
-                        fCell.setCellValue(tbSanpham.getValueAt(j, j).toString());
-                    }
-                }
-                fos = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
-                bos = new BufferedOutputStream(fos);
-                exFWorkbook.write(bos);
-            } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } finally {
-                try {
-                    if (fos != null) {
-                        fos.close();
-                    }
-                    if (bos != null) {
-                        bos.close();
-                    }
-                    if (exFWorkbook != null) {
-                        fos.close();
-                    }
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
 
     }//GEN-LAST:event_btnExportActionPerformed
 
@@ -498,13 +417,13 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
             try {
                 result = new MultiFormatReader().decode(bitmap);
+                if (result != null) {
+                    qrTest.setText(result.getText());
+                }
             } catch (NotFoundException e) {
-                //No result...
+                e.printStackTrace();
             }
 
-            if (result != null) {
-                qrTest.setText(result.getText());
-            }
         } while (true);
     }
 
