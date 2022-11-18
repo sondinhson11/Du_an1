@@ -2,13 +2,16 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "NhanVien")
@@ -39,7 +42,8 @@ public class NhanVien  implements Serializable{
    @ManyToOne
     @JoinColumn(name = "MaCV", nullable = false)
     private ChucVu chucvu;
-
+    @OneToMany(mappedBy = "nhanVien", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
     public NhanVien() {
     }
 
@@ -145,7 +149,10 @@ public class NhanVien  implements Serializable{
         this.chucvu = chucvu;
     }
     
-   
+   @Override
+    public String toString() {
+        return tenNv;
+    }
 
     
     

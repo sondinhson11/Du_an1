@@ -42,7 +42,7 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
     }
 
     private void load() {
-        ArrayList<KhachHang> list = this.qlkh.getListKhachHang();
+        ArrayList<KhachHang> list = this.qlkh.getListKT();
         DefaultTableModel dtm = (DefaultTableModel) this.tblKhachHang.getModel();
         dtm.setRowCount(0);
         for (KhachHang kh : list) {

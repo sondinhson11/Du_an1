@@ -3,33 +3,41 @@ package service.impl;
 import java.util.ArrayList;
 import model.KhachHang;
 import repository.KhachHangRepository;
+import service.KhachHangService;
 
-public class KhachHangImpl {
-    public KhachHangRepository khrp ;
-    public  KhachHangImpl(){
-        this.khrp =  new KhachHangRepository();
+public class KhachHangImpl implements KhachHangService {
+
+    public KhachHangRepository khrp;
+
+    public KhachHangImpl() {
+        this.khrp = new KhachHangRepository();
     }
-    public ArrayList<KhachHang> getListKhachHang() {
+
+    @Override
+    public ArrayList<KhachHang> getListKT() {
         return khrp.getList();
     }
 
-    public String addKhachHang(KhachHang KhachHang) {
-        if (khrp.add(KhachHang)) {
+    @Override
+    public String add(KhachHang khachhang) {
+        if (khrp.add(khachhang)) {
             return "Thêm Thành Công";
         } else {
             return "Thêm Thất Bại";
         }
     }
 
-    public String updateKhachHang(KhachHang KhachHang, int id) {
-        if (khrp.update(KhachHang, id)) {
+    @Override
+    public String update(KhachHang khachhang, int id) {
+        if (khrp.update(khachhang, id)) {
             return "Sửa Thành Công";
         } else {
             return "Sửa Thất Bại";
         }
     }
 
-    public String deleteKhachHang(int id) {
+    @Override
+    public String delete(int id) {
         if (khrp.delete(id)) {
             return "Xóa Thành Công";
         } else {

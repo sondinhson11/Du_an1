@@ -3,41 +3,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 /**
  *
  * @author thean
  */
 @Entity
-@Table (name="KHUYENMAI")
-public class KhuyenMai implements Serializable{
+@Table(name = "KHUYENMAI")
+public class KhuyenMai implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="MaKM")
+    @Column(name = "MaKM")
     private Integer maKM;
-    @Column(name="TenKM")
+    @Column(name = "TenKM")
     private String TenKM;
-    @Column(name="NgayBatDau")
+    @Column(name = "NgayBatDau")
     private Date NgayBD;
-    @Column (name="NgayKetThuc")
+    @Column(name = "NgayKetThuc")
     private Date NgayKT;
-    @Column(name="GiamGia")
+    @Column(name = "GiamGia")
     private Float GiamGia;
-    @Column (name="NgayTao")
+    @Column(name = "NgayTao")
     private Date NgayTao;
-    @Column(name="NgaySua")
+    @Column(name = "NgaySua")
     private Date NgaySua;
-    @Column(name="TrangThai")
+    @Column(name = "TrangThai")
     private Integer TrangThai;
+    @OneToMany(mappedBy = "khuyenMai",fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
 
     public KhuyenMai() {
     }
@@ -116,5 +124,9 @@ public class KhuyenMai implements Serializable{
     public void setTrangThai(Integer TrangThai) {
         this.TrangThai = TrangThai;
     }
-    
+
+    @Override
+    public String toString() {
+        return TenKM;
+    }
 }

@@ -6,11 +6,14 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,6 +40,8 @@ public class HINHTHUCTHANHTOAN implements Serializable {
     @Column(name = "TrangThai")
 
     private Integer TrangThai;
+    @OneToMany(mappedBy = "hinhthucthanhtoan", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
 
     public HINHTHUCTHANHTOAN(Integer maHTTT, String tenHTTT, Date ngayTao, Date ngaySua, Integer TrangThai) {
         this.maHTTT = maHTTT;
@@ -89,4 +94,8 @@ public class HINHTHUCTHANHTOAN implements Serializable {
         this.TrangThai = TrangThai;
     }
 
+    @Override
+    public String toString() {
+        return tenHTTT;
+    }
 }

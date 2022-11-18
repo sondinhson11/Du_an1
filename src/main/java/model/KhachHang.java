@@ -2,11 +2,14 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,7 +36,8 @@ public class KhachHang implements Serializable{
     private Date ngaySua;
     @Column(name = "trangThai")
     private int trangThai;
-
+@OneToMany(mappedBy = "khachHang",fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
     public KhachHang() {
     }
 
@@ -120,6 +124,9 @@ public class KhachHang implements Serializable{
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
+    @Override
+    public String toString() {
+        return ten;
+    }
     
 }
