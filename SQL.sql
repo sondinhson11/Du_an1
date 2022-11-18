@@ -255,6 +255,7 @@ CREATE TABLE DoiTra(
 	MaCTSP INT NOT NULL,
 	MaHDCT int not null,
 	LyDo nvarchar(max) not null,
+	NgayDoi date not null,
 	NgayBan date not null,
 	TrangThai BIT DEFAULT 1 NOT NULL,
 	PRIMARY KEY(MaDT),
