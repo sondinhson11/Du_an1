@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 /**
  *
@@ -21,14 +23,19 @@ public class ThongKe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="MaTK")
     private Integer maTK;
+    
     @Column(name="MaHDCT")
     private Integer maHDCT;
+    
     @Column(name="MaDT")
     private Integer maDT;
+    
     @Column(name="TongTien")
     private Float monney;
+    
     @Column(name="NgayBan")
     private Date ngayban;
+    
     @Column (name="TrangThai")
     private int TrangThai;
 
