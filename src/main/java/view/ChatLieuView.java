@@ -44,7 +44,7 @@ public class ChatLieuView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        CHATLIEU chatlieu = new CHATLIEU(0, kichThuoc, ngayTao, ngaySua, trangThai);
+        CHATLIEU chatlieu = new CHATLIEU(0, kichThuoc, ngayTao, ngaySua, trangThai,null);
         return chatlieu;
     }
 

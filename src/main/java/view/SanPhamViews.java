@@ -16,16 +16,31 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.SanPham;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import service.SanPhamService;
 import service.impl.SanPhamServiceImpl;
 
@@ -134,6 +149,8 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
         camera = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         qrTest = new javax.swing.JTextField();
+        btnImport = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(970, 670));
 
@@ -209,6 +226,20 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
         jLabel7.setText("Test QR");
 
+        btnImport.setText("Import Excel");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
+        btnExport.setText("Export Excel");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -241,7 +272,11 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
                                 .addGap(18, 18, 18)
                                 .addComponent(btnxoa)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnImport)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExport))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -294,7 +329,9 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnxoa)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(btnImport)
+                    .addComponent(btnExport))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(72, Short.MAX_VALUE))
@@ -349,6 +386,95 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgaySuaActionPerformed
 
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        File excelFile;
+        String currentDirectory = "C:\\Desktop";
+        FileInputStream excelFis = null;
+        JFileChooser excelFileChooser = new JFileChooser(currentDirectory);
+        int excelChooser = excelFileChooser.showOpenDialog(null);
+        if (excelChooser == JFileChooser.APPROVE_OPTION) {
+            excelFile = excelFileChooser.getSelectedFile();
+            BufferedInputStream excelBis = null;
+            XSSFWorkbook excelJTableImport = null;
+            try {
+                excelFis = new FileInputStream(excelFile);
+                excelBis = new BufferedInputStream(excelFis);
+                excelJTableImport = new XSSFWorkbook();
+                XSSFSheet excelSheet = excelJTableImport.getSheetAt(0);
+                for (int row = 0; row < excelSheet.getLastRowNum(); row++) {
+                    XSSFRow exFRow = excelSheet.getRow(row);
+                    for (int column = 0; column < exFRow.getLastCellNum(); column++) {
+                        XSSFCell cell = exFRow.getCell(column);
+                    }
+                }
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (excelFis != null) {
+                        excelFis.close();
+                    }
+                    if (excelBis != null) {
+                        excelBis.close();
+                    }
+                    if (excelJTableImport != null) {
+                        excelJTableImport.close();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+        }
+    }//GEN-LAST:event_btnImportActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        String currentDirectory = "C:\\Desktop";
+        JFileChooser excelFileChooser = new JFileChooser(currentDirectory);
+        excelFileChooser.setDialogTitle("Save As");
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("EXCEL FILE", "xls", "xlsx", "xlsm");
+        excelFileChooser.setFileFilter(fnef);
+        int excelChooser = excelFileChooser.showSaveDialog(null);
+        if (excelChooser == JFileChooser.APPROVE_OPTION) {
+            FileOutputStream fos = null;
+            BufferedOutputStream bos = null;
+            XSSFWorkbook exFWorkbook = null;
+            try {
+                exFWorkbook = new XSSFWorkbook();
+                XSSFSheet fSheet = exFWorkbook.createSheet("JTable Sheet");
+                for (int i = 0; i < tbSanpham.getRowCount(); i++) {
+                    XSSFRow fRow = fSheet.createRow(i);
+                    for (int j = 0; j < tbSanpham.getRowCount(); j++) {
+                        XSSFCell fCell = fRow.createCell(j);
+                        fCell.setCellValue(tbSanpham.getValueAt(j, j).toString());
+                    }
+                }
+                fos = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
+                bos = new BufferedOutputStream(fos);
+                exFWorkbook.write(bos);
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    if (fos != null) {
+                        fos.close();
+                    }
+                    if (bos != null) {
+                        bos.close();
+                    }
+                    if (exFWorkbook != null) {
+                        fos.close();
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+    }//GEN-LAST:event_btnExportActionPerformed
+
     @Override
     public void run() {
         do {
@@ -391,6 +517,8 @@ public class SanPhamViews extends javax.swing.JInternalFrame implements Runnable
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnxoa;
     private javax.swing.JPanel camera;

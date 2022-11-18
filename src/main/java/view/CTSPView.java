@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.sql.Date;
@@ -40,6 +36,7 @@ public class CTSPView extends javax.swing.JFrame {
 
     private DefaultTableModel defaultTableModel;
     private DefaultComboBoxModel defaultComboBoxModel;
+    
     private CTSPServices ctsps = new CTSPServicesImpl();
     private ChatLieuServices cls = new ChatLieuServicesImpl();
     private KichThuocServices kts = new KichThuocServicesImpl();
@@ -62,152 +59,55 @@ public class CTSPView extends javax.swing.JFrame {
 
     void cbbMauSac() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maMauSac.getModel();
-        ArrayList<String> listcbbMauSac = new ArrayList<>();
         for (MauSac mauSac : mss.getlistMauSac()) {
-            listcbbMauSac.add(mauSac.getTenMauSac());
-        }
-        for (String string : listcbbMauSac) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(mauSac);
         }
     }
 
     void cbbLoaiSP() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maLoai.getModel();
-        ArrayList<String> listcbbLoaiSP = new ArrayList<>();
         for (LoaiSP loaiSP : lsps.getlist()) {
-            listcbbLoaiSP.add(loaiSP.getTenLoai());
-
-        }
-        for (String string : listcbbLoaiSP) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(loaiSP);
         }
     }
 
     void cbbKichThuoc() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maKichThuoc.getModel();
-        ArrayList<String> listcbbKichThuoc = new ArrayList<>();
         for (KICHTHUOC kichthuoc : kts.getListKT()) {
-            listcbbKichThuoc.add(kichthuoc.getKichThuoc());
-        }
-        for (String string : listcbbKichThuoc) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(kichthuoc);
         }
     }
 
     void cbbSanPham() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maSP.getModel();
-        ArrayList<String> listcbbSanPham = new ArrayList<>();
         for (SanPham sanPham : sps.getListSanPham()) {
-            listcbbSanPham.add(sanPham.getTensp());
-        }
-        for (String string : listcbbSanPham) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(sanPham);
         }
     }
 
     void cbbMTT() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maMTT.getModel();
-        ArrayList<String> listcbbMTT = new ArrayList<>();
         for (MONTHETHAO monthethao : mtts.getListMTT()) {
-            listcbbMTT.add(monthethao.getTENMTT());
-        }
-        for (String string : listcbbMTT) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(monthethao);
         }
     }
 
     void cbbChatLieu() {
         defaultComboBoxModel = (DefaultComboBoxModel) cb_maChatLieu.getModel();
-        ArrayList<String> listcbbChatLieu = new ArrayList<>();
         for (CHATLIEU chatlieu : cls.getListCL()) {
-            listcbbChatLieu.add(chatlieu.getTenChatLieu());
-        }
-        for (String string : listcbbChatLieu) {
-            defaultComboBoxModel.addElement(string);
+            defaultComboBoxModel.addElement(chatlieu);
         }
     }
-
-//    public Integer MaSP(Integer TenSP) {
-//        Integer maSanPham;
-//        for (SanPham sanPham : sps.getListSanPham()) {
-//            if (TenSP.equals(sanPham.getTensp().trim())) {
-//                maSanPham = sanPham.getMaSP();
-//                break;
-//            }
-//
-//        }
-//        return TenSP;
-//    }
-
-//    public Integer MaCL(Integer TenCL) {
-//        String maChatLieu = "";
-//        for (CHATLIEU cl : cls.getListCL()) {
-//            if (TenCL.equals(cl.getTenChatLieu().trim())) {
-//                maChatLieu = cl.getTenChatLieu();
-//                break;
-//            }
-//
-//        }
-//        return TenCL;
-//    }
-//
-//    public Integer MaKT(Integer TenKichThuoc) {
-//        Integer maKichThuoc;
-//        for (KICHTHUOC kt : kts.getListKT()) {
-//            if (TenKichThuoc.equals(kt.getKichThuoc().trim())) {
-//                maKichThuoc = kt.getMaKichThuoc();
-//                break;
-//            }
-//
-//        }
-//        return TenKichThuoc;
-//    }
-//
-//    public Integer MaMS(Integer TenMS) {
-//        Integer maMauSac;
-//        for (MauSac ms : mss.getlistMauSac()) {
-//            if (TenMS.equals(ms.getTenMauSac().trim())) {
-//                maMauSac = ms.getMaMauSac();
-//                break;
-//            }
-//
-//        }
-//        return TenMS;
-//    }
-//
-//    public Integer MaLSP(Integer TenLSP) {
-//        Integer maLoaiSanPham;
-//        for (LoaiSP lsanPham : lsps.getlist()) {
-//            if (TenLSP.equals(lsanPham.getTenLoai().trim())) {
-//                maLoaiSanPham = lsanPham.getMaLoai();
-//                break;
-//            }
-//
-//        }
-//        return TenLSP;
-//    }
-//
-//    public Integer maMTT(Integer TenMTT) {
-//        Integer maMTT;
-//        for (MONTHETHAO mtt : mtts.getListMTT()) {
-//            if (TenMTT.equals(mtt.getTENMTT().trim())) {
-//                maMTT = mtt.getMAMTT();
-//                break;
-//            }
-//
-//        }
-//        return TenMTT;
-//    }
 
     void LoadTable() {
         defaultTableModel = (DefaultTableModel) tb_CTSP.getModel();
         defaultTableModel.setRowCount(0);
         for (CHITIETSANPHAM chiTietSanPham : ctsps.getAll()) {
             defaultTableModel.addRow(new Object[]{
-                chiTietSanPham.getMaCTSP(), chiTietSanPham.getMaSanPham(),
-                chiTietSanPham.getMaLoaiSanPham(), chiTietSanPham.getMaMauSac(),
-                chiTietSanPham.getMaKichThuoc(), chiTietSanPham.getMaChatLieu(),
-                chiTietSanPham.getMaMonTheThao(), chiTietSanPham.getGia(),
+                chiTietSanPham.getMaCTSP(), chiTietSanPham.getSanPham(),
+                chiTietSanPham.getLoaiSP(), chiTietSanPham.getMauSac(),
+                chiTietSanPham.getKichThuoc(), chiTietSanPham.getChatLieu(),
+                chiTietSanPham.getMonTT(), chiTietSanPham.getGia(),
                 chiTietSanPham.getSoLuong(), chiTietSanPham.getNgayTao(), chiTietSanPham.getNgaySua(),
                 chiTietSanPham.getTrangThai()
             });
@@ -215,36 +115,32 @@ public class CTSPView extends javax.swing.JFrame {
     }
 
     private CHITIETSANPHAM getData() {
-        CHITIETSANPHAM ctsp = new CHITIETSANPHAM();
-        Integer tenSanPham = Integer.parseInt(cb_maSP.getSelectedItem().toString());
-        Integer tenLoaiSP = Integer.parseInt(cb_maLoai.getSelectedItem().toString());
-        Integer tenMauSac = Integer.parseInt(cb_maMauSac.getSelectedItem().toString());
-        Integer tenKichThuoc = Integer.parseInt(cb_maKichThuoc.getSelectedItem().toString());
-        Integer tenChatLieu = Integer.parseInt(cb_maChatLieu.getSelectedItem().toString());
-        Integer tenMonTheThao = Integer.parseInt(cb_maMTT.getSelectedItem().toString());
-//        String tenSanPham = cb_maSP.getSelectedItem().toString();
-//        String tenLoaiSP = cb_maLoai.getSelectedItem().toString();
-//        String tenMauSac =cb_maMauSac.getSelectedItem().toString();
-//        String tenKichThuoc = cb_maKichThuoc.getSelectedItem().toString();
-//        String tenChatLieu = cb_maChatLieu.getSelectedItem().toString();
-//        String tenMonTheThao = cb_maMTT.getSelectedItem().toString();
-        double gia = Double.parseDouble(txt_gia.getText().trim().toString());
-        Integer soLuong = Integer.parseInt(txt_soLuong.getText().trim().toString());
+        SanPham maSP = (SanPham) cb_maSP.getSelectedItem();
+        LoaiSP LoaiSP = (LoaiSP) cb_maLoai.getSelectedItem();
+        MauSac MauSac = (MauSac) cb_maMauSac.getSelectedItem();
+        KICHTHUOC KichThuoc = (KICHTHUOC) cb_maKichThuoc.getSelectedItem();
+        CHATLIEU ChatLieu = (CHATLIEU) cb_maChatLieu.getSelectedItem();
+        MONTHETHAO MonTheThao = (MONTHETHAO) cb_maMTT.getSelectedItem();
+        Integer gia = Integer.valueOf(txt_gia.getText().trim());
+        Integer soLuong = Integer.valueOf(txt_soLuong.getText().trim());
         Date ngayTao = (Date.valueOf(txt_ngayTao.getText()));
         Date ngaySua = (Date.valueOf(txt_ngaySua.getText()));
-        Integer TrangThai = Integer.parseInt(cb_trangThai.getSelectedItem().toString());
-        ctsp.setMaSanPham(tenSanPham);
-        ctsp.setMaMonTheThao(tenMonTheThao);
-        ctsp.setMaChatLieu(tenChatLieu);
-        ctsp.setMaMauSac(tenMauSac);
-        ctsp.setMaKichThuoc(tenKichThuoc);
-        ctsp.setMaLoaiSanPham(tenLoaiSP);
+        Integer TrangThai = Integer.valueOf(cb_trangThai.getSelectedItem().toString());
+        JOptionPane.showMessageDialog(this, maSP.toString());
+
+        CHITIETSANPHAM ctsp = new CHITIETSANPHAM();
+        ctsp.setSanPham(maSP);
+        ctsp.setMonTT(MonTheThao);
+        ctsp.setChatLieu(ChatLieu);
+        ctsp.setMauSac(MauSac);
+        ctsp.setKichThuoc(KichThuoc);
+        ctsp.setLoaiSP(LoaiSP);
         ctsp.setGia(gia);
         ctsp.setSoLuong(soLuong);
         ctsp.setNgayTao(ngayTao);
         ctsp.setNgaySua(ngaySua);
         ctsp.setTrangThai(TrangThai);
-//       CHITIETSANPHAM ctsp = new CHITIETSANPHAM(0, tenSanPham, tenSanPham, tenMauSac, tenKichThuoc, tenChatLieu, tenMonTheThao, soLuong, gia, ngayTao, ngaySua, TrangThai);
+
         return ctsp;
     }
 
@@ -308,6 +204,12 @@ public class CTSPView extends javax.swing.JFrame {
         jLabel11.setText("Mã MTTT");
 
         jLabel12.setText("Mã Kích Thước");
+
+        cb_maSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_maSPActionPerformed(evt);
+            }
+        });
 
         cb_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1" }));
 
@@ -475,7 +377,7 @@ public class CTSPView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
-        // TODO add your handling code here:
+
         JOptionPane.showMessageDialog(this, ctsps.add(getData()));
         LoadTable();
     }//GEN-LAST:event_btn_themActionPerformed
@@ -515,6 +417,10 @@ public class CTSPView extends javax.swing.JFrame {
         txt_ngaySua.setText(tb_CTSP.getValueAt(row, 10).toString());
         cb_trangThai.setSelectedItem(tb_CTSP.getValueAt(row, 11).toString());
     }//GEN-LAST:event_tb_CTSPMouseClicked
+
+    private void cb_maSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_maSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_maSPActionPerformed
 
     /**
      * @param args the command line arguments

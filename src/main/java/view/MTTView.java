@@ -64,7 +64,7 @@ public class MTTView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        MONTHETHAO cv = new MONTHETHAO(null, tenCV, ngayTao, ngaySua, trangThai);
+        MONTHETHAO cv = new MONTHETHAO(null, tenCV, ngayTao, ngaySua, trangThai,null);
         return cv;
     }
     /**

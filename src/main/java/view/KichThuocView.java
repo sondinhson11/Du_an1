@@ -63,7 +63,7 @@ public class KichThuocView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        KICHTHUOC kt = new KICHTHUOC(null, kichThuoc, ngayTao, ngaySua, trangThai);
+        KICHTHUOC kt = new KICHTHUOC(null, kichThuoc, ngayTao, ngaySua, trangThai,null);
         return kt;
     }
 

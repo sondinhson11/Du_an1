@@ -81,8 +81,8 @@ public class ChucVu implements Serializable {
 
     @Override
     public String toString() {
-        return "ChucVu{"+ "MACV "+MaCV+" TenCV "+TenCV+" NgayTao "+NgayTao+" NgaySua "+NgaySua+" TrangThai "+TrangThai+"}";
+        return TenCV;
     }
-    
+
     
 }

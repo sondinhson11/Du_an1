@@ -54,7 +54,7 @@ public class MauSacView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        MauSac mauSac = new MauSac(0, tenMS, ngayTao, ngaySua, trangThai);
+        MauSac mauSac = new MauSac(0, tenMS, ngayTao, ngaySua, trangThai,null);
         return mauSac;
     }
 

@@ -123,7 +123,7 @@ CREATE TABLE CHATLIEU(
 
 CREATE TABLE KICHTHUOC(
 	MaKichThuoc INT IDENTITY(1, 1) NOT NULL,
-	KichThuoc VARCHAR(15) NOT NULL,
+	KichThuoc NVARCHAR(15) NOT NULL,
 	NgayTao date not null,
 	NgaySua date not null,
 	TrangThai BIT DEFAULT 1 NOT NULL
@@ -196,7 +196,7 @@ CREATE TABLE CHITIETSANPHAM(
 	MaChatLieu INT NOT NULL,
 	MaMTT INT NOT NULL,
 	SoLuong INT NOT NULL,
-	Gia FLOAT NOT NULL,
+	Gia Money NOT NULL,
 	NgayTao date not null,
 	NgaySua date not null,
 	TrangThai BIT DEFAULT 1 NOT NULL

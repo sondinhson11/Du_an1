@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.io.Serializable;
@@ -11,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,111 +24,70 @@ public class CHITIETSANPHAM implements Serializable {
     @Column(name = "MaCTSP")
     private Integer maCTSP;
     
-    @Column(name = "MaSP")
-    private Integer maSanPham;
-   
-    @Column(name = "MaLoai")
-    private Integer maLoaiSanPham;
-   
-    @Column(name = "MaMauSac")
-    private Integer maMauSac;
-   
-    @Column(name = "MaKichThuoc")
-    private Integer maKichThuoc;
-   
-    @Column(name = "MaChatLieu")
-    private Integer maChatLieu;
-    
-    @Column(name = "MaMTT")
-    private Integer maMonTheThao;
-    
     @Column(name = "SoLuong")
     private Integer soLuong;
-    
+
     @Column(name = "Gia")
-    private Double gia;
-    
+    private Integer gia;
+
     @Column(name = "NgayTao")
     private Date ngayTao;
-    
+
     @Column(name = "NgaySua")
     private Date ngaySua;
-    
+
     @Column(name = "TrangThai")
     private Integer trangThai;
+
+    @ManyToOne
+    @JoinColumn(name = "MaSP", nullable = false)
+    private SanPham sanPham;
+
+    @ManyToOne
+    @JoinColumn(name = "MaLoai", nullable = false)
+    private LoaiSP loaiSP;
+
+    @ManyToOne
+    @JoinColumn(name = "MaMauSac", nullable = false)
+    private MauSac mauSac;
+
+    @ManyToOne
+    @JoinColumn(name = "MaKichThuoc", nullable = false)
+    private KICHTHUOC kichThuoc;
+
+    @ManyToOne
+    @JoinColumn(name = "MaChatLieu", nullable = false)
+    private CHATLIEU chatLieu;
+
+    @ManyToOne
+    @JoinColumn(name = "MaMTT", nullable = false)
+    private MONTHETHAO monTT;
 
     public CHITIETSANPHAM() {
     }
 
-    public CHITIETSANPHAM(Integer maCTSP, Integer maSanPham, Integer maLoaiSanPham, Integer maMauSac, Integer maKichThuoc, Integer maChatLieu, Integer maMonTheThao, Integer soLuong, Double gia, Date ngayTao, Date ngaySua, Integer trangThai) {
+    public CHITIETSANPHAM(Integer maCTSP, Integer soLuong, Integer gia, Date ngayTao, Date ngaySua, Integer trangThai, SanPham sanPham, LoaiSP loaiSP, MauSac mauSac, KICHTHUOC kichThuoc, CHATLIEU chatLieu, MONTHETHAO monTT) {
         this.maCTSP = maCTSP;
-        this.maSanPham = maSanPham;
-        this.maLoaiSanPham = maLoaiSanPham;
-        this.maMauSac = maMauSac;
-        this.maKichThuoc = maKichThuoc;
-        this.maChatLieu = maChatLieu;
-        this.maMonTheThao = maMonTheThao;
         this.soLuong = soLuong;
         this.gia = gia;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
+        this.sanPham = sanPham;
+        this.loaiSP = loaiSP;
+        this.mauSac = mauSac;
+        this.kichThuoc = kichThuoc;
+        this.chatLieu = chatLieu;
+        this.monTT = monTT;
     }
-
+    
+    
     public Integer getMaCTSP() {
         return maCTSP;
     }
 
     public void setMaCTSP(Integer maCTSP) {
         this.maCTSP = maCTSP;
-    }
-
-    public Integer getMaSanPham() {
-        return maSanPham;
-    }
-
-    public void setMaSanPham(Integer maSanPham) {
-        this.maSanPham = maSanPham;
-    }
-
-    public Integer getMaLoaiSanPham() {
-        return maLoaiSanPham;
-    }
-
-    public void setMaLoaiSanPham(Integer maLoaiSanPham) {
-        this.maLoaiSanPham = maLoaiSanPham;
-    }
-
-    public Integer getMaMauSac() {
-        return maMauSac;
-    }
-
-    public void setMaMauSac(Integer maMauSac) {
-        this.maMauSac = maMauSac;
-    }
-
-    public Integer getMaKichThuoc() {
-        return maKichThuoc;
-    }
-
-    public void setMaKichThuoc(Integer maKichThuoc) {
-        this.maKichThuoc = maKichThuoc;
-    }
-
-    public Integer getMaChatLieu() {
-        return maChatLieu;
-    }
-
-    public void setMaChatLieu(Integer maChatLieu) {
-        this.maChatLieu = maChatLieu;
-    }
-
-    public Integer getMaMonTheThao() {
-        return maMonTheThao;
-    }
-
-    public void setMaMonTheThao(Integer maMonTheThao) {
-        this.maMonTheThao = maMonTheThao;
     }
 
     public Integer getSoLuong() {
@@ -141,11 +98,11 @@ public class CHITIETSANPHAM implements Serializable {
         this.soLuong = soLuong;
     }
 
-    public Double getGia() {
+    public Integer getGia() {
         return gia;
     }
 
-    public void setGia(Double gia) {
+    public void setGia(Integer gia) {
         this.gia = gia;
     }
 
@@ -173,6 +130,53 @@ public class CHITIETSANPHAM implements Serializable {
         this.trangThai = trangThai;
     }
 
-   
+    public SanPham getSanPham() {
+        return sanPham;
+    }
+
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
+    }
+
+    public LoaiSP getLoaiSP() {
+        return loaiSP;
+    }
+
+    public void setLoaiSP(LoaiSP loaiSP) {
+        this.loaiSP = loaiSP;
+    }
+
+    public MauSac getMauSac() {
+        return mauSac;
+    }
+
+    public void setMauSac(MauSac mauSac) {
+        this.mauSac = mauSac;
+    }
+
+    public KICHTHUOC getKichThuoc() {
+        return kichThuoc;
+    }
+
+    public void setKichThuoc(KICHTHUOC kichThuoc) {
+        this.kichThuoc = kichThuoc;
+    }
+
+    public CHATLIEU getChatLieu() {
+        return chatLieu;
+    }
+
+    public void setChatLieu(CHATLIEU chatLieu) {
+        this.chatLieu = chatLieu;
+    }
+
+    public MONTHETHAO getMonTT() {
+        return monTT;
+    }
+
+    public void setMonTT(MONTHETHAO monTT) {
+        this.monTT = monTT;
+    }
+
 
 }

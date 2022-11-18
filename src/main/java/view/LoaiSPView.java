@@ -52,7 +52,7 @@ public class LoaiSPView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        LoaiSP lsp = new LoaiSP(0, tenLoai, ngayTao, ngaySua, trangThai);
+        LoaiSP lsp = new LoaiSP(0, tenLoai, ngayTao, ngaySua, trangThai,null);
         return lsp;
     }
 
