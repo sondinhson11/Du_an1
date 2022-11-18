@@ -11,6 +11,7 @@ import model.KhachHang;
 import model.LoaiSP;
 import model.MONTHETHAO;
 import model.MauSac;
+import model.NhanVien;
 import model.SanPham;
 
 import org.hibernate.SessionFactory;
@@ -46,6 +47,7 @@ public class HibernateConfig {
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(CHITIETSANPHAM.class);
         conf.addAnnotatedClass(LoaiSP.class);
+        conf.addAnnotatedClass(NhanVien.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

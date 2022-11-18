@@ -385,7 +385,7 @@ public class CTSPView extends javax.swing.JFrame {
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
         // TODO add your handling code here:
         int row = tb_CTSP.getSelectedRow();
-        String id = tb_CTSP.getValueAt(row, 11).toString();
+        String id = tb_CTSP.getValueAt(row, 0).toString();
         int ID = (Integer.parseInt(id));
         JOptionPane.showMessageDialog(this, ctsps.update(getData(), ID));
         LoadTable();
@@ -395,7 +395,7 @@ public class CTSPView extends javax.swing.JFrame {
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
         // TODO add your handling code here:
         int row = tb_CTSP.getSelectedRow();
-        String id = tb_CTSP.getValueAt(row, 11).toString();
+        String id = tb_CTSP.getValueAt(row, 0).toString();
         int ID = (Integer.parseInt(id));
         JOptionPane.showMessageDialog(this, ctsps.delete(ID));
         LoadTable();

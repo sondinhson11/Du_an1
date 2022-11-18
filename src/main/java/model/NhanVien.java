@@ -1,29 +1,60 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
-
-public class NhanVien {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "NhanVien")
+public class NhanVien  implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MaNv")
     private String maNv;
-    private int maCV;
+    
+   @Column(name = "TenNV")
     private String tenNv;
+   @Column(name = "DiaChi")
     private String diaChi;
+   @Column(name = "GioiTinh")
     private int gioiTinh;
+   @Column(name = "Email")
     private String email;
+   @Column(name = "SoDienThoai")
     private String sdt;
+   @Column(name = "NgaySinh")
     private Date ngaySinh;
+   @Column(name = "NgayTao")
     private Date ngayTao;
+   @Column(name = "NgaySua")
     private Date ngaySua;
+   @Column(name = "TrangThai")
     private int trangThai;
+   @ManyToOne
+    @JoinColumn(name = "MaCV", nullable = false)
+    private ChucVu chucvu;
 
     public NhanVien() {
     }
 
-    public NhanVien(int maCV) {
-        this.maCV = maCV;
-    }
-
-    public NhanVien(String sdt) {
+    public NhanVien(String maNv, String tenNv, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayTao, Date ngaySua, int trangThai, ChucVu chucvu) {
+        this.maNv = maNv;
+        this.tenNv = tenNv;
+        this.diaChi = diaChi;
+        this.gioiTinh = gioiTinh;
+        this.email = email;
         this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
+        this.trangThai = trangThai;
+        this.chucvu = chucvu;
     }
 
     public String getMaNv() {
@@ -32,14 +63,6 @@ public class NhanVien {
 
     public void setMaNv(String maNv) {
         this.maNv = maNv;
-    }
-
-    public int getMaCV() {
-        return maCV;
-    }
-
-    public void setMaCV(int maCV) {
-        this.maCV = maCV;
     }
 
     public String getTenNv() {
@@ -113,6 +136,18 @@ public class NhanVien {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
+    public ChucVu getChucvu() {
+        return chucvu;
+    }
+
+    public void setChucvu(ChucVu chucvu) {
+        this.chucvu = chucvu;
+    }
+    
+   
+
+    
     
     
     

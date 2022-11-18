@@ -98,7 +98,7 @@ public class DangNhapRepository {
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
                 String manv = rs.getString("SoDienThoai");
-                return new NhanVien(manv);
+                return new NhanVien();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -130,7 +130,7 @@ public class DangNhapRepository {
             ResultSet rs = ps.getResultSet();
             while (rs.next()) {
                 String maCva = rs.getString("maCv");
-                return new NhanVien(maCva);
+                return new NhanVien();
             }
         } catch (Exception e) {
             e.printStackTrace();
