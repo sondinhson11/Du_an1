@@ -37,6 +37,12 @@ CREATE TABLE NHANVIEN(
 	PRIMARY KEY(MaNV),
 	FOREIGN KEY(MaCV) REFERENCES dbo.ChucVu(MaCV),
 )
+go
+insert into NHANVIEN values (2,N'NV01',N'Ha Noi',0,N'nv1@gmail.com','0123456789','2022-02-02','2003-01-01','2002-02-02',0)
+insert into NHANVIEN values (1,N'NV02',N'Ha Tinh',0,N'nv2@gmail.com','0123456788','2021-02-02','2003-01-01','2002-02-02',1)
+insert into NHANVIEN values (1,N'NV03',N'Ha Nam',0,N'nv3@gmail.com','0123456787','2020-02-02','2003-01-01','2002-02-02',0)
+insert into NHANVIEN values (1,N'NV04',N'Soc Son',1,N'nv4@gmail.com','0123456786','2019-02-02','2003-01-01','2002-02-02',1)
+insert into NHANVIEN values (1,N'NV05',N'Nam Tu Liem',1,N'nv5@gmail.com','0123456785','2018-02-02','2003-01-01','2002-02-02',0)
 
 CREATE TABLE KHACHHANG(
 	MaKH INT IDENTITY(1, 1),
@@ -57,6 +63,13 @@ ALTER COLUMN SoDienThoai varchar(12) null
 
 ALTER TABLE KHACHHANG
 ALTER COLUMN TenKH nvarchar(30) null 
+
+insert into KHACHHANG values (N'KH01','2022-02-02',1,'0123456789',N'Ha Noi','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'KH02','2021-02-02',0,'0123456788',N'Ha Nam','2003-01-01','2002-02-02',1)
+insert into KHACHHANG values (N'KH03','2020-02-02',0,'0123456787',N'Ha tinh','2003-01-01','2002-02-02',1)
+insert into KHACHHANG values (N'KH04','2019-02-02',0,'0123456786',N'Soc Son','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'KH05','2018-02-02',1,'0123456785',N'Ham Tu liem','2003-01-01','2002-02-02',0)
+
 
 CREATE TABLE HINHTHUCTHANHTOAN(
 	MaHTTT INT IDENTITY(1, 1)NOT NULL,
@@ -80,6 +93,7 @@ VALUES
 (   N'Quẹt thẻ',DEFAULT ,'2021-01-01','2021-01-01'),
 (   N'Chuyển khoản',DEFAULT  ,'2021-01-01','2021-01-01')
 
+
 CREATE TABLE SANPHAM(
 	MaSP INT IDENTITY(1, 1) NOT NULL,
 	TenSp nvarchar(50) NOT NULL,
@@ -89,6 +103,11 @@ CREATE TABLE SANPHAM(
 	PRIMARY KEY(MaSP)
 )
 
+insert into SANPHAM values (N'SP1','2003-01-01','2002-02-02',0)
+insert into SANPHAM values (N'SP2','2003-01-01','2002-02-02',1)
+insert into SANPHAM values (N'SP3','2003-01-01','2002-02-02',0)
+insert into SANPHAM values (N'SP4','2003-01-01','2002-02-02',1)
+insert into SANPHAM values (N'SP5','2003-01-01','2002-02-02',0)
 
 
 CREATE TABLE LOAISP(
@@ -100,6 +119,11 @@ CREATE TABLE LOAISP(
 	PRIMARY KEY(MaLoai)
    
 )
+insert into LOAISP values (N'LSP1','2003-01-01','2002-02-02',0)
+insert into LOAISP values (N'LSP2','2003-01-01','2002-02-02',1)
+insert into LOAISP values (N'LSP3','2003-01-01','2002-02-02',0)
+insert into LOAISP values (N'LSP4','2003-01-01','2002-02-02',1)
+insert into LOAISP values (N'LSP5','2003-01-01','2002-02-02',0)
 
 
 CREATE TABLE MAUSAC(
@@ -111,6 +135,13 @@ CREATE TABLE MAUSAC(
 	PRIMARY KEY(MaMauSac)
 )
 
+insert into MAUSAC values (N'MS1','2003-01-01','2002-02-02',0)
+insert into MAUSAC values (N'MS2','2003-01-01','2002-02-02',1)
+insert into MAUSAC values (N'MS3','2003-01-01','2002-02-02',1)
+insert into MAUSAC values (N'MS4','2003-01-01','2002-02-02',1)
+insert into MAUSAC values (N'MS4','2003-01-01','2002-02-02',0)
+
+
 CREATE TABLE CHATLIEU(
 	MaChatLieu INT IDENTITY(1, 1) NOT NULL,
 	TenChatLieu NVARCHAR(15) NOT NULL,
@@ -119,7 +150,11 @@ CREATE TABLE CHATLIEU(
 	TrangThai BIT DEFAULT 1 NOT NULL
 	PRIMARY KEY(MaChatLieu)
 )
-
+insert into CHATLIEU values (N'CL1','2003-03-03','2009-09-09',0)
+insert into CHATLIEU values (N'CL2','2003-03-03','2009-09-09',1)
+insert into CHATLIEU values (N'CL3','2003-03-03','2009-09-09',0)
+insert into CHATLIEU values (N'CL4','2003-03-03','2009-09-09',1)
+insert into CHATLIEU values (N'CL5','2003-03-03','2009-09-09',0)
 
 CREATE TABLE KICHTHUOC(
 	MaKichThuoc INT IDENTITY(1, 1) NOT NULL,
@@ -130,6 +165,11 @@ CREATE TABLE KICHTHUOC(
 	PRIMARY KEY(MaKichThuoc)
 )
 
+insert into KICHTHUOC values (N'KT1','2003-01-01','2002-02-02',0)
+insert into KICHTHUOC values (N'KT2','2003-01-01','2002-02-02',0)
+insert into KICHTHUOC values (N'KT3','2003-01-01','2002-02-02',1)
+insert into KICHTHUOC values (N'KT4','2003-01-01','2002-02-02',1)
+insert into KICHTHUOC values (N'KT5','2003-01-01','2002-02-02',0)
 
 CREATE TABLE KHUYENMAI(
 	MaKM INT IDENTITY(1, 1) NOT NULL,
@@ -142,9 +182,14 @@ CREATE TABLE KHUYENMAI(
 	TrangThai BIT DEFAULT 1 NOT NULL
 	PRIMARY KEY(MaKM)
 )
+insert into KHUYENMAI values (N'KM1','2018-02-02','2019-01-01',20000,'2003-01-01','2002-02-02',0)
+insert into KHUYENMAI values (N'KM2','2018-02-02','2019-01-01',20001,'2003-01-01','2002-02-02',1)
+insert into KHUYENMAI values (N'KM3','2018-02-02','2019-01-01',20002,'2003-01-01','2002-02-02',1)
+insert into KHUYENMAI values (N'KM4','2018-02-02','2019-01-01',20003,'2003-01-01','2002-02-02',0)
+insert into KHUYENMAI values (N'KM5','2018-02-02','2019-01-01',20004,'2003-01-01','2002-02-02',0)
 
 CREATE TABLE HOADON(
-	MaHD INT IDENTITY(1375328, 1) NOT NULL,
+	MaHD INT IDENTITY(1, 1) NOT NULL,
 	MaKH INT NOT NULL,
 	MaNV INT NOT NULL,	
 	MaHTTT INT NOT NULL,
@@ -166,6 +211,12 @@ ALTER COLUMN MaKH int null
 ALTER TABLE HOADON
 ALTER COLUMN MaHTTT int null 
 
+insert into HOADON values (1,1,1,1,N'Hang Fake','1000000','2003-01-01','2002-02-02',0)
+insert into HOADON values (2,2,2,2,N'Hang Fake','1000001','2003-01-01','2002-02-02',0)
+insert into HOADON values (3,3,3,3,N'Hang ok','1000002','2003-01-01','2002-02-02',1)
+insert into HOADON values (4,4,2,4,N'deu lam dung mua','1000003','2003-01-01','2002-02-02',1)
+insert into HOADON values (5,5,1,5,N'Hang danh cho nguoi co ny','1000005','2003-01-01','2002-02-02',0)
+
 CREATE TABLE MONTHETHAO(
 	MAMTT INT IDENTITY(1, 1),
 	TENMTT NVARCHAR(10) NOT NULL,
@@ -174,6 +225,11 @@ CREATE TABLE MONTHETHAO(
 	TRANGTHAI BIT DEFAULT 1 NOT NULL,
 	PRIMARY KEY(MAMTT),
 )
+insert into MONTHETHAO values (N'MTT1','2003-01-01','2002-02-02',0)
+insert into MONTHETHAO values (N'MTT2','2003-01-01','2002-02-02',1)
+insert into MONTHETHAO values (N'MTT3','2003-01-01','2002-02-02',0)
+insert into MONTHETHAO values (N'MTT4','2003-01-01','2002-02-02',1)
+insert into MONTHETHAO values (N'MTT5','2003-01-01','2002-02-02',0)
 
 CREATE TABLE CLB(
 	MACLB INT IDENTITY(1, 1),
@@ -186,6 +242,12 @@ CREATE TABLE CLB(
 	FOREIGN KEY(MAMTT) REFERENCES dbo.MONTHETHAO(MAMTT),
 
 )
+
+insert into CLB values (1,N'CLB1','2003-01-01','2002-02-02',0)
+insert into CLB values (2,N'CLB2','2003-01-01','2002-02-02',1)
+insert into CLB values (3,N'CLB3','2003-01-01','2002-02-02',1)
+insert into CLB values (4,N'CLB4','2003-01-01','2002-02-02',0)
+insert into CLB values (5,N'CLB5','2003-01-01','2002-02-02',0)
 
 CREATE TABLE CHITIETSANPHAM(
 	MaCTSP INT IDENTITY(1,1),
@@ -210,6 +272,11 @@ CREATE TABLE CHITIETSANPHAM(
 
 )
 
+insert into CHITIETSANPHAM values (1,'1','1','1','1','1','10','10000','2003-01-01','2002-02-02',0)
+insert into CHITIETSANPHAM values (2,'2','2','2','2','2','11','10001','2003-01-01','2002-02-02',1)
+insert into CHITIETSANPHAM values (3,'3','3','3','3','3','12','10002','2003-01-01','2002-02-02',1)
+insert into CHITIETSANPHAM values (4,'4','4','4','4','4','13','10003','2003-01-01','2002-02-02',0)
+insert into CHITIETSANPHAM values (5,'5','5','5','5','5','14','10004','2003-01-01','2002-02-02',0)
 
 
 
@@ -219,7 +286,7 @@ CREATE TABLE HOADONCHITIET(
 	MaCTSP INT NOT NULL,
 	SoLuong INT NOT NULL,
 	Gia Money NOT NULL,
-	GiamGia Money NULL,
+	GiamGia int NULL,
 	ThanhTien Money NOT NULL,
 	GhiChu NVARCHAR(100) NULL,
 	NgayTao date not null,
@@ -227,9 +294,17 @@ CREATE TABLE HOADONCHITIET(
 	TrangThai BIT DEFAULT 1 NOT NULL
 
 	PRIMARY KEY(MaHDCT)
+	FOREIGN KEY(GiamGia) REFERENCES dbo.KhuyenMai(MaKM),
 	FOREIGN KEY(MaHD) REFERENCES dbo.HOADON(MaHD),
 	FOREIGN KEY(MaCTSP) REFERENCES dbo.CHITIETSANPHAM(MaCTSP)
 )
+select * from HOADON
+insert into HOADONCHITIET values (1,1,10000,2000,1,10000,N'ô sờ kê','2003-01-01','2002-02-02',0)
+insert into HOADONCHITIET values (2,2,10000,2000,1,10000,N'ô sờ kê','2003-01-01','2002-02-02',0)
+insert into HOADONCHITIET values (3,3,10000,2000,1,10000,N'ô sờ kê','2003-01-01','2002-02-02',1)
+insert into HOADONCHITIET values (4,4,10000,2000,1,1000,N'ô sờ kê','2003-01-01','2002-02-02',1)
+insert into HOADONCHITIET values (5,5,10000,2000,1,10000,N'ô sờ kê','2003-01-01','2002-02-02',0)
+
 CREATE TABLE LichSu(
 	MaLS int IDENTITY(1, 1),
 	MaHDCT INT ,
@@ -242,13 +317,15 @@ CREATE TABLE LichSu(
 	PRIMARY KEY(MaLS)
 	FOREIGN KEY(MaHDCT) REFERENCES dbo.HOADONCHITIET(MaHDCT)
 )
+
 CREATE TABLE USERR(
 	SoDienThoai varchar(10),
 	MaCV int,
 	Mk nvarchar(max)
 	FOREIGN KEY(MaCV) REFERENCES dbo.CHUCVU(MaCV)
 )
-
+insert into USERR values('0123456789',1,'1')
+insert into USERR values('0862521305',2,'1')
 
 CREATE TABLE DoiTra(
 	MaDT INT IDENTITY(1, 1),
@@ -262,6 +339,12 @@ CREATE TABLE DoiTra(
 	FOREIGN KEY(MaCTSP) REFERENCES CHITIETSANPHAM(MaCTSP),
 	FOREIGN KEY(MaHDCT) REFERENCES dbo.HoaDonCHiTiet(MaHDCT),
 )
+insert into DoiTra values (1,1,N'Không ưng nữa','2002-02-02','2002-02-02',0)
+insert into DoiTra values (2,2,N'Lỗi Nhà sản xuất','2002-02-02','2002-02-02',0)
+insert into DoiTra values (3,3,N'Chưa dùng đã hỏng','2002-02-02','2002-02-02',1)
+insert into DoiTra values (4,4,N'Thích thì đổi','2002-02-02','2002-02-02',1)
+insert into DoiTra values (5,5,N'Không ưng nữa','2002-02-02','2002-02-02',0)
+
 CREATE TABLE THONGKE(
 	MaTK INT IDENTITY(1, 1),
 	MaHDCT INT NOT NULL,
@@ -274,5 +357,10 @@ CREATE TABLE THONGKE(
 	FOREIGN KEY(MaDT) REFERENCES dbo.DoiTra(MaDT),
 
 )
-go
-insert into USERR values ('1234567890','1','1')
+insert into THONGKE values (1,1,'1000000000','2002-02-02',0)
+insert into THONGKE values (2,2,'1000000009','2002-02-03',1)
+insert into THONGKE values (3,3,'1000000009','2002-02-04',1)
+insert into THONGKE values (4,4,'1000999999','2002-02-05',1)
+insert into THONGKE values (5,5,'1999999999','2002-02-06',0)
+
+
