@@ -53,7 +53,6 @@ public class CTTSPRepository {
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
-            ctsp.setMaCTSP(chiTietSanPham.getMaCTSP());
             ctsp.setSanPham(chiTietSanPham.getSanPham());
             ctsp.setMauSac(chiTietSanPham.getMauSac());
             ctsp.setKichThuoc(chiTietSanPham.getKichThuoc());
