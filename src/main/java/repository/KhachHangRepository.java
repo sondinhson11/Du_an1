@@ -46,11 +46,9 @@ public class KhachHangRepository {
             kh.setNgayTao(khachhang.getNgayTao());
             kh.setNgaySua(khachhang.getNgaySua());
             kh.setTrangThai(khachhang.getTrangThai());
-
             transaction = session.beginTransaction();
             check = (Integer) session.save(kh);
             transaction.commit();
-
             return check > 0;
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -62,9 +60,9 @@ public class KhachHangRepository {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            KhachHang clb = session.get(KhachHang.class, id);
+            KhachHang kh = session.get(KhachHang.class, id);
             transaction = session.beginTransaction();
-            session.delete(clb);
+            session.delete(kh);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {
@@ -72,5 +70,5 @@ public class KhachHangRepository {
         }
         return false;
     }
-    
+
 }

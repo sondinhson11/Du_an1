@@ -5,11 +5,11 @@ import model.KhachHang;
 
 public interface KhachHangService {
     
-    ArrayList<KhachHang> getListKT();
+    ArrayList<KhachHang> getListKH();
 
-    String add(KhachHang kichThuoc);
+    String add(KhachHang kh);
 
-    String update(KhachHang kichThuoc, int id);
+    String update(KhachHang kh, int id);
 
     String delete(int id);
 }

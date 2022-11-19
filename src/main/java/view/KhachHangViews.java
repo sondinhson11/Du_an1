@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.KhachHang;
+import service.KhachHangService;
 import service.impl.KhachHangImpl;
 
 /**
@@ -18,7 +19,9 @@ import service.impl.KhachHangImpl;
  */
 public class KhachHangViews extends javax.swing.JInternalFrame {
 
-    private KhachHangImpl qlkh = new KhachHangImpl();
+    private KhachHangService khs = new KhachHangImpl();
+    private DefaultTableModel defaultTableModel;
+
     public KhachHangViews() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -26,7 +29,7 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
         ui.setNorthPane(null);
         txtNgayTao.setText(java.time.LocalDate.now().toString());
         this.clear();
-        this.load();
+        this.loadTable();
     }
 
     private void clear() {
@@ -41,23 +44,15 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
         this.cbbTrangThai.setSelectedIndex(0);
     }
 
-    private void load() {
-        ArrayList<KhachHang> list = this.qlkh.getListKT();
-        DefaultTableModel dtm = (DefaultTableModel) this.tblKhachHang.getModel();
-        dtm.setRowCount(0);
-        for (KhachHang kh : list) {
-            Object[] row = {
-                kh.getMa(),
-                kh.getTen(),
-                kh.getNgaySinh(),
-                kh.getGioiTinh() == 1 ? "Nam" : "Nữ",
-                kh.getDiaChi(),
-                kh.getSoDienThoai(),
-                kh.getNgayTao(),
-                kh.getNgaySua(),
+    private void loadTable() {
+        defaultTableModel = (DefaultTableModel) tblKhachHang.getModel();
+        defaultTableModel.setRowCount(0);
+        for (KhachHang kh : khs.getListKH()) {
+            defaultTableModel.addRow(new Object[]{
+                kh.getMa(), kh.getTen(), kh.getNgaySinh(), kh.getGioiTinh(),
+                kh.getDiaChi(), kh.getSoDienThoai(), kh.getNgayTao(), kh.getNgaySua(),
                 kh.getTrangThai() == 1 ? "Có" : "Không"
-            };
-            dtm.addRow(row);
+            });
         }
     }
 
@@ -335,14 +330,44 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        int row = tblKhachHang.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn Chưa Chọn Dữ Liệu");
+            return;
+        }
+        String id = tblKhachHang.getValueAt(row, 0).toString();
+        int ID = (Integer.parseInt(id));
+        JOptionPane.showMessageDialog(this, khs.delete(ID));
+        loadTable();
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
+        int row = tblKhachHang.getSelectedRow();
+
+        KhachHang kh = getForm();
+        if (kh == null) {
+            return;
+        }
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn dữ liệu");
+            return;
+        }
+        String id = tblKhachHang.getValueAt(row, 0).toString();
+        int ID = (Integer.parseInt(id));
+        JOptionPane.showMessageDialog(this, khs.update(getForm(), ID));
+        loadTable();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        KhachHang kh = getForm();
+        if (kh == null) {
+            return;
+        }
+        String traLoi = khs.add(kh);
+        JOptionPane.showMessageDialog(this, traLoi);
+        loadTable();
     }//GEN-LAST:event_btnThemActionPerformed
 
 

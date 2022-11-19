@@ -7,14 +7,14 @@ import service.KhachHangService;
 
 public class KhachHangImpl implements KhachHangService {
 
-    public KhachHangRepository khrp;
+    public KhachHangRepository khrp = new KhachHangRepository();
 
     public KhachHangImpl() {
         this.khrp = new KhachHangRepository();
     }
 
     @Override
-    public ArrayList<KhachHang> getListKT() {
+    public ArrayList<KhachHang> getListKH() {
         return khrp.getList();
     }
 

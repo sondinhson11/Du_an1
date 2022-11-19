@@ -50,11 +50,12 @@ public class HoaDonView extends javax.swing.JFrame {
         cbbMaNV();
         LoadTable();
         cbbMaKM();
+        txt_mahd.disable();
     }
 
     void cbbMaKH() {
         defaultComboBoxModel = (DefaultComboBoxModel) cbx_makh.getModel();
-        for (KhachHang khachHang : khsv.getListKT()) {
+        for (KhachHang khachHang : khsv.getListKH()) {
             defaultComboBoxModel.addElement(khachHang);
         }
     }
