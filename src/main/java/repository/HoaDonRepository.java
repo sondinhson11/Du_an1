@@ -46,7 +46,7 @@ public class HoaDonRepository {
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             HoaDon hd = session.get(HoaDon.class, id);
-            hd.setMaHD(hoaDon.getMaHD());
+            transaction = session.beginTransaction();
             hd.setKhachHang(hoaDon.getKhachHang());
             hd.setNhanVien(hoaDon.getNhanVien());
             hd.setHinhthucthanhtoan(hoaDon.getHinhthucthanhtoan());
@@ -56,6 +56,7 @@ public class HoaDonRepository {
             hd.setNgayTao(hoaDon.getNgayTao());
             hd.setNgaySua(hoaDon.getNgaySua());
             hd.setTrangThai(hoaDon.getTrangThai());
+            check = (Integer) session.save(hd);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {
@@ -63,6 +64,7 @@ public class HoaDonRepository {
         }
         return false;
     }
+
     public Boolean delete(int id) {
         Transaction transaction = null;
         Integer check = 0;
@@ -71,7 +73,7 @@ public class HoaDonRepository {
             transaction = session.beginTransaction();
             session.delete(hd);
             transaction.commit();
-            return check > 0;
+            return true;
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

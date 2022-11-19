@@ -45,8 +45,8 @@ public class KhachHang implements Serializable{
     @Column(name = "trangThai")
     private int trangThai;
     
-//    @OneToMany(mappedBy = "khachHang", fetch = FetchType.LAZY)
-//    private List<HoaDon> listHoaDon;
+    @OneToMany(mappedBy = "khachHang", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
     
     public KhachHang() {
     }

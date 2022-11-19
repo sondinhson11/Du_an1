@@ -48,8 +48,8 @@ public class HoaDonView extends javax.swing.JFrame {
         cbbMaHTTT();
         cbbMaKH();
         cbbMaNV();
-        cbbMaKM();
         LoadTable();
+        cbbMaKM();
     }
 
     void cbbMaKH() {
@@ -72,12 +72,14 @@ public class HoaDonView extends javax.swing.JFrame {
             defaultComboBoxModel.addElement(hinhthucthanhtoan);
         }
     }
-void cbbMaKM() {
+
+    void cbbMaKM() {
         defaultComboBoxModel = (DefaultComboBoxModel) cbx_makm.getModel();
-        for (KhuyenMai khuyenMai : kmsv.getListKM()) {
-            defaultComboBoxModel.addElement(khuyenMai);
+        for (KhuyenMai hinhthucthanhtoan : kmsv.getListKM()) {
+            defaultComboBoxModel.addElement(hinhthucthanhtoan);
         }
     }
+
     void LoadTable() {
         defaultTableModel = (DefaultTableModel) this.tb_bang.getModel();
         defaultTableModel.setRowCount(0);
@@ -87,11 +89,12 @@ void cbbMaKM() {
                 hoaDon.getKhachHang(),
                 hoaDon.getNhanVien(),
                 hoaDon.getHinhthucthanhtoan(),
+                hoaDon.getKhuyenMai(),
                 hoaDon.getGhiChu(),
                 hoaDon.getThanhTien(),
                 hoaDon.getNgayTao(),
                 hoaDon.getNgaySua(),
-                hoaDon.getTrangThai()== 1?"Đã Thanh Toán":"Chưa Thanh Toán"
+                hoaDon.getTrangThai() == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán"
             });
 
         }
@@ -101,8 +104,9 @@ void cbbMaKM() {
         KhachHang maKH = (KhachHang) cbx_makh.getSelectedItem();
         NhanVien maNV = (NhanVien) cbx_manv.getSelectedItem();
         HINHTHUCTHANHTOAN maHTTT = (HINHTHUCTHANHTOAN) cbx_mahttt.getSelectedItem();
+        KhuyenMai km = (KhuyenMai)cbx_makm.getSelectedItem();
         String ghichu = txt_ghichu.getText().trim();
-        Integer thanhtien = Integer.valueOf(txt_thanhTien.getText().trim());
+        Float thanhtien = Float.valueOf(txt_thanhTien.getText().trim());
         Date ngayTao = (Date.valueOf(txt_ngaytao.getText()));
         Date ngaySua = (Date.valueOf(txt_ngaysua.getText()));
         Integer TrangThai = TrangThai();
@@ -110,15 +114,15 @@ void cbbMaKM() {
         hd.setKhachHang(maKH);
         hd.setNhanVien(maNV);
         hd.setHinhthucthanhtoan(maHTTT);
+        hd.setKhuyenMai(km);
         hd.setGhiChu(ghichu);
-        hd.setThanhTien(TOP_ALIGNMENT);
+        hd.setThanhTien(thanhtien);
         hd.setNgayTao(ngayTao);
         hd.setNgaySua(ngaySua);
         hd.setTrangThai(TrangThai);
         return hd;
 
     }
-
 
     private int TrangThai() {
         if (cbx_trangthai.getSelectedItem() == "Đã Thanh Toán") {
@@ -127,6 +131,7 @@ void cbbMaKM() {
             return 0;
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

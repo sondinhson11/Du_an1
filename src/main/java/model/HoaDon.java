@@ -29,7 +29,7 @@ public class HoaDon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaHD")
-    private String MaHD;
+    private Integer MaHD;
 
     @ManyToOne
     @JoinColumn(name = "MaKH", nullable = false)
@@ -68,7 +68,7 @@ public class HoaDon implements Serializable {
     public HoaDon() {
     }
 
-    public HoaDon(String MaHD, KhachHang khachHang, NhanVien nhanVien, HINHTHUCTHANHTOAN hinhthucthanhtoan, KhuyenMai khuyenMai, String GhiChu, Float ThanhTien, Date NgayTao, Date NgaySua, Integer TrangThai) {
+    public HoaDon(Integer MaHD, KhachHang khachHang, NhanVien nhanVien, HINHTHUCTHANHTOAN hinhthucthanhtoan, KhuyenMai khuyenMai, String GhiChu, Float ThanhTien, Date NgayTao, Date NgaySua, Integer TrangThai) {
         this.MaHD = MaHD;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
@@ -81,11 +81,11 @@ public class HoaDon implements Serializable {
         this.TrangThai = TrangThai;
     }
 
-    public String getMaHD() {
+    public Integer getMaHD() {
         return MaHD;
     }
 
-    public void setMaHD(String MaHD) {
+    public void setMaHD(Integer MaHD) {
         this.MaHD = MaHD;
     }
 
@@ -163,7 +163,7 @@ public class HoaDon implements Serializable {
 
     @Override
     public String toString() {
-        return MaHD;
+        return MaHD.toString();
     }
     
 }
