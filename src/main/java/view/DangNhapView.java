@@ -152,6 +152,7 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
        }
        CuaSoChinh csc = new CuaSoChinh();
        csc.setVisible(true);
+       this.setVisible(false);
        JOptionPane.showMessageDialog(this, "đã đăng nhập thành công");
    }//GEN-LAST:event_btnLoginActionPerformed
 
