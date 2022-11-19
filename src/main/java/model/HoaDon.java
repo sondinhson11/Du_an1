@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -16,48 +17,52 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 /**
  *
  * @author thean
  */
 @Entity
-@Table (name="HoaDon")
-public class HoaDon implements Serializable{
+@Table(name = "HoaDon")
+public class HoaDon implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="MaHD")
+    @Column(name = "MaHD")
     private String MaHD;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaKH", nullable = false)
     private KhachHang khachHang;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaNV", nullable = false)
     private NhanVien nhanVien;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaHTTT", nullable = false)
     private HINHTHUCTHANHTOAN HTTToan;
-    
+
     @ManyToOne
     @JoinColumn(name = "MaKM", nullable = false)
     private KhuyenMai khuyenMai;
-    
-    @Column(name="GhiChu")
+
+    @Column(name = "GhiChu")
     private String GhiChu;
-    
-    @Column(name="ThanhTien")
+
+    @Column(name = "ThanhTien")
     private Float ThanhTien;
-    
+
     @Column(name = "NgayTao")
     private Date NgayTao;
-    
+
     @Column(name = "NgaySua")
     private Date NgaySua;
-    
+
     @Column(name = "TrangThai")
     private Integer TrangThai;
+    @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
+    private List<HoaDonChiTiet> listChiTiet;
 
     public HoaDon() {
     }
@@ -155,6 +160,4 @@ public class HoaDon implements Serializable{
         this.TrangThai = TrangThai;
     }
 
-    
-    
 }
