@@ -48,11 +48,8 @@ public class HibernateConfig {
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(CHITIETSANPHAM.class);
         conf.addAnnotatedClass(LoaiSP.class);
-<<<<<<< HEAD
         conf.addAnnotatedClass(NhanVien.class);
-=======
         conf.addAnnotatedClass(KhuyenMai.class);
->>>>>>> 6de4f04 (Sửa Sản Phẩm +Thêm ẩn sản phẩm)
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
