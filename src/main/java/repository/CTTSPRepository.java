@@ -18,9 +18,17 @@ import org.hibernate.Transaction;
 public class CTTSPRepository {
 
     Session session = HibernateConfig.getFACTORY().openSession();
+
     public ArrayList<CHITIETSANPHAM> getList() {
         session = HibernateConfig.getFACTORY().openSession();
-        Query q = session.createQuery("From CHITIETSANPHAM");
+        Query q = session.createQuery("From CHITIETSANPHAM Where TrangThai = 1");
+        ArrayList<CHITIETSANPHAM> list = (ArrayList<CHITIETSANPHAM>) q.getResultList();
+        return list;
+    }
+
+    public ArrayList<CHITIETSANPHAM> getListAn() {
+        session = HibernateConfig.getFACTORY().openSession();
+        Query q = session.createQuery("From CHITIETSANPHAM Where TrangThai = 0");
         ArrayList<CHITIETSANPHAM> list = (ArrayList<CHITIETSANPHAM>) q.getResultList();
         return list;
     }
@@ -57,7 +65,7 @@ public class CTTSPRepository {
             ctsp.setNgaySua(chiTietSanPham.getNgaySua());
             ctsp.setTrangThai(chiTietSanPham.getTrangThai());
             transaction = session.beginTransaction();
-            session.update(ctsp);
+            check = (Integer) session.save(ctsp);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {
@@ -71,8 +79,25 @@ public class CTTSPRepository {
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
+            ctsp.setTrangThai(0);
             transaction = session.beginTransaction();
-            session.delete(ctsp);
+            check = (Integer) session.save(ctsp);
+            transaction.commit();
+            return check > 0;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public Boolean hienThi(int id) {
+        Transaction transaction = null;
+        Integer check = 0;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
+            ctsp.setTrangThai(1);
+            transaction = session.beginTransaction();
+            check = (Integer) session.save(ctsp);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

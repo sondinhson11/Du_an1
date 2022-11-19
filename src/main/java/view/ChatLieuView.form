@@ -72,6 +72,7 @@
                           <Component id="btn_them" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_sua" min="-2" max="-2" attributes="0"/>
                           <Component id="btn_xoa" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnThoat1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jScrollPane2" alignment="0" min="-2" pref="508" max="-2" attributes="0"/>
@@ -118,6 +119,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cb_trangThai" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnThoat1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="109" max="-2" attributes="0"/>
@@ -252,6 +254,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_xoaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnThoat1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoat1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

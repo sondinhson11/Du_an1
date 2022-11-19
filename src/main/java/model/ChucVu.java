@@ -2,11 +2,14 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,21 @@ public class ChucVu implements Serializable {
     private Date NgaySua;
     @Column(name = "TrangThai")
     private Integer TrangThai;
+
+    @OneToMany(mappedBy = "chucvu", fetch = FetchType.LAZY)
+    private List<NhanVien> listNhanVien;
+
+    public ChucVu() {
+    }
+
+    public ChucVu(Integer MaCV, String TenCV, Date NgayTao, Date NgaySua, Integer TrangThai, List<NhanVien> listNhanVien) {
+        this.MaCV = MaCV;
+        this.TenCV = TenCV;
+        this.NgayTao = NgayTao;
+        this.NgaySua = NgaySua;
+        this.TrangThai = TrangThai;
+        this.listNhanVien = listNhanVien;
+    }
 
     public Integer getMaCV() {
         return MaCV;
@@ -65,24 +83,18 @@ public class ChucVu implements Serializable {
     public void setTrangThai(Integer TrangThai) {
         this.TrangThai = TrangThai;
     }
-    
-    
-    
-    public ChucVu() {
+
+    public List<NhanVien> getListNhanVien() {
+        return listNhanVien;
     }
 
-    public ChucVu(Integer MaCV, String TenCV, Date NgayTao, Date NgaySua, Integer TrangThai) {
-        this.MaCV = MaCV;
-        this.TenCV = TenCV;
-        this.NgayTao = NgayTao;
-        this.NgaySua = NgaySua;
-        this.TrangThai = TrangThai;
+    public void setListNhanVien(List<NhanVien> listNhanVien) {
+        this.listNhanVien = listNhanVien;
     }
-
+    
     @Override
     public String toString() {
         return TenCV;
     }
 
-    
 }

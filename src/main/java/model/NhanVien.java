@@ -13,41 +13,53 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "NhanVien")
-public class NhanVien  implements Serializable{
+public class NhanVien implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaNv")
-    private String maNv;
-    
-   @Column(name = "TenNV")
+    private Integer maNv;
+
+    @Column(name = "TenNV")
     private String tenNv;
-   @Column(name = "DiaChi")
+
+    @Column(name = "DiaChi")
     private String diaChi;
-   @Column(name = "GioiTinh")
+
+    @Column(name = "GioiTinh")
     private int gioiTinh;
-   @Column(name = "Email")
+
+    @Column(name = "Email")
     private String email;
-   @Column(name = "SoDienThoai")
+
+    @Column(name = "SoDienThoai")
     private String sdt;
-   @Column(name = "NgaySinh")
+
+    @Column(name = "NgaySinh")
     private Date ngaySinh;
-   @Column(name = "NgayTao")
+
+    @Column(name = "NgayTao")
     private Date ngayTao;
-   @Column(name = "NgaySua")
+
+    @Column(name = "NgaySua")
     private Date ngaySua;
-   @Column(name = "TrangThai")
+
+    @Column(name = "TrangThai")
     private int trangThai;
-   @ManyToOne
+
+    @ManyToOne
     @JoinColumn(name = "MaCV", nullable = false)
     private ChucVu chucvu;
-    @OneToMany(mappedBy = "nhanVien", fetch = FetchType.LAZY)
-    private List<HoaDon> listHoaDon;
+
+//    @OneToMany(mappedBy = "nhanVien", fetch = FetchType.LAZY)
+//    private List<HoaDon> listHoaDon;
     public NhanVien() {
     }
 
-    public NhanVien(String maNv, String tenNv, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayTao, Date ngaySua, int trangThai, ChucVu chucvu) {
+    public NhanVien(Integer maNv, String tenNv, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayTao, Date ngaySua, int trangThai, ChucVu chucvu) {
         this.maNv = maNv;
         this.tenNv = tenNv;
         this.diaChi = diaChi;
@@ -61,11 +73,11 @@ public class NhanVien  implements Serializable{
         this.chucvu = chucvu;
     }
 
-    public String getMaNv() {
+    public Integer getMaNv() {
         return maNv;
     }
 
-    public void setMaNv(String maNv) {
+    public void setMaNv(Integer maNv) {
         this.maNv = maNv;
     }
 
@@ -148,14 +160,10 @@ public class NhanVien  implements Serializable{
     public void setChucvu(ChucVu chucvu) {
         this.chucvu = chucvu;
     }
-    
-   @Override
+
+    @Override
     public String toString() {
         return tenNv;
     }
 
-    
-    
-    
-    
 }

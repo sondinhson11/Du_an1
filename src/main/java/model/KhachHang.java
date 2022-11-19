@@ -20,24 +20,34 @@ public class KhachHang implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaKH")
     private int ma;
+    
     @Column(name = "TenKH")
     private String ten;
+    
     @Column(name = "ngaySinh")
     private Date ngaySinh;
+    
     @Column(name = "gioiTinh")
     private int gioiTinh;
+    
     @Column(name = "soDienThoai")
     private String soDienThoai;
+    
     @Column(name = "diaChi")
     private String diaChi;
+    
     @Column(name = "ngayTao")
     private Date ngayTao;
+    
     @Column(name = "ngaySua")
     private Date ngaySua;
+    
     @Column(name = "trangThai")
     private int trangThai;
-@OneToMany(mappedBy = "khachHang",fetch = FetchType.LAZY)
-    private List<HoaDon> listHoaDon;
+    
+//    @OneToMany(mappedBy = "khachHang", fetch = FetchType.LAZY)
+//    private List<HoaDon> listHoaDon;
+    
     public KhachHang() {
     }
 

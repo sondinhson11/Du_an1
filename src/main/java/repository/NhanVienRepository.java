@@ -31,7 +31,6 @@ public class NhanVienRepository {
             transaction = session.beginTransaction();
             check = (Integer) session.save(nv);
             transaction.commit();
-            System.err.println("Ma Nhan Vien " + check);
             return check > 0;
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -47,7 +46,7 @@ public class NhanVienRepository {
             transaction = session.beginTransaction();
             session.delete(nv);
             transaction.commit();
-            return check > 0;
+            return true;
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -71,7 +70,7 @@ public class NhanVienRepository {
             cv.setNgaySua(nv.getNgaySua());
             cv.setTrangThai(nv.getTrangThai());
             transaction = session.beginTransaction();
-             check = (Integer) session.save(cv); 
+            check = (Integer) session.save(cv); 
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

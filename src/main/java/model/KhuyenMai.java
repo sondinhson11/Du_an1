@@ -51,9 +51,8 @@ public class KhuyenMai implements Serializable {
     
     @Column(name="TrangThai")
     private Integer TrangThai;
-    @OneToMany(mappedBy = "khuyenMai",fetch = FetchType.LAZY)
-    private List<HoaDon> listHoaDon;
 
+    
     public KhuyenMai() {
     }
 

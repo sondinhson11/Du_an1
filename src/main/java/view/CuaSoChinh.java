@@ -1,16 +1,9 @@
 package view;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 public class CuaSoChinh extends javax.swing.JFrame {
 
     public CuaSoChinh() {
         initComponents();
-        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,9 +22,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
         btnDoiMK = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         btnDangXuat1 = new javax.swing.JButton();
+        manChinhPage = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnExit = new javax.swing.JButton();
-        manChinhPage = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -60,6 +53,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         btnSanPham.setText("Sản Phẩm");
         btnSanPham.setBorderPainted(false);
         btnSanPham.setContentAreaFilled(false);
+        btnSanPham.setPreferredSize(new java.awt.Dimension(93, 27));
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSanPhamActionPerformed(evt);
@@ -194,27 +188,40 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDangXuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addComponent(btnDangXuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
         );
 
-        bg.add(slidepage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 840));
+        bg.add(slidepage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 820));
+
+        javax.swing.GroupLayout manChinhPageLayout = new javax.swing.GroupLayout(manChinhPage);
+        manChinhPage.setLayout(manChinhPageLayout);
+        manChinhPageLayout.setHorizontalGroup(
+            manChinhPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1110, Short.MAX_VALUE)
+        );
+        manChinhPageLayout.setVerticalGroup(
+            manChinhPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+
+        bg.add(manChinhPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 1110, 710));
 
         jPanel1.setBackground(new java.awt.Color(54, 33, 89));
 
@@ -234,9 +241,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(977, Short.MAX_VALUE)
-                .addComponent(btnExit)
-                .addContainerGap())
+                .addContainerGap(1050, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,26 +253,13 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 0, 1010, 110));
-
-        javax.swing.GroupLayout manChinhPageLayout = new javax.swing.GroupLayout(manChinhPage);
-        manChinhPage.setLayout(manChinhPageLayout);
-        manChinhPageLayout.setHorizontalGroup(
-            manChinhPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        manChinhPageLayout.setVerticalGroup(
-            manChinhPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
-        );
-
-        bg.add(manChinhPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 1000, 710));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1305, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,8 +271,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         manChinhPage.removeAll();
-        SanPhamViews spf = new SanPhamViews();
-        manChinhPage.add(spf).setVisible(true);
+        CTSPViews ctspf = new CTSPViews();
+        manChinhPage.add(ctspf).setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
@@ -287,9 +281,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         manChinhPage.removeAll();
-        if (SanPhamViews.webcam != null) {
-            SanPhamViews.webcam.close();
-        }
         KhachHangViews ksf = new KhachHangViews();
         manChinhPage.add(ksf).setVisible(true);
     }//GEN-LAST:event_btnKhachHangActionPerformed
@@ -300,9 +291,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
         manChinhPage.removeAll();
-        if (SanPhamViews.webcam != null) {
-            SanPhamViews.webcam.close();
-        }
         KhuyenMaiViews kmf = new KhuyenMaiViews();
         manChinhPage.add(kmf).setVisible(true);
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
@@ -313,7 +301,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-
+        manChinhPage.removeAll();
+        NhanVienViews nvf = new NhanVienViews();
+        manChinhPage.add(nvf).setVisible(true);
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -321,7 +311,9 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnDangXuat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuat1ActionPerformed
-        // TODO add your handling code here:
+        DangNhapView dn = new DangNhapView();
+        dn.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnDangXuat1ActionPerformed
 
     /**

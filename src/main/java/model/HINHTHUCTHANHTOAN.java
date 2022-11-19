@@ -28,20 +28,21 @@ public class HINHTHUCTHANHTOAN implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaHTTT")
     private Integer maHTTT;
+    
     @Column(name = "TenHTTT")
-
     private String tenHTTT;
+    
     @Column(name = "NgayTao")
-
     private Date ngayTao;
+    
     @Column(name = "NgaySua")
-
     private Date ngaySua;
+    
     @Column(name = "TrangThai")
-
     private Integer TrangThai;
-    @OneToMany(mappedBy = "hinhthucthanhtoan", fetch = FetchType.LAZY)
-    private List<HoaDon> listHoaDon;
+    
+//    @OneToMany(mappedBy = "hinhthucthanhtoan", fetch = FetchType.LAZY)
+//    private List<HoaDon> listHoaDon;
 
     public HINHTHUCTHANHTOAN(Integer maHTTT, String tenHTTT, Date ngayTao, Date ngaySua, Integer TrangThai) {
         this.maHTTT = maHTTT;

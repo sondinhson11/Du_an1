@@ -15,9 +15,14 @@ public interface CTSPServices {
 
     ArrayList<CHITIETSANPHAM> getAll();
 
+    ArrayList<CHITIETSANPHAM> getAllAn();
+
     String add(CHITIETSANPHAM ctsp);
 
     String update(CHITIETSANPHAM ctsp, int id);
 
     String delete(int id);
+
+    String hienThi(int id);
+
 }
