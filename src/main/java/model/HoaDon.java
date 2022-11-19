@@ -27,26 +27,35 @@ public class HoaDon implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="MaHD")
     private String MaHD;
+    
     @ManyToOne
     @JoinColumn(name = "MaKH", nullable = false)
     private KhachHang khachHang;
+    
     @ManyToOne
     @JoinColumn(name = "MaNV", nullable = false)
     private NhanVien nhanVien;
+    
     @ManyToOne
     @JoinColumn(name = "MaHTTT", nullable = false)
-    private HINHTHUCTHANHTOAN hinhthucthanhtoan;
+    private HINHTHUCTHANHTOAN HTTToan;
+    
     @ManyToOne
     @JoinColumn(name = "MaKM", nullable = false)
     private KhuyenMai khuyenMai;
+    
     @Column(name="GhiChu")
     private String GhiChu;
+    
     @Column(name="ThanhTien")
     private Float ThanhTien;
+    
     @Column(name = "NgayTao")
     private Date NgayTao;
+    
     @Column(name = "NgaySua")
     private Date NgaySua;
+    
     @Column(name = "TrangThai")
     private Integer TrangThai;
 
@@ -57,7 +66,7 @@ public class HoaDon implements Serializable{
         this.MaHD = MaHD;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
-        this.hinhthucthanhtoan = hinhthucthanhtoan;
+        this.HTTToan = hinhthucthanhtoan;
         this.khuyenMai = khuyenMai;
         this.GhiChu = GhiChu;
         this.ThanhTien = ThanhTien;
@@ -91,11 +100,11 @@ public class HoaDon implements Serializable{
     }
 
     public HINHTHUCTHANHTOAN getHinhthucthanhtoan() {
-        return hinhthucthanhtoan;
+        return HTTToan;
     }
 
     public void setHinhthucthanhtoan(HINHTHUCTHANHTOAN hinhthucthanhtoan) {
-        this.hinhthucthanhtoan = hinhthucthanhtoan;
+        this.HTTToan = hinhthucthanhtoan;
     }
 
     public KhuyenMai getKhuyenMai() {

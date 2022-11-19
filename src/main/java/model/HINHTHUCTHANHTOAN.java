@@ -41,19 +41,30 @@ public class HINHTHUCTHANHTOAN implements Serializable {
     @Column(name = "TrangThai")
     private Integer TrangThai;
     
-//    @OneToMany(mappedBy = "hinhthucthanhtoan", fetch = FetchType.LAZY)
-//    private List<HoaDon> listHoaDon;
+    @OneToMany(mappedBy = "HTTToan", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
 
-    public HINHTHUCTHANHTOAN(Integer maHTTT, String tenHTTT, Date ngayTao, Date ngaySua, Integer TrangThai) {
+    public HINHTHUCTHANHTOAN(Integer maHTTT, String tenHTTT, Date ngayTao, Date ngaySua, Integer TrangThai, List<HoaDon> listHoaDon) {
         this.maHTTT = maHTTT;
         this.tenHTTT = tenHTTT;
         this.ngayTao = ngayTao;
         this.ngaySua = ngaySua;
         this.TrangThai = TrangThai;
+        this.listHoaDon = listHoaDon;
     }
 
     public HINHTHUCTHANHTOAN() {
     }
+
+    public List<HoaDon> getListHoaDon() {
+        return listHoaDon;
+    }
+
+    public void setListHoaDon(List<HoaDon> listHoaDon) {
+        this.listHoaDon = listHoaDon;
+    }
+
+    
 
     public Integer getMaHTTT() {
         return maHTTT;

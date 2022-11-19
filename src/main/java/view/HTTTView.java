@@ -54,7 +54,7 @@ public class HTTTView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        HINHTHUCTHANHTOAN hinhthucthanhtoan = new HINHTHUCTHANHTOAN(0, tenHTTT, ngayTao, ngaySua, trangThai);
+        HINHTHUCTHANHTOAN hinhthucthanhtoan = new HINHTHUCTHANHTOAN(0, tenHTTT, ngayTao, ngaySua, trangThai,null);
         return hinhthucthanhtoan;
     }
 

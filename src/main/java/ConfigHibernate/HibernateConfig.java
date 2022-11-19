@@ -6,6 +6,7 @@ import model.ChucVu;
 import model.CLB;
 import model.CHITIETSANPHAM;
 import model.HINHTHUCTHANHTOAN;
+import model.HoaDon;
 import model.KICHTHUOC;
 import model.KhachHang;
 import model.KhuyenMai;
@@ -50,6 +51,7 @@ public class HibernateConfig {
         conf.addAnnotatedClass(LoaiSP.class);
         conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(KhuyenMai.class);
+        conf.addAnnotatedClass(HoaDon.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

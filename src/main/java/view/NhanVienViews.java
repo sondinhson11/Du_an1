@@ -309,7 +309,7 @@ public class NhanVienViews extends javax.swing.JInternalFrame {
                                             .addComponent(txt_NgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                             .addComponent(txt_ngaysua, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                             .addComponent(cb_Trangthai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addGap(0, 128, Short.MAX_VALUE))
+                        .addGap(0, 463, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
