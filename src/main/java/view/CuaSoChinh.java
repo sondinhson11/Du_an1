@@ -11,6 +11,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public CuaSoChinh() {
         initComponents();
         setLocationRelativeTo(null);
+        manChinhPage.removeAll();
+        if (SanPhamViews.webcam != null) {
+            SanPhamViews.webcam.close();
+        }
+        ThongKeViews Tkf = new ThongKeViews();
+        manChinhPage.add(Tkf).setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -211,10 +217,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDangXuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
-        bg.add(slidepage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 790));
+        bg.add(slidepage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 840));
 
         jPanel1.setBackground(new java.awt.Color(54, 33, 89));
 
@@ -234,7 +240,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(947, Short.MAX_VALUE)
+                .addContainerGap(977, Short.MAX_VALUE)
                 .addComponent(btnExit)
                 .addContainerGap())
         );
@@ -246,7 +252,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 0, 980, 110));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 0, 1010, 110));
 
         javax.swing.GroupLayout manChinhPageLayout = new javax.swing.GroupLayout(manChinhPage);
         manChinhPage.setLayout(manChinhPageLayout);
@@ -256,10 +262,10 @@ public class CuaSoChinh extends javax.swing.JFrame {
         );
         manChinhPageLayout.setVerticalGroup(
             manChinhPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        bg.add(manChinhPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 970, 640));
+        bg.add(manChinhPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 1000, 710));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -8,6 +8,7 @@ import model.CHITIETSANPHAM;
 import model.HINHTHUCTHANHTOAN;
 import model.KICHTHUOC;
 import model.KhachHang;
+import model.KhuyenMai;
 import model.LoaiSP;
 import model.MONTHETHAO;
 import model.MauSac;
@@ -34,7 +35,7 @@ public class HibernateConfig {
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
         properties.put(Environment.SHOW_SQL, "true");
-        
+
         conf.setProperties(properties);
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(CLB.class);
@@ -47,7 +48,11 @@ public class HibernateConfig {
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(CHITIETSANPHAM.class);
         conf.addAnnotatedClass(LoaiSP.class);
+<<<<<<< HEAD
         conf.addAnnotatedClass(NhanVien.class);
+=======
+        conf.addAnnotatedClass(KhuyenMai.class);
+>>>>>>> 6de4f04 (Sửa Sản Phẩm +Thêm ẩn sản phẩm)
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

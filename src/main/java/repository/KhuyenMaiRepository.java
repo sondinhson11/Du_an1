@@ -48,7 +48,7 @@ public class KhuyenMaiRepository {
            km.setNgaySua(khuyenmai.getNgaySua());
            km.setTrangThai(khuyenmai.getTrangThai());
            transaction=session.beginTransaction();
-           session.update(km);
+           check = (Integer) session.save(km);
            transaction.commit();
             
             return check >0;

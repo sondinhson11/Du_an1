@@ -13,7 +13,14 @@ public class SanPhamRepository {
 
     public ArrayList<SanPham> getList() {
         session = HibernateConfig.getFACTORY().openSession();
-        Query q = session.createQuery("From SanPham");
+        Query q = session.createQuery("From SanPham Where TrangThai Like 1");
+        ArrayList<SanPham> list = (ArrayList<SanPham>) q.getResultList();
+        return list;
+    }
+
+    public ArrayList<SanPham> getListAn() {
+        session = HibernateConfig.getFACTORY().openSession();
+        Query q = session.createQuery("From SanPham Where TrangThai Like 0");
         ArrayList<SanPham> list = (ArrayList<SanPham>) q.getResultList();
         return list;
     }
@@ -37,9 +44,26 @@ public class SanPhamRepository {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            SanPham sp = session.get(SanPham.class, id);
+            SanPham cv = session.get(SanPham.class, id);
+            cv.setTrangThai(0);
             transaction = session.beginTransaction();
-            session.delete(sp);
+            check = (Integer) session.save(cv);
+            transaction.commit();
+            return check > 0;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
+    public Boolean hienThi(int id) {
+        Transaction transaction = null;
+        Integer check = 0;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            SanPham cv = session.get(SanPham.class, id);
+            cv.setTrangThai(1);
+            transaction = session.beginTransaction();
+            check = (Integer) session.save(cv);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

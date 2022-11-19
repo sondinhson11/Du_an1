@@ -15,6 +15,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
+    public ArrayList<SanPham> getListSanPhamAn() {
+        return sanphamRepository.getListAn();
+    }
+
+    @Override
     public String addSanPham(SanPham sp) {
         if (sanphamRepository.add(sp)) {
             return "Thêm Thành Công";
@@ -26,9 +31,18 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public String delete(int id) {
         if (sanphamRepository.delete(id)) {
-            return "Xoa Thành Công";
+            return "Ẩn Thành Công";
         } else {
-            return "Xoa Thất Bại";
+            return "Ẩn Thất Bại";
+        }
+    }
+
+    @Override
+    public String hienThi(int id) {
+        if (sanphamRepository.hienThi(id)) {
+            return "Hiển Thị Thành Công";
+        } else {
+            return "Hiển Thị Thất Bại";
         }
     }
 

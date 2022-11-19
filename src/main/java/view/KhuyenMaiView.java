@@ -71,13 +71,14 @@ public class KhuyenMaiView extends javax.swing.JFrame {
     }
 
     private KhuyenMai getData() {
-      
+
         String tenkm = txt_tenkm.getText().trim();
         String ngaybd = txt_ngaybd.getText().trim();
         String ngaykt = txt_ngaykt.getText().trim();
         Date ngayBD = (Date.valueOf(ngaybd));
         Date ngayKT = (Date.valueOf(ngaykt));
         String giamgia = txt_giamgia.getText().trim();
+        Float giamgia2 = Float.valueOf(giamgia);
         String ngaytao = txt_ngaytao.getText().trim();
         String ngaysua = txt_ngaysua.getText().trim();
         Date ngayTao = (Date.valueOf(ngaytao));
@@ -87,7 +88,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        KhuyenMai km = new KhuyenMai(null, tenkm, ngayBD, ngayKT, TOP_ALIGNMENT, ngayTao, ngaySua, trangthai);
+        KhuyenMai km = new KhuyenMai(null, tenkm, ngayBD, ngayKT, giamgia2, ngayTao, ngaySua, trangthai);
         return km;
     }
 
@@ -117,9 +118,9 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         txt_ngaytao = new javax.swing.JTextField();
         txt_ngaysua = new javax.swing.JTextField();
         cbx_trangthai = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_bang = new javax.swing.JTable();
 
@@ -143,24 +144,24 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
         jLabel9.setText("Trạng Thái");
 
-        jButton1.setText("Thêm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -222,11 +223,11 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                         .addGap(56, 56, 56))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jButton1)
+                        .addComponent(btnThem)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton2)
+                        .addComponent(btnSua)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton3)
+                        .addComponent(btnXoa)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,9 +270,9 @@ public class KhuyenMaiView extends javax.swing.JFrame {
                     .addComponent(cbx_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -280,10 +281,10 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         JOptionPane.showMessageDialog(this, kmsv.add(getData()));
         LoadTable();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnThemActionPerformed
 
     private void tb_bangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_bangMouseClicked
         // TODO add your handling code here:
@@ -299,7 +300,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tb_bangMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         int row = tb_bang.getSelectedRow();
         KhuyenMai km = getData();
@@ -315,9 +316,9 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         String traLoi = kmsv.update(km, ID);
         JOptionPane.showMessageDialog(this, traLoi);
         LoadTable();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         int row = tb_bang.getSelectedRow();
         if (row == -1) {
@@ -329,7 +330,7 @@ public class KhuyenMaiView extends javax.swing.JFrame {
         String traLoi = kmsv.delete(ID);
         JOptionPane.showMessageDialog(this, traLoi);
         LoadTable();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,10 +368,10 @@ public class KhuyenMaiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbx_trangthai;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

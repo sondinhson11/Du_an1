@@ -30,6 +30,7 @@ public class KhuyenMai implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaKM")
     private Integer maKM;
+<<<<<<< HEAD
     @Column(name = "TenKM")
     private String TenKM;
     @Column(name = "NgayBatDau")
@@ -43,6 +44,28 @@ public class KhuyenMai implements Serializable {
     @Column(name = "NgaySua")
     private Date NgaySua;
     @Column(name = "TrangThai")
+=======
+    
+    @Column(name="TenKM")
+    private String TenKM;
+    
+    @Column(name="NgayBatDau")
+    private Date NgayBD;
+    
+    @Column (name="NgayKetThuc")
+    private Date NgayKT;
+    
+    @Column(name="GiamGia")
+    private Float GiamGia;
+    
+    @Column (name="NgayTao")
+    private Date NgayTao;
+    
+    @Column(name="NgaySua")
+    private Date NgaySua;
+    
+    @Column(name="TrangThai")
+>>>>>>> 6de4f04 (Sửa Sản Phẩm +Thêm ẩn sản phẩm)
     private Integer TrangThai;
     @OneToMany(mappedBy = "khuyenMai",fetch = FetchType.LAZY)
     private List<HoaDon> listHoaDon;
