@@ -124,12 +124,9 @@ public class KhachHang implements Serializable{
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-<<<<<<< HEAD
-    @Override
+
     public String toString() {
         return ten;
     }
-=======
->>>>>>> 6de4f04 (Sửa Sản Phẩm +Thêm ẩn sản phẩm)
-    
+
 }

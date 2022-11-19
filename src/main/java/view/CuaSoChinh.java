@@ -15,8 +15,8 @@ public class CuaSoChinh extends javax.swing.JFrame {
         if (SanPhamViews.webcam != null) {
             SanPhamViews.webcam.close();
         }
-        ThongKeViews Tkf = new ThongKeViews();
-        manChinhPage.add(Tkf).setVisible(true);
+//        ThongKeViews Tkf = new ThongKeViews();
+//        manChinhPage.add(Tkf).setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
