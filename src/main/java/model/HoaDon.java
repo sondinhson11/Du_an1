@@ -61,6 +61,7 @@ public class HoaDon implements Serializable {
 
     @Column(name = "TrangThai")
     private Integer TrangThai;
+    
     @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
     private List<HoaDonChiTiet> listChiTiet;
 
@@ -160,4 +161,9 @@ public class HoaDon implements Serializable {
         this.TrangThai = TrangThai;
     }
 
+    @Override
+    public String toString() {
+        return MaHD;
+    }
+    
 }

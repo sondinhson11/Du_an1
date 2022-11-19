@@ -6,16 +6,13 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,7 +26,8 @@ public class HoaDonChiTiet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaHDCT")
-    private String MaHDCT;
+    private Integer MaHDCT;
+
     @ManyToOne
     @JoinColumn(name = "MaHD", nullable = false)
     private HoaDon hoaDon;
@@ -37,14 +35,16 @@ public class HoaDonChiTiet implements Serializable {
     @ManyToOne
     @JoinColumn(name = "MaCTSP", nullable = false)
     private CHITIETSANPHAM chitietsanpham;
+    
+    @ManyToOne
+    @JoinColumn(name = "GiamGia", nullable = false)
+    private KhuyenMai GiamGia;
+
     @Column(name = "SoLuong")
     private int soluong;
 
     @Column(name = "Gia")
     private Float gia;
-
-    @Column(name = "GiamGia")
-    private Float giamgia;
 
     @Column(name = "ThanhTien")
     private Float ThanhTien;
@@ -64,25 +64,25 @@ public class HoaDonChiTiet implements Serializable {
     public HoaDonChiTiet() {
     }
 
-    public HoaDonChiTiet(String MaHDCT, HoaDon hoaDon, CHITIETSANPHAM chitietsanpham, int soluong, Float gia, Float giamgia, Float ThanhTien, String GhiChu, Date NgayTao, Date NgaySua, Integer TrangThai) {
+    public HoaDonChiTiet(Integer MaHDCT, HoaDon hoaDon, CHITIETSANPHAM chitietsanpham, int soluong, Float gia, Float ThanhTien, String GhiChu, Date NgayTao, Date NgaySua, Integer TrangThai, KhuyenMai GiamGia) {
         this.MaHDCT = MaHDCT;
         this.hoaDon = hoaDon;
         this.chitietsanpham = chitietsanpham;
         this.soluong = soluong;
         this.gia = gia;
-        this.giamgia = giamgia;
         this.ThanhTien = ThanhTien;
         this.GhiChu = GhiChu;
         this.NgayTao = NgayTao;
         this.NgaySua = NgaySua;
         this.TrangThai = TrangThai;
+        this.GiamGia = GiamGia;
     }
 
-    public String getMaHDCT() {
+    public Integer getMaHDCT() {
         return MaHDCT;
     }
 
-    public void setMaHDCT(String MaHDCT) {
+    public void setMaHDCT(Integer MaHDCT) {
         this.MaHDCT = MaHDCT;
     }
 
@@ -116,14 +116,6 @@ public class HoaDonChiTiet implements Serializable {
 
     public void setGia(Float gia) {
         this.gia = gia;
-    }
-
-    public Float getGiamgia() {
-        return giamgia;
-    }
-
-    public void setGiamgia(Float giamgia) {
-        this.giamgia = giamgia;
     }
 
     public Float getThanhTien() {
@@ -165,5 +157,13 @@ public class HoaDonChiTiet implements Serializable {
     public void setTrangThai(Integer TrangThai) {
         this.TrangThai = TrangThai;
     }
-    
+
+    public KhuyenMai getGiamGia() {
+        return GiamGia;
+    }
+
+    public void setGiamGia(KhuyenMai GiamGia) {
+        this.GiamGia = GiamGia;
+    }
+
 }

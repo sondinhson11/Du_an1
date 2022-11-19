@@ -47,7 +47,6 @@ public class HoaDonView extends javax.swing.JFrame {
         initComponents();
         cbbMaHTTT();
         cbbMaKH();
-        cbbMaKM();
         cbbMaNV();
         LoadTable();
     }
@@ -63,13 +62,6 @@ public class HoaDonView extends javax.swing.JFrame {
         defaultComboBoxModel = (DefaultComboBoxModel) cbx_manv.getModel();
         for (NhanVien nhanVien : nvsv.getlistNhanVien()) {
             defaultComboBoxModel.addElement(nhanVien);
-        }
-    }
-
-    void cbbMaKM() {
-        defaultComboBoxModel = (DefaultComboBoxModel) cbx_makm.getModel();
-        for (KhuyenMai khuyenMai : kmsv.getListKM()) {
-            defaultComboBoxModel.addElement(khuyenMai);
         }
     }
 
@@ -89,7 +81,6 @@ public class HoaDonView extends javax.swing.JFrame {
                 hoaDon.getKhachHang(),
                 hoaDon.getNhanVien(),
                 hoaDon.getHinhthucthanhtoan(),
-                hoaDon.getKhuyenMai(),
                 hoaDon.getGhiChu(),
                 hoaDon.getThanhTien(),
                 hoaDon.getNgayTao(),
@@ -104,7 +95,6 @@ public class HoaDonView extends javax.swing.JFrame {
         KhachHang maKH = (KhachHang) cbx_makh.getSelectedItem();
         NhanVien maNV = (NhanVien) cbx_manv.getSelectedItem();
         HINHTHUCTHANHTOAN maHTTT = (HINHTHUCTHANHTOAN) cbx_mahttt.getSelectedItem();
-        KhuyenMai maKM = (KhuyenMai) cbx_makm.getSelectedItem();
         String ghichu = txt_ghichu.getText().trim();
         Integer thanhtien = Integer.valueOf(txt_thanhTien.getText().trim());
         Date ngayTao = (Date.valueOf(txt_ngaytao.getText()));
@@ -114,7 +104,6 @@ public class HoaDonView extends javax.swing.JFrame {
         hd.setKhachHang(maKH);
         hd.setNhanVien(maNV);
         hd.setHinhthucthanhtoan(maHTTT);
-        hd.setKhuyenMai(maKM);
         hd.setGhiChu(ghichu);
         hd.setThanhTien(TOP_ALIGNMENT);
         hd.setNgayTao(ngayTao);
@@ -225,6 +214,9 @@ public class HoaDonView extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tb_bang);
+        if (tb_bang.getColumnModel().getColumnCount() > 0) {
+            tb_bang.getColumnModel().getColumn(4).setHeaderValue("Mã KM");
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -7,6 +7,7 @@ import model.CLB;
 import model.CHITIETSANPHAM;
 import model.HINHTHUCTHANHTOAN;
 import model.HoaDon;
+import model.HoaDonChiTiet;
 import model.KICHTHUOC;
 import model.KhachHang;
 import model.KhuyenMai;
@@ -39,6 +40,7 @@ public class HibernateConfig {
 
         conf.setProperties(properties);
         conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(CLB.class);
         conf.addAnnotatedClass(MONTHETHAO.class);
         conf.addAnnotatedClass(MauSac.class);
@@ -50,8 +52,8 @@ public class HibernateConfig {
         conf.addAnnotatedClass(CHITIETSANPHAM.class);
         conf.addAnnotatedClass(LoaiSP.class);
         conf.addAnnotatedClass(NhanVien.class);
-        conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();

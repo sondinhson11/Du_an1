@@ -178,5 +178,10 @@ public class CHITIETSANPHAM implements Serializable {
         this.monTT = monTT;
     }
 
+    @Override
+    public String toString() {
+        return maCTSP.toString();
+    }
+
 
 }

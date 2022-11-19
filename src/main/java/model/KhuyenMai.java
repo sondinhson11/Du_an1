@@ -13,8 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,32 +29,37 @@ public class KhuyenMai implements Serializable {
     @Column(name = "MaKM")
     private Integer maKM;
 
-    @Column(name="TenKM")
+    @Column(name = "TenKM")
     private String TenKM;
-    
-    @Column(name="NgayBatDau")
+
+    @Column(name = "NgayBatDau")
     private Date NgayBD;
-    
-    @Column (name="NgayKetThuc")
+
+    @Column(name = "NgayKetThuc")
     private Date NgayKT;
-    
-    @Column(name="GiamGia")
+
+    @Column(name = "GiamGia")
     private Float GiamGia;
-    
-    @Column (name="NgayTao")
+
+    @Column(name = "NgayTao")
     private Date NgayTao;
-    
-    @Column(name="NgaySua")
+
+    @Column(name = "NgaySua")
     private Date NgaySua;
-    
-    @Column(name="TrangThai")
+
+    @Column(name = "TrangThai")
     private Integer TrangThai;
 
-    
+    @OneToMany(mappedBy = "khuyenMai", fetch = FetchType.LAZY)
+    private List<HoaDon> listHoaDon;
+
+    @OneToMany(mappedBy = "GiamGia", fetch = FetchType.LAZY)
+    private List<HoaDonChiTiet> listHoaDonChiTiets;
+
     public KhuyenMai() {
     }
 
-    public KhuyenMai(Integer maKM, String TenKM, Date NgayBD, Date NgayKT, Float GiamGia, Date NgayTao, Date NgaySua, Integer TrangThai) {
+    public KhuyenMai(Integer maKM, String TenKM, Date NgayBD, Date NgayKT, Float GiamGia, Date NgayTao, Date NgaySua, Integer TrangThai, List<HoaDon> listHoaDon, List<HoaDonChiTiet> listHoaDonChiTiets) {
         this.maKM = maKM;
         this.TenKM = TenKM;
         this.NgayBD = NgayBD;
@@ -65,8 +68,10 @@ public class KhuyenMai implements Serializable {
         this.NgayTao = NgayTao;
         this.NgaySua = NgaySua;
         this.TrangThai = TrangThai;
+        this.listHoaDon = listHoaDon;
+        this.listHoaDonChiTiets = listHoaDonChiTiets;
     }
-
+    
     public Integer getMaKM() {
         return maKM;
     }
@@ -131,8 +136,24 @@ public class KhuyenMai implements Serializable {
         this.TrangThai = TrangThai;
     }
 
+    public List<HoaDon> getListHoaDon() {
+        return listHoaDon;
+    }
+
+    public void setListHoaDon(List<HoaDon> listHoaDon) {
+        this.listHoaDon = listHoaDon;
+    }
+
+    public List<HoaDonChiTiet> getListHoaDonChiTiets() {
+        return listHoaDonChiTiets;
+    }
+
+    public void setListHoaDonChiTiets(List<HoaDonChiTiet> listHoaDonChiTiets) {
+        this.listHoaDonChiTiets = listHoaDonChiTiets;
+    }
+
     @Override
     public String toString() {
-        return TenKM;
+        return GiamGia.toString();
     }
 }

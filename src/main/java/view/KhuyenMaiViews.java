@@ -89,7 +89,7 @@ public class KhuyenMaiViews extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Không để trống");
             return null;
         }
-        KhuyenMai km = new KhuyenMai(null, tenkm, ngayBD, ngayKT, giamgia2, ngayTao, ngaySua, trangthai);
+        KhuyenMai km = new KhuyenMai(null, tenkm, ngayBD, ngayKT, giamgia2, ngayTao, ngaySua, trangthai, null, null);
         return km;
     }
 
