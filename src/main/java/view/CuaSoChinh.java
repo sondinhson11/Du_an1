@@ -11,12 +11,6 @@ public class CuaSoChinh extends javax.swing.JFrame {
     public CuaSoChinh() {
         initComponents();
         setLocationRelativeTo(null);
-        manChinhPage.removeAll();
-        if (SanPhamViews.webcam != null) {
-            SanPhamViews.webcam.close();
-        }
-//        ThongKeViews Tkf = new ThongKeViews();
-//        manChinhPage.add(Tkf).setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -305,7 +299,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLichSuActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
-        // TODO add your handling code here:
+        manChinhPage.removeAll();
+        if (SanPhamViews.webcam != null) {
+            SanPhamViews.webcam.close();
+        }
+        KhuyenMaiViews kmf = new KhuyenMaiViews();
+        manChinhPage.add(kmf).setVisible(true);
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
