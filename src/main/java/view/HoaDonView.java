@@ -48,6 +48,7 @@ public class HoaDonView extends javax.swing.JFrame {
         cbbMaHTTT();
         cbbMaKH();
         cbbMaNV();
+        cbbMaKM();
         LoadTable();
     }
 
@@ -71,7 +72,12 @@ public class HoaDonView extends javax.swing.JFrame {
             defaultComboBoxModel.addElement(hinhthucthanhtoan);
         }
     }
-
+void cbbMaKM() {
+        defaultComboBoxModel = (DefaultComboBoxModel) cbx_makm.getModel();
+        for (KhuyenMai khuyenMai : kmsv.getListKM()) {
+            defaultComboBoxModel.addElement(khuyenMai);
+        }
+    }
     void LoadTable() {
         defaultTableModel = (DefaultTableModel) this.tb_bang.getModel();
         defaultTableModel.setRowCount(0);
