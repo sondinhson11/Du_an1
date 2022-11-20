@@ -66,6 +66,10 @@ public class CHITIETSANPHAM implements Serializable {
     public CHITIETSANPHAM() {
     }
 
+    public CHITIETSANPHAM(Integer soLuong) {
+        this.soLuong = soLuong;
+    }
+    
     public CHITIETSANPHAM(Integer maCTSP, Integer soLuong, Integer gia, Date ngayTao, Date ngaySua, Integer trangThai, SanPham sanPham, LoaiSP loaiSP, MauSac mauSac, KICHTHUOC kichThuoc, CHATLIEU chatLieu, MONTHETHAO monTT) {
         this.maCTSP = maCTSP;
         this.soLuong = soLuong;

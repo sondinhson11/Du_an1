@@ -5,20 +5,19 @@
 package view;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import model.DangNhap;
 
 /**
  *
  * @author ThisPC
  */
 public class CuaSoChinh extends javax.swing.JFrame {
-
     public CuaSoChinh() {
         initComponents();
         jInternalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) jInternalFrame1.getUI();
         ui.setNorthPane(null);
         setLocationRelativeTo(null);
-
     }
 
 //    public void nhanVienLam(int Ma) {

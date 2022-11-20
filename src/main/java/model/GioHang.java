@@ -6,6 +6,9 @@ public class GioHang {
     private double gia;
     private int soLuong;
 
+    public GioHang() {
+    }
+    
     public GioHang(String ma, String ten, double gia, int soLuong) {
         this.ma = ma;
         this.ten = ten;

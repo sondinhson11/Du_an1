@@ -72,6 +72,21 @@ public class CTTSPRepository {
         }
         return false;
     }
+    public Boolean updateSoluong(CHITIETSANPHAM chiTietSanPham, int id) {
+        Transaction transaction = null;
+        Integer check = 0;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            CHITIETSANPHAM ctsp = session.get(CHITIETSANPHAM.class, id);
+            ctsp.setSoLuong(chiTietSanPham.getSoLuong());
+            transaction = session.beginTransaction();
+            check = (Integer) session.save(ctsp);
+            transaction.commit();
+            return check > 0;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
 
     public Boolean delete(int id) {
         Transaction transaction = null;

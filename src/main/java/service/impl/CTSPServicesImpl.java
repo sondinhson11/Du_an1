@@ -41,6 +41,14 @@ public class CTSPServicesImpl implements CTSPServices {
         }
 
     }
+    public String updateSoLuong(CHITIETSANPHAM ctsp, int id) {
+        if (ctspR.updateSoluong(ctsp, id)) {
+            return "update Thành Công";
+        } else {
+            return "update Thất Bại";
+        }
+
+    }
 
     @Override
     public String delete(int id) {

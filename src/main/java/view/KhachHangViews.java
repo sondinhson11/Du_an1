@@ -49,7 +49,7 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
         defaultTableModel.setRowCount(0);
         for (KhachHang kh : khs.getListKH()) {
             defaultTableModel.addRow(new Object[]{
-                kh.getMa(), kh.getTen(), kh.getNgaySinh(), kh.getGioiTinh(),
+                kh.getMa(), kh.getTen(), kh.getNgaySinh(), kh.getGioiTinh() == 1 ?"Nam":"Nữ",
                 kh.getDiaChi(), kh.getSoDienThoai(), kh.getNgayTao(), kh.getNgaySua(),
                 kh.getTrangThai() == 1 ? "Có" : "Không"
             });
@@ -324,7 +324,7 @@ public class KhachHangViews extends javax.swing.JInternalFrame {
         this.cbbGioiTinh.setSelectedItem(this.tblKhachHang.getValueAt(row, 3).toString());
         this.txtSoDienThoai.setText(this.tblKhachHang.getValueAt(row, 5).toString());
         this.txtNgayTao.setText(this.tblKhachHang.getValueAt(row, 6).toString());
-        this.txtNgaySua.setText("Ngày hôm nay");
+        this.txtNgaySua.setText(this.tblKhachHang.getValueAt(row, 7).toString());
         this.cbbTrangThai.setSelectedItem(this.tblKhachHang.getValueAt(row, 8).toString());
     }//GEN-LAST:event_tblKhachHangMouseClicked
 

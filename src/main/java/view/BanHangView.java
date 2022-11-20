@@ -26,6 +26,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
     HoaDonService hds = new HoaDonServiceImpl();
     CTSPServices CTSPs = new CTSPServicesImpl();
     ArrayList<GioHang> listGH = new ArrayList<>();
+    CTSPServicesImpl ctspS = new CTSPServicesImpl();
     public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -118,7 +119,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbGioHang = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
+        btnXoaSPGH = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -371,7 +372,12 @@ public class BanHangView extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(tbGioHang);
 
-        jButton5.setText("Xóa Sản Phẩm");
+        btnXoaSPGH.setText("Xóa Sản Phẩm");
+        btnXoaSPGH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaSPGHActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Xóa Tất Cả Sản Phẩm");
 
@@ -385,7 +391,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)
+                        .addComponent(btnXoaSPGH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
                 .addContainerGap())
@@ -396,7 +402,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(btnXoaSPGH)
                     .addComponent(jButton6))
                 .addContainerGap())
         );
@@ -517,20 +523,33 @@ public class BanHangView extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Số lượng không còn đủ yêu cầu của bạn");
             return;
         }
+        int id= Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
+        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString())-soluong1);
+        this.ctspS.updateSoLuong(ct, id);
         double gia = Double.parseDouble(this.tbSanPham.getValueAt(rowSP, 7).toString())*soluong1;
         GioHang gh = new GioHang(this.tbSanPham.getValueAt(rowSP, 0).toString(),this.tbSanPham.getValueAt(rowSP, 2).toString(), gia, soluong1);
         listGH.add(gh);
         loadGH();
+        loadSanPham();
     }//GEN-LAST:event_tbSanPhamMouseClicked
+
+    private void btnXoaSPGHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPGHActionPerformed
+        int cf = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?");
+        if(cf != JOptionPane.OK_OPTION){
+            return;
+        }
+        
+        
+    }//GEN-LAST:event_btnXoaSPGHActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaoHoaDonNhanh;
+    private javax.swing.JButton btnXoaSPGH;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
