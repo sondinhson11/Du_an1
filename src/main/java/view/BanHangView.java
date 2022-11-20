@@ -34,7 +34,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         loadDataHoaDon();
         loadSanPham();
     }
-
+    
     private void loadDataHoaDon() {
         tbmode = (DefaultTableModel)tbHoaDon.getModel();
         tbmode.setRowCount(0);
@@ -512,6 +512,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
         }
         String soluong = JOptionPane.showInputDialog("Mời nhập số lượng :");
         int soluong1 = Integer.parseInt(soluong);
+        int soLuongTon = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString());
+        if(soluong1>soLuongTon){
+            JOptionPane.showMessageDialog(this, "Số lượng không còn đủ yêu cầu của bạn");
+            return;
+        }
         double gia = Double.parseDouble(this.tbSanPham.getValueAt(rowSP, 7).toString())*soluong1;
         GioHang gh = new GioHang(this.tbSanPham.getValueAt(rowSP, 0).toString(),this.tbSanPham.getValueAt(rowSP, 2).toString(), gia, soluong1);
         listGH.add(gh);
