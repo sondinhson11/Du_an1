@@ -42,7 +42,8 @@ insert into NHANVIEN values (2,N'NV01',N'Ha Noi',0,N'nv1@gmail.com','0123456789'
 insert into NHANVIEN values (1,N'NV02',N'Ha Tinh',0,N'nv2@gmail.com','0123456788','2021-02-02','2003-01-01','2002-02-02',1)
 insert into NHANVIEN values (1,N'NV03',N'Ha Nam',0,N'nv3@gmail.com','0123456787','2020-02-02','2003-01-01','2002-02-02',0)
 insert into NHANVIEN values (1,N'NV04',N'Soc Son',1,N'nv4@gmail.com','0123456786','2019-02-02','2003-01-01','2002-02-02',1)
-insert into NHANVIEN values (1,N'NV05',N'Nam Tu Liem',1,N'nv5@gmail.com','0123456785','2018-02-02','2003-01-01','2002-02-02',0)
+insert into NHANVIEN values (1,N'Văn Đình Sơn',N'Sầm Sơn',1,N'sonvdph23054@fpt.edu.vn','0862521305','2018-02-02','2003-01-01','2002-02-02',0)
+
 
 CREATE TABLE KHACHHANG(
 	MaKH INT IDENTITY(1, 1),
@@ -64,7 +65,7 @@ ALTER COLUMN SoDienThoai varchar(12) null
 ALTER TABLE KHACHHANG
 ALTER COLUMN TenKH nvarchar(30) null 
 
-insert into KHACHHANG values (N'KH01','2022-02-02',1,'0123456789',N'Ha Noi','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'KH01','2022-02-02',1,'0862521305',N'Ha Noi','2003-01-01','2002-02-02',0)
 insert into KHACHHANG values (N'KH02','2021-02-02',0,'0123456788',N'Ha Nam','2003-01-01','2002-02-02',1)
 insert into KHACHHANG values (N'KH03','2020-02-02',0,'0123456787',N'Ha tinh','2003-01-01','2002-02-02',1)
 insert into KHACHHANG values (N'KH04','2019-02-02',0,'0123456786',N'Soc Son','2003-01-01','2002-02-02',0)
@@ -298,7 +299,7 @@ CREATE TABLE HOADONCHITIET(
 	FOREIGN KEY(MaHD) REFERENCES dbo.HOADON(MaHD),
 	FOREIGN KEY(MaCTSP) REFERENCES dbo.CHITIETSANPHAM(MaCTSP)
 )
-select * from HOADON
+
 insert into HOADONCHITIET values (1,1,10000,2000,1,1,N'ô sờ kê','2003-01-01','2002-02-02',0)
 insert into HOADONCHITIET values (2,2,10000,2000,1,2,N'ô sờ kê','2003-01-01','2002-02-02',0)
 insert into HOADONCHITIET values (3,3,10000,2000,1,3,N'ô sờ kê','2003-01-01','2002-02-02',1)
@@ -321,11 +322,16 @@ CREATE TABLE LichSu(
 CREATE TABLE USERR(
 	SoDienThoai varchar(10),
 	MaCV int,
-	Mk nvarchar(max)
-	FOREIGN KEY(MaCV) REFERENCES dbo.CHUCVU(MaCV)
+	MaNV int,
+	Mk nvarchar(max),
+	FOREIGN KEY(MaCV) REFERENCES dbo.CHUCVU(MaCV),
+	FOREIGN KEY(MaNV) REFERENCES dbo.NhanVien(MaNV),
 )
-insert into USERR values('0123456789',1,'1')
-insert into USERR values('0862521305',2,'1')
+insert into USERR values('0123456789',1,1,'1')
+insert into USERR values('0862521305',1,1,'1')
+
+select * from NHANVIEN
+select * from USERR
 
 CREATE TABLE DoiTra(
 	MaDT INT IDENTITY(1, 1),

@@ -68,6 +68,13 @@ public class HoaDon implements Serializable {
     public HoaDon() {
     }
 
+    public HoaDon(Integer MaHD, Date NgayTao, NhanVien nhanVien,KhachHang khachHang) {
+        this.MaHD = MaHD;
+        this.khachHang = khachHang;
+        this.nhanVien = nhanVien;
+        this.NgayTao = NgayTao;
+    }
+
     public HoaDon(Integer MaHD, KhachHang khachHang, NhanVien nhanVien, HINHTHUCTHANHTOAN hinhthucthanhtoan, KhuyenMai khuyenMai, String GhiChu, Float ThanhTien, Date NgayTao, Date NgaySua, Integer TrangThai) {
         this.MaHD = MaHD;
         this.khachHang = khachHang;
