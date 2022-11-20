@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,30 +9,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "DoiTra")
-public class DoiTra {
+public class DoiTra implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "maDT")
     private int maDT;
-    
+
     @Column(name = "maCTSP")
     private int maCTSP;
-    
+
     @Column(name = "maHDCT")
     private int maHDCT;
-    
+
     @Column(name = "lyDo")
     private String lydo;
-    
+
     @Column(name = "ngayDoi")
     private Date ngayDoi;
-    
+
     @Column(name = "ngayBan")
     private Date ngayBan;
-    
+
     @Column(name = "trangThai")
     private int trangThai;
 
@@ -103,6 +104,5 @@ public class DoiTra {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-    
-    
+
 }

@@ -29,19 +29,19 @@ public class DoiTraImpl implements DoiTraService {
 
     @Override
     public String update(DoiTra dt, int id) {
-        if (dtr.update(dt,id)) {
-            return "Thêm Thành Công";
+        if (dtr.update(dt, id)) {
+            return "update Thành Công";
         } else {
-            return "Thêm Thất Bại";
+            return "update Thất Bại";
         }
     }
 
     @Override
     public String delete(int id) {
         if (dtr.delete(id)) {
-            return "Thêm Thành Công";
+            return "delete Thành Công";
         } else {
-            return "Thêm Thất Bại";
+            return "delete Thất Bại";
         }
     }
 

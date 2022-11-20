@@ -94,10 +94,7 @@ public class ChucVuView extends javax.swing.JFrame {
 
         tbChucVu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Mã Chức Vụ", "Tên Chức Vụ", "Ngày Tạo", "Ngày Sửa", "Trạng Thái"
@@ -120,6 +117,7 @@ public class ChucVuView extends javax.swing.JFrame {
 
         jLabel5.setText("Mã CV");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Quản Lý Chức Vụ");
 
         jLabel2.setText("Tên CV");
@@ -224,7 +222,7 @@ public class ChucVuView extends javax.swing.JFrame {
                     .addComponent(cb_TrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
