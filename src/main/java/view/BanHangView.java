@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -12,6 +13,8 @@ import javax.swing.table.TableModel;
 import model.CHITIETSANPHAM;
 import model.GioHang;
 import model.HoaDon;
+import model.KhachHang;
+import model.NhanVien;
 import model.SanPham;
 import service.CTSPServices;
 import service.HoaDonService;
@@ -27,6 +30,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
     CTSPServices CTSPs = new CTSPServicesImpl();
     ArrayList<GioHang> listGH = new ArrayList<>();
     CTSPServicesImpl ctspS = new CTSPServicesImpl();
+
     public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -35,48 +39,64 @@ public class BanHangView extends javax.swing.JInternalFrame {
         loadDataHoaDon();
         loadSanPham();
     }
-    
+
+    private void loadDonHang() {
+        double total = 0;
+        double Amount = 0;
+        for (int i = 0; i < tbGioHang.getRowCount(); i++) {
+            Amount = Double.parseDouble(tbGioHang.getValueAt(i, 2).toString());
+            total = Amount + total;
+
+        }
+        String totalst = Double.toString(total);
+        lblTongTien.setText(totalst);
+    }
+
     private void loadDataHoaDon() {
-        tbmode = (DefaultTableModel)tbHoaDon.getModel();
+        tbmode = (DefaultTableModel) tbHoaDon.getModel();
         tbmode.setRowCount(0);
         for (HoaDon hd : hds.getAll()) {
             tbmode.addRow(new Object[]{
-                hd.getMaHD(),hd.getNgayTao(),hd.getNhanVien().getTenNv(),hd.getKhachHang().getTen()
+                hd.getMaHD(), hd.getNgayTao(), hd.getNhanVien().getTenNv(), hd.getKhachHang().getTen()
             });
-            
+
         }
     }
-    private void loadSanPham(){
+
+    private void loadSanPham() {
         tbmode = (DefaultTableModel) this.tbSanPham.getModel();
         tbmode.setRowCount(0);
         for (CHITIETSANPHAM sp : this.CTSPs.getAll()) {
-            Object[] row={
-            sp.getMaCTSP(),
-            sp.getSanPham().getTensp(),
-            sp.getLoaiSP().getTenLoai(),
-            sp.getMauSac().getTenMauSac(),
-            sp.getKichThuoc().getKichThuoc(),
-            sp.getChatLieu().getTenChatLieu(),
-            sp.getMonTT().getTENMTT(),
-            sp.getGia(),
-            sp.getSoLuong(),
-            sp.getTrangThai()
-        };
+            Object[] row = {
+                sp.getMaCTSP(),
+                sp.getSanPham().getTensp(),
+                sp.getLoaiSP().getTenLoai(),
+                sp.getMauSac().getTenMauSac(),
+                sp.getKichThuoc().getKichThuoc(),
+                sp.getChatLieu().getTenChatLieu(),
+                sp.getMonTT().getTENMTT(),
+                sp.getGia(),
+                sp.getSoLuong(),
+                sp.getTrangThai()
+            };
             tbmode.addRow(row);
         }
     }
-    private void loadGH(){
+
+    private void loadGH() {
         tbmode = (DefaultTableModel) this.tbGioHang.getModel();
         tbmode.setRowCount(0);
         int i = 1;
         for (GioHang gh : listGH) {
-            Object[] row={
-               gh.getMa(),gh.getTen(),gh.getGia(),gh.getSoLuong()
+            Object[] row = {
+                gh.getMa(), gh.getTen(), gh.getGia(), gh.getSoLuong()
             };
             i++;
             tbmode.addRow(row);
         }
+        loadDonHang();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -91,27 +111,27 @@ public class BanHangView extends javax.swing.JInternalFrame {
         lbMaKH = new javax.swing.JLabel();
         lbTenKhachHang = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblMaHD = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblTongTien = new javax.swing.JLabel();
+        lblGiamGia = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lblThanhTien = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtTienKhachDua = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        lblTienThua = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtGhiCHu = new javax.swing.JTextPane();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -205,21 +225,32 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Mã Hóa Đơn :");
 
-        jLabel7.setText("-");
+        lblMaHD.setText("-");
 
         jLabel8.setText("Tổng Tiền :");
 
         jLabel9.setText("Giảm Giá :");
 
-        jLabel10.setText("-");
+        lblTongTien.setText("-");
 
-        jLabel11.setText("-");
+        lblGiamGia.setText("0");
 
         jLabel12.setText("Thành Tiền :");
 
-        jLabel13.setText("-");
+        lblThanhTien.setText("0");
 
         jLabel14.setText("Tiền Khách Đưa :");
+
+        txtTienKhachDua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTienKhachDuaActionPerformed(evt);
+            }
+        });
+        txtTienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTienKhachDuaKeyPressed(evt);
+            }
+        });
 
         jLabel15.setText("VND");
 
@@ -231,17 +262,17 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         jLabel19.setText("Tiền Thừa :");
 
-        jLabel20.setText("-");
+        lblTienThua.setText("-");
 
         jLabel21.setText("VND");
 
         jLabel22.setText("Hình Thức Thanh Toán :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuyển khoản", "Tiền mặt" }));
 
         jLabel23.setText("Ghi Chú :");
 
-        jScrollPane4.setViewportView(jTextPane1);
+        jScrollPane4.setViewportView(txtGhiCHu);
 
         jButton2.setText("Làm Mới");
 
@@ -249,6 +280,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton4.setText("Thanh Toán");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         btnTaoHoaDonNhanh.setText("Tạo");
         btnTaoHoaDonNhanh.addActionListener(new java.awt.event.ActionListener() {
@@ -278,12 +314,12 @@ public class BanHangView extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel19))
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblThanhTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblGiamGia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTongTien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblMaHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtTienKhachDua)
+                                    .addComponent(lblTienThua, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,41 +349,41 @@ public class BanHangView extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
+                    .addComponent(lblMaHD)
                     .addComponent(btnTaoHoaDonNhanh))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel10)
+                    .addComponent(lblTongTien)
                     .addComponent(jLabel18))
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel11)
+                    .addComponent(lblGiamGia)
                     .addComponent(jLabel16))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13)
+                    .addComponent(lblThanhTien)
                     .addComponent(jLabel17))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTienKhachDua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20)
+                    .addComponent(lblTienThua)
                     .addComponent(jLabel21))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,7 +424,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnXoaSPGH)
@@ -466,8 +502,8 @@ public class BanHangView extends javax.swing.JInternalFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -504,43 +540,78 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
     private void tbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDonMouseClicked
         int row = tbHoaDon.getSelectedRow();
-        lbTenKhachHang.setText(tbHoaDon.getValueAt(row,3).toString());
+        lbTenKhachHang.setText(tbHoaDon.getValueAt(row, 3).toString());
+        
+        lblMaHD.setText(this.tbHoaDon.getValueAt(row, 0).toString());
     }//GEN-LAST:event_tbHoaDonMouseClicked
 
     private void btnTaoHoaDonNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonNhanhActionPerformed
-//        HoaDon hd = new HoaDon(0, java.time.LocalDate.now(), , "Khách Mua Lẻ");
+        KhachHang kh = new KhachHang();
+        NhanVien nv = new NhanVien();
+        HoaDon hd = new HoaDon(0, Date.valueOf(java.time.LocalDate.now()), nv, kh);
+        HoaDonService hds = new HoaDonServiceImpl();
+        hds.add(hd);
+        loadDataHoaDon();
     }//GEN-LAST:event_btnTaoHoaDonNhanhActionPerformed
 
     private void tbSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSanPhamMouseClicked
         int rowSP = this.tbSanPham.getSelectedRow();
-        if(rowSP==-1){
+        if (rowSP == -1) {
+            return;
+        }
+        if(lblMaHD.getText().equals("-")){
+            JOptionPane.showMessageDialog(this, "bạn cần chọn hóa đơn trước");
             return;
         }
         String soluong = JOptionPane.showInputDialog("Mời nhập số lượng :");
         int soluong1 = Integer.parseInt(soluong);
         int soLuongTon = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString());
-        if(soluong1>soLuongTon){
+        if (soluong1 > soLuongTon) {
             JOptionPane.showMessageDialog(this, "Số lượng không còn đủ yêu cầu của bạn");
             return;
         }
-        int id= Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
-        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString())-soluong1);
+        int id = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
+        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()) - soluong1);
         this.ctspS.updateSoLuong(ct, id);
-        double gia = Double.parseDouble(this.tbSanPham.getValueAt(rowSP, 7).toString())*soluong1;
-        GioHang gh = new GioHang(this.tbSanPham.getValueAt(rowSP, 0).toString(),this.tbSanPham.getValueAt(rowSP, 2).toString(), gia, soluong1);
+        double gia = Double.parseDouble(this.tbSanPham.getValueAt(rowSP, 7).toString()) * soluong1;
+        GioHang gh = new GioHang(this.tbSanPham.getValueAt(rowSP, 0).toString(), this.tbSanPham.getValueAt(rowSP, 2).toString(), gia, soluong1);
         listGH.add(gh);
         loadGH();
         loadSanPham();
+        loadDonHang();
     }//GEN-LAST:event_tbSanPhamMouseClicked
 
     private void btnXoaSPGHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaSPGHActionPerformed
         int cf = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?");
-        if(cf != JOptionPane.OK_OPTION){
+        if (cf != JOptionPane.OK_OPTION) {
             return;
         }
-        
-        
     }//GEN-LAST:event_btnXoaSPGHActionPerformed
+
+    private void txtTienKhachDuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienKhachDuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTienKhachDuaActionPerformed
+
+    private void txtTienKhachDuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyPressed
+        Double tienKhachDua = Double.parseDouble(txtTienKhachDua.getText());
+        Double tongTien = Double.parseDouble(lblTongTien.getText());
+        Double tienThua = tienKhachDua - tongTien;
+        String tienThuaaa = Double.toString(tienThua);
+       lblTienThua.setText(tienThuaaa);
+    }//GEN-LAST:event_txtTienKhachDuaKeyPressed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Double tienThua = Double.valueOf(lblTienThua.getText());
+        if(tienThua<0){
+            JOptionPane.showMessageDialog(this, "Khách hàng chưa đưa đủ tiền");
+            return;
+        }else if(tienThua>0){
+            JOptionPane.showMessageDialog(this, "Trả lại tiền thừa cho khách "+tienThua);
+            listGH.removeAll(listGH);
+        }else{
+           listGH.removeAll(listGH);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -553,10 +624,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -564,13 +632,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -583,12 +649,17 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lbMaKH;
     private javax.swing.JLabel lbTenKhachHang;
+    private javax.swing.JLabel lblGiamGia;
+    private javax.swing.JLabel lblMaHD;
+    private javax.swing.JLabel lblThanhTien;
+    private javax.swing.JLabel lblTienThua;
+    private javax.swing.JLabel lblTongTien;
     private javax.swing.JTable tbGioHang;
     private javax.swing.JTable tbHoaDon;
     private javax.swing.JTable tbSanPham;
+    private javax.swing.JTextPane txtGhiCHu;
+    private javax.swing.JTextField txtTienKhachDua;
     // End of variables declaration//GEN-END:variables
 }
