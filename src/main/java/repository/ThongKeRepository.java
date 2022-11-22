@@ -24,8 +24,7 @@ public class ThongKeRepository {
         session = HibernateConfig.getFACTORY().openSession();
         Query q = session.createQuery("From ThongKe");
         ArrayList<ThongKe> list = (ArrayList<ThongKe>) q.getResultList();
-        return list;
-        
+        return list;   
     }
 
     public Boolean add(ThongKe tk) {

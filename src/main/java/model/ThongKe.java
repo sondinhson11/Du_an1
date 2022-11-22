@@ -39,9 +39,32 @@ public class ThongKe {
     @Column (name="TrangThai")
     private int TrangThai;
 
+    @ManyToOne
+    @JoinColumn(name = "MaHDCT", nullable = false)
+    private HoaDonChiTiet HDCT;
+    
+    @ManyToOne
+    @JoinColumn(name = "MaDT", nullable = false)
+    private DoiTra doiTra;
     public ThongKe() {
     }
+    
+    public HoaDonChiTiet getHDCT() {
+        return HDCT;
+    }
 
+    public void setHDCT(HoaDonChiTiet HDCT) {
+        this.HDCT = HDCT;
+    }
+
+    public DoiTra getDoiTra() {
+        return doiTra;
+    }
+
+    public void setDoiTra(DoiTra doiTra) {
+        this.doiTra = doiTra;
+    }
+ 
     public ThongKe(Integer maTK, Integer maHDCT, Integer maDT, Float monney, Date ngayban, int TrangThai) {
         this.maTK = maTK;
         this.maHDCT = maHDCT;
