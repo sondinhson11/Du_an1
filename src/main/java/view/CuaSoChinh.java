@@ -5,13 +5,15 @@
 package view;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import model.DangNhap;
+import model.NhanVien;
+import repository.DangNhapRepository;
 
 /**
  *
  * @author ThisPC
  */
 public class CuaSoChinh extends javax.swing.JFrame {
+    DangNhapRepository dnr = new DangNhapRepository();
     public CuaSoChinh() {
         initComponents();
         jInternalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -19,13 +21,18 @@ public class CuaSoChinh extends javax.swing.JFrame {
         ui.setNorthPane(null);
         setLocationRelativeTo(null);
     }
+    public CuaSoChinh(String User) {
+        initComponents();
+        NhanVien a = this.dnr.checkMaa(User);
+        lbMa.setText(a.getMaNv().toString());
+    }
 
-//    public void nhanVienLam(int Ma) {
-//        lbMa.setText(String.valueOf(Ma));
-//    }
-//    public int idNhanVien() {
-//       return Integer.parseInt(lbMa.getText());
-//    }
+    public void nhanVienLam(int Ma) {
+        lbMa.setText(String.valueOf(Ma));
+    }
+    public int idNhanVien() {
+       return Integer.parseInt(lbMa.getText());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -264,7 +271,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDangXuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());

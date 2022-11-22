@@ -65,11 +65,11 @@ ALTER COLUMN SoDienThoai varchar(12) null
 ALTER TABLE KHACHHANG
 ALTER COLUMN TenKH nvarchar(30) null 
 
-insert into KHACHHANG values (N'KH01','2022-02-02',1,'0862521305',N'Ha Noi','2003-01-01','2002-02-02',0)
-insert into KHACHHANG values (N'KH02','2021-02-02',0,'0123456788',N'Ha Nam','2003-01-01','2002-02-02',1)
-insert into KHACHHANG values (N'KH03','2020-02-02',0,'0123456787',N'Ha tinh','2003-01-01','2002-02-02',1)
-insert into KHACHHANG values (N'KH04','2019-02-02',0,'0123456786',N'Soc Son','2003-01-01','2002-02-02',0)
-insert into KHACHHANG values (N'KH05','2018-02-02',1,'0123456785',N'Ham Tu liem','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'Khách Hàng Lẻ','2022-02-02',1,'0862521305',N'Ha Noi','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'Đỗ Hữu Nguyện','2021-02-02',0,'0123456788',N'Ha Nam','2003-01-01','2002-02-02',1)
+insert into KHACHHANG values (N'Văn Đình Sơn','2020-02-02',0,'0123456787',N'Ha tinh','2003-01-01','2002-02-02',1)
+insert into KHACHHANG values (N'Vương Văn Phước','2019-02-02',0,'0123456786',N'Soc Son','2003-01-01','2002-02-02',0)
+insert into KHACHHANG values (N'Dương Tiết Sơn','2018-02-02',1,'0123456785',N'Ham Tu liem','2003-01-01','2002-02-02',0)
 
 
 CREATE TABLE HINHTHUCTHANHTOAN(

@@ -150,7 +150,7 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
            JOptionPane.showMessageDialog(this, "Tài khoản hoặc Mật khẩu không chính xác");
            return;
        }
-       CuaSoChinh csc = new CuaSoChinh();
+       CuaSoChinh csc = new CuaSoChinh(ac.getSdt());
        csc.setVisible(true);
        this.setVisible(false);
        JOptionPane.showMessageDialog(this, "đã đăng nhập thành công");

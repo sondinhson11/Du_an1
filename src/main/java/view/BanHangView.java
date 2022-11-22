@@ -116,6 +116,8 @@ public class BanHangView extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         lbMaKH = new javax.swing.JLabel();
         lbTenKhachHang = new javax.swing.JLabel();
+        btnChonKH = new javax.swing.JButton();
+        btnThayDoi = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         lblMaHD = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -200,6 +202,20 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         lbTenKhachHang.setText("-");
 
+        btnChonKH.setText("Chọn ");
+        btnChonKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonKHActionPerformed(evt);
+            }
+        });
+
+        btnThayDoi.setText("Thay Đổi");
+        btnThayDoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThayDoiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -210,23 +226,32 @@ public class BanHangView extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(46, 46, 46)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(lbTenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lbTenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnThayDoi)
+                        .addGap(27, 27, 27))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lbMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnChonKH)
+                        .addGap(30, 30, 30))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbMaKH))
+                    .addComponent(lbMaKH)
+                    .addComponent(btnChonKH))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lbTenKhachHang))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(lbTenKhachHang)
+                    .addComponent(btnThayDoi))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jLabel6.setText("Mã Hóa Đơn :");
@@ -661,10 +686,20 @@ public class BanHangView extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_tbGioHangMouseClicked
 
+    private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChonKHActionPerformed
+
+    private void btnThayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThayDoiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThayDoiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChonKH;
     private javax.swing.JButton btnTaoHoaDonNhanh;
     private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnThayDoi;
     private javax.swing.JButton btnXoaSPGH;
     private javax.swing.JComboBox<String> cbbGiamGia;
     private javax.swing.JButton jButton1;

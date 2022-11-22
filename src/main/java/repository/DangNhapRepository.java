@@ -137,4 +137,23 @@ public class DangNhapRepository {
         }
         return null;
     }
+    public NhanVien checkMaa(String Sdt) {
+        try {
+            Connection conn = getConnection();
+            String sql = "select manv from NhanVien where SoDienThoai = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, Sdt);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while (rs.next()) {
+                String manv = rs.getString("manv");
+                NhanVien nv = new NhanVien();
+                nv.setMaNv(Integer.parseInt(manv));
+                return nv;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
