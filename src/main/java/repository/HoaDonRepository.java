@@ -7,6 +7,7 @@ package repository;
 import ConfigHibernate.HibernateConfig;
 import java.util.ArrayList;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 import model.HoaDon;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,7 +18,19 @@ import org.hibernate.Transaction;
  */
 public class HoaDonRepository {
 
-    Session session = HibernateConfig.getFACTORY().openSession();
+    Session session ;
+    
+    public static HoaDon getOne(int maHD){
+        Session session = HibernateConfig.getFACTORY().openSession();
+        Query q = session.createQuery("From HoaDon where MaHD =:ma");
+        q.setParameter("ma", maHD);
+        return (HoaDon) q.getSingleResult();
+    }
+    public static void main(String[] args) {
+        HoaDon hd = getOne(1);
+        System.out.println(hd);
+    }
+    
 
     public ArrayList<HoaDon> getList() {
         session = HibernateConfig.getFACTORY().openSession();
@@ -41,22 +54,24 @@ public class HoaDonRepository {
         return false;
     }
 
-    public Boolean update(HoaDon hoaDon, int id) {
+    public static Boolean update(HoaDon hoaDon) {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            HoaDon hd = session.get(HoaDon.class, id);
+//            HoaDon hd = session.get(HoaDon.class, id);
             transaction = session.beginTransaction();
-            hd.setKhachHang(hoaDon.getKhachHang());
-            hd.setNhanVien(hoaDon.getNhanVien());
-            hd.setHinhthucthanhtoan(hoaDon.getHinhthucthanhtoan());
-            hd.setKhuyenMai(hoaDon.getKhuyenMai());
-            hd.setGhiChu(hoaDon.getGhiChu());
-            hd.setThanhTien(hoaDon.getThanhTien());
-            hd.setNgayTao(hoaDon.getNgayTao());
-            hd.setNgaySua(hoaDon.getNgaySua());
-            hd.setTrangThai(hoaDon.getTrangThai());
-            check = (Integer) session.save(hd);
+//            hd.setKhachHang(hoaDon.getKhachHang());
+//            hd.setNhanVien(hoaDon.getNhanVien());
+//            hd.setHinhthucthanhtoan(hoaDon.getHinhthucthanhtoan());
+//            hd.setKhuyenMai(hoaDon.getKhuyenMai());
+//            hd.setGhiChu(hoaDon.getGhiChu());
+//            hd.setThanhTien(hoaDon.getThanhTien());
+//            hd.setNgayTao(hoaDon.getNgayTao());
+//            hd.setNgaySua(hoaDon.getNgaySua());
+//            hd.setTrangThai(hoaDon.getTrangThai());
+//            check = (Integer) session.save(hd);
+            JOptionPane.showMessageDialog(null, "Bug đéo vào đây"+hoaDon);
+                session.update(hoaDon);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

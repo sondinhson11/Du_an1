@@ -44,4 +44,9 @@ public class KhachHangImpl implements KhachHangService {
             return "Xóa Thất Bại";
         }
     }
+
+    @Override
+    public ArrayList<KhachHang> search(String ten) {
+        return this.khrp.Search(ten);
+    }
 }

@@ -12,4 +12,6 @@ public interface KhachHangService {
     String update(KhachHang kh, int id);
 
     String delete(int id);
+    
+    ArrayList<KhachHang> search(String ten);
 }

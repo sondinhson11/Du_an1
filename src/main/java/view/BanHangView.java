@@ -19,6 +19,7 @@ import model.KhachHang;
 import model.KhuyenMai;
 import model.NhanVien;
 import model.SanPham;
+import repository.HoaDonRepository;
 import service.CTSPServices;
 import service.HTTTServices;
 import service.HoaDonService;
@@ -41,7 +42,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
     KhuyenMaiService km = new KhuyenMaiServiceImpl();
     HTTTServices httt = new HTTTServicesImpl();
     Integer maNVTONG;
-
+    int maKhTong;
     public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -64,6 +65,17 @@ public class BanHangView extends javax.swing.JInternalFrame {
         loadCBBHTTT();
         maNVTONG = maNV;
     }
+    public BanHangView(int maNV) {
+        initComponents();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        loadDataHoaDon();
+        loadSanPham();
+        loadCBbGiamGia();
+        loadCBBHTTT();
+        maKhTong = maNV;
+    }
 
     private void loadCBBHTTT() {
         dtCB = (DefaultComboBoxModel) this.cbbHTTT.getModel();
@@ -78,7 +90,6 @@ public class BanHangView extends javax.swing.JInternalFrame {
         for (int i = 0; i < tbGioHang.getRowCount(); i++) {
             Amount = Double.parseDouble(tbGioHang.getValueAt(i, 2).toString());
             total = Amount + total;
-
         }
         String totalst = Double.toString(total);
         lblTongTien.setText(totalst);
@@ -118,12 +129,10 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private void loadGH() {
         tbmode = (DefaultTableModel) this.tbGioHang.getModel();
         tbmode.setRowCount(0);
-        int i = 1;
         for (GioHang gh : listGH) {
             Object[] row = {
                 gh.getMa(), gh.getTen(), gh.getGia(), gh.getSoLuong()
             };
-            i++;
             tbmode.addRow(row);
         }
         loadDonHang();
@@ -509,9 +518,9 @@ public class BanHangView extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnXoaSPGH)
-                    .addComponent(jButton6))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton6)
+                    .addComponent(btnXoaSPGH, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -543,6 +552,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
         jLabel1.setText("Tìm Kiếm Sản Phẩm");
 
         jButton1.setText("Thêm Sản Phẩm Vào Giỏ Hàng");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -663,9 +677,10 @@ public class BanHangView extends javax.swing.JInternalFrame {
         int row = this.tbGioHang.getSelectedRow();
         int rowSP = this.tbSanPham.getSelectedRow();
 
-        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbGioHang.getValueAt(row, 3).toString()) + Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()));
-        int id = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
-        this.ctspS.updateSoLuong(ct, id);
+//        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbGioHang.getValueAt(row, 3).toString()) + Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()));
+//        int id = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
+//        this.ctspS.updateSoLuong(ct, id);
+        listGH.remove(row);
         this.loadGH();
     }//GEN-LAST:event_btnXoaSPGHActionPerformed
 
@@ -674,7 +689,6 @@ public class BanHangView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTienKhachDuaActionPerformed
 
     private void txtTienKhachDuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyPressed
-
         Double tienKhachDua = Double.parseDouble(txtTienKhachDua.getText());
         Double thanhTien = Double.parseDouble(lblThanhTien.getText());
         Double tienThua = tienKhachDua - thanhTien;
@@ -720,20 +734,25 @@ public class BanHangView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tbGioHangMouseClicked
 
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
-        KhachHangViews khv = new KhachHangViews();
-        khv.setVisible(true);
+        new ChonKH().setVisible(true);
     }//GEN-LAST:event_btnChonKHActionPerformed
 
     private void btnThayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThayDoiActionPerformed
-        KhachHangViews khv = new KhachHangViews();
-        HoaDon hd = new HoaDon();
-        this.hds.updateKH(hd, khv.maKH());
+        int row = tbHoaDon.getSelectedRow();
+        int maHD = Integer.parseInt(tbHoaDon.getValueAt(row, 0).toString());
+        HoaDon hd = HoaDonRepository.getOne(maHD);
+        KhachHang kh1 = new KhachHang();
+        kh1.setMa(maKhTong);
+        hd.setKhachHang(kh1);
+        JOptionPane.showMessageDialog(this, hd);
+        HoaDonRepository.update(hd);
         this.loadDonHang();
     }//GEN-LAST:event_btnThayDoiActionPerformed
 
-    public static void main(String[] args) {
-        new BanHangView().setVisible(true);
-    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonKH;

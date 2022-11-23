@@ -180,7 +180,7 @@ CREATE TABLE KHUYENMAI(
 	GiamGia money NOT NULL,
 	NgayTao date not null,
 	NgaySua date not null,
-	TrangThai BIT DEFAULT 1  NULL
+	TrangThai BIT DEFAULT 1 NOT NULL
 	PRIMARY KEY(MaKM)
 )
 insert into KHUYENMAI values (N'KM1','2018-02-02','2019-01-01',0,'2003-01-01','2002-02-02',0)

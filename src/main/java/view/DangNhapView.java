@@ -1,6 +1,7 @@
 
 package view;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import model.DangNhap;
 import service.impl.DangNhapimpl;
@@ -44,6 +45,12 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
         jLabel1.setText("User name");
 
         jLabel2.setText("Password");
+
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +176,25 @@ private DangNhapimpl dnimpl = new DangNhapimpl();
     private void btnQuenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuenActionPerformed
         JOptionPane.showMessageDialog(this, "Hãy gặp quản lý của bạn để lấy mật khẩu");
     }//GEN-LAST:event_btnQuenActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyChar()==KeyEvent.VK_ENTER) {
+            DangNhap ac = getFormData();
+       if (ac == null) {
+           return;
+       }
+       DangNhap acc = this.dnimpl.dangNhap(ac);
+       if (acc == null) {
+           JOptionPane.showMessageDialog(this, "Tài khoản hoặc Mật khẩu không chính xác");
+           return;
+       }
+       CuaSoChinh csc = new CuaSoChinh(ac.getSdt());
+       csc.setVisible(true);
+       this.setVisible(false);
+       JOptionPane.showMessageDialog(this, "đã đăng nhập thành công");
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
 
    /**
     * @param args the command line arguments

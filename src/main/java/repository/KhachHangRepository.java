@@ -70,5 +70,12 @@ public class KhachHangRepository {
         }
         return false;
     }
-
+    public ArrayList<KhachHang> Search(String ten) {
+        session = HibernateConfig.getFACTORY().openSession();
+        String tenn = "%"+ten+"%";
+        Query q = session.createQuery("From KhachHang where tenKH like : ten or diaChi like : ten or soDienThoai like : ten");
+        q.setParameter("ten", tenn);
+        ArrayList<KhachHang> list = (ArrayList<KhachHang>) q.getResultList();
+        return list;
+    }
 }

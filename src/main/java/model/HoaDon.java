@@ -62,10 +62,14 @@ public class HoaDon implements Serializable {
     @Column(name = "TrangThai")
     private Integer TrangThai;
     
-    @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
-    private List<HoaDonChiTiet> listChiTiet;
+//    @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
+//    private List<HoaDonChiTiet> listChiTiet;
 
     public HoaDon() {
+    }
+
+    public HoaDon(Integer MaHD) {
+        this.MaHD = MaHD;
     }
     
     
