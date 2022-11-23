@@ -56,6 +56,11 @@ public class HINHTHUCTHANHTOAN implements Serializable {
     public HINHTHUCTHANHTOAN() {
     }
 
+    public HINHTHUCTHANHTOAN(Integer maHTTT) {
+        this.maHTTT = maHTTT;
+    }
+    
+
     public List<HoaDon> getListHoaDon() {
         return listHoaDon;
     }

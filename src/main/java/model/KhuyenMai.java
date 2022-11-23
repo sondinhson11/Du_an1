@@ -59,6 +59,10 @@ public class KhuyenMai implements Serializable {
     public KhuyenMai() {
     }
 
+    public KhuyenMai(Integer maKM) {
+        this.maKM = maKM;
+    }
+    
     public KhuyenMai(Integer maKM, String TenKM, Date NgayBD, Date NgayKT, Float GiamGia, Date NgayTao, Date NgaySua, Integer TrangThai, List<HoaDon> listHoaDon, List<HoaDonChiTiet> listHoaDonChiTiets) {
         this.maKM = maKM;
         this.TenKM = TenKM;

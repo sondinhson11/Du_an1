@@ -49,4 +49,11 @@ public class HoaDonServiceImpl implements HoaDonService {
         }
 
     }
+    public String updateKH(HoaDon hoaDon, int id){
+        if (hdrp.updateKhachHang(hoaDon, id)) {
+            return "update Thành Công";
+        } else {
+            return "update Thất Bại";
+        }
+    }
 }

@@ -51,6 +51,10 @@ public class KhachHang implements Serializable{
     public KhachHang() {
     }
 
+    public KhachHang(int ma) {
+        this.ma = ma;
+    }
+    
     public KhachHang(int ma, String ten, Date ngaySinh, int gioiTinh, String soDienThoai, String diaChi, Date ngayTao, Date ngaySua, int trangThai) {
         this.ma = ma;
         this.ten = ten;

@@ -40,6 +40,8 @@ public class BanHangView extends javax.swing.JInternalFrame {
     DefaultComboBoxModel dtCB;
     KhuyenMaiService km = new KhuyenMaiServiceImpl();
     HTTTServices httt = new HTTTServicesImpl();
+    Integer maNVTONG;
+
     public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -50,12 +52,26 @@ public class BanHangView extends javax.swing.JInternalFrame {
         loadCBbGiamGia();
         loadCBBHTTT();
     }
-    private void loadCBBHTTT(){
+
+    public BanHangView(Integer maNV) {
+        initComponents();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
+        ui.setNorthPane(null);
+        loadDataHoaDon();
+        loadSanPham();
+        loadCBbGiamGia();
+        loadCBBHTTT();
+        maNVTONG = maNV;
+    }
+
+    private void loadCBBHTTT() {
         dtCB = (DefaultComboBoxModel) this.cbbHTTT.getModel();
         for (HINHTHUCTHANHTOAN ht : httt.getList()) {
             dtCB.addElement(ht);
         }
     }
+
     private void loadDonHang() {
         double total = 0;
         double Amount = 0;
@@ -124,7 +140,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        lbMaKH = new javax.swing.JLabel();
+        lbTenNV = new javax.swing.JLabel();
         lbTenKhachHang = new javax.swing.JLabel();
         btnChonKH = new javax.swing.JButton();
         btnThayDoi = new javax.swing.JButton();
@@ -204,11 +220,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setText("Mã Khách Hàng :");
+        jLabel2.setText("Tên nhân Viên Tạo :");
 
         jLabel3.setText("Tên Khách Hàng :");
 
-        lbMaKH.setText("-");
+        lbTenNV.setText("-");
 
         lbTenKhachHang.setText("-");
 
@@ -243,7 +259,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                         .addComponent(btnThayDoi)
                         .addGap(27, 27, 27))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(lbMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbTenNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnChonKH)
                         .addGap(30, 30, 30))))
@@ -254,7 +270,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbMaKH)
+                    .addComponent(lbTenNV)
                     .addComponent(btnChonKH))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -306,8 +322,6 @@ public class BanHangView extends javax.swing.JInternalFrame {
         jLabel21.setText("VND");
 
         jLabel22.setText("Hình Thức Thanh Toán :");
-
-        cbbHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuyển khoản", "Tiền mặt" }));
 
         jLabel23.setText("Ghi Chú :");
 
@@ -599,14 +613,16 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private void tbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDonMouseClicked
         int row = tbHoaDon.getSelectedRow();
         lbTenKhachHang.setText(tbHoaDon.getValueAt(row, 3).toString());
-        
         lblMaHD.setText(this.tbHoaDon.getValueAt(row, 0).toString());
+        lbTenNV.setText(tbHoaDon.getValueAt(row, 2).toString());
     }//GEN-LAST:event_tbHoaDonMouseClicked
 
     private void btnTaoHoaDonNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonNhanhActionPerformed
-        KhachHang kh = new KhachHang();
-        NhanVien nv = new NhanVien();
-        HoaDon hd = new HoaDon(0, Date.valueOf(java.time.LocalDate.now()), nv, kh);
+        KhachHang kh = new KhachHang(1);
+        NhanVien nv = new NhanVien(maNVTONG);
+        HINHTHUCTHANHTOAN htt = new HINHTHUCTHANHTOAN(1);
+        KhuyenMai km = new KhuyenMai(1);
+        HoaDon hd = new HoaDon(0, kh, nv, htt, km, Date.valueOf(java.time.LocalDate.now()), 0);
         HoaDonService hds = new HoaDonServiceImpl();
         hds.add(hd);
         loadDataHoaDon();
@@ -617,7 +633,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         if (rowSP == -1) {
             return;
         }
-        if(lblMaHD.getText().equals("-")){
+        if (lblMaHD.getText().equals("-")) {
             JOptionPane.showMessageDialog(this, "bạn cần chọn hóa đơn trước");
             return;
         }
@@ -630,7 +646,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         }
         int id = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
         CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()) - soluong1);
-        this.ctspS.updateSoLuong(ct, id);
+//        this.ctspS.updateSoLuong(ct, id);
         double gia = Double.parseDouble(this.tbSanPham.getValueAt(rowSP, 7).toString()) * soluong1;
         GioHang gh = new GioHang(this.tbSanPham.getValueAt(rowSP, 0).toString(), this.tbSanPham.getValueAt(rowSP, 2).toString(), gia, soluong1);
         listGH.add(gh);
@@ -646,9 +662,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
         }
         int row = this.tbGioHang.getSelectedRow();
         int rowSP = this.tbSanPham.getSelectedRow();
-        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbGioHang.getValueAt(row, 3).toString())+Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()));
+
+        CHITIETSANPHAM ct = new CHITIETSANPHAM(Integer.valueOf(this.tbGioHang.getValueAt(row, 3).toString()) + Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 8).toString()));
         int id = Integer.valueOf(this.tbSanPham.getValueAt(rowSP, 0).toString());
         this.ctspS.updateSoLuong(ct, id);
+        this.loadGH();
     }//GEN-LAST:event_btnXoaSPGHActionPerformed
 
     private void txtTienKhachDuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTienKhachDuaActionPerformed
@@ -656,54 +674,66 @@ public class BanHangView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTienKhachDuaActionPerformed
 
     private void txtTienKhachDuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyPressed
-        
+
         Double tienKhachDua = Double.parseDouble(txtTienKhachDua.getText());
         Double thanhTien = Double.parseDouble(lblThanhTien.getText());
         Double tienThua = tienKhachDua - thanhTien;
         String tienThuaaa = Double.toString(tienThua);
-       lblTienThua.setText(tienThuaaa);
+        lblTienThua.setText(tienThuaaa);
     }//GEN-LAST:event_txtTienKhachDuaKeyPressed
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         Double tienThua = Double.valueOf(lblTienThua.getText());
-        if(tienThua<0){
+        if (tienThua < 0.0) {
             JOptionPane.showMessageDialog(this, "Khách hàng chưa đưa đủ tiền");
             return;
-        }else if(tienThua>0){
-            JOptionPane.showMessageDialog(this, "Trả lại tiền thừa cho khách "+tienThua+" VND");
-        }else{
+        } else if (tienThua > 0.0) {
+            JOptionPane.showMessageDialog(this, "Trả lại tiền thừa cho khách " + tienThua + " VND");
+            tbGioHang.removeAll();
+            return;
+        } else {
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+            tbGioHang.removeAll();
+            return;
         }
     }//GEN-LAST:event_btnThanhToanActionPerformed
-    private void loadCBbGiamGia(){
+    private void loadCBbGiamGia() {
         ArrayList<KhuyenMai> list = this.km.getListKM();
         dtCB = (DefaultComboBoxModel) this.cbbGiamGia.getModel();
         for (KhuyenMai k : list) {
             dtCB.addElement(k);
         }
-        
+
     }
     private void cbbGiamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGiamGiaActionPerformed
-        
+
     }//GEN-LAST:event_cbbGiamGiaActionPerformed
 
     private void cbbGiamGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbGiamGiaMouseClicked
-       Double tongTien = Double.parseDouble(this.lblTongTien.getText());
+        Double tongTien = Double.parseDouble(this.lblTongTien.getText());
         Double giamGia = Double.parseDouble(this.cbbGiamGia.getSelectedItem().toString());
-        this.lblThanhTien.setText(String.valueOf(tongTien-giamGia));
+        this.lblThanhTien.setText(String.valueOf(tongTien - giamGia));
     }//GEN-LAST:event_cbbGiamGiaMouseClicked
 
     private void tbGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGioHangMouseClicked
-        
+
     }//GEN-LAST:event_tbGioHangMouseClicked
 
     private void btnChonKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKHActionPerformed
-        // TODO add your handling code here:
+        KhachHangViews khv = new KhachHangViews();
+        khv.setVisible(true);
     }//GEN-LAST:event_btnChonKHActionPerformed
 
     private void btnThayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThayDoiActionPerformed
-        // TODO add your handling code here:
+        KhachHangViews khv = new KhachHangViews();
+        HoaDon hd = new HoaDon();
+        this.hds.updateKH(hd, khv.maKH());
+        this.loadDonHang();
     }//GEN-LAST:event_btnThayDoiActionPerformed
 
+    public static void main(String[] args) {
+        new BanHangView().setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonKH;
@@ -743,8 +773,8 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lbMaKH;
     private javax.swing.JLabel lbTenKhachHang;
+    private javax.swing.JLabel lbTenNV;
     private javax.swing.JLabel lblMaHD;
     private javax.swing.JLabel lblThanhTien;
     private javax.swing.JLabel lblTienThua;

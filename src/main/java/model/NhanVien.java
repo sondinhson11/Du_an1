@@ -59,6 +59,10 @@ public class NhanVien implements Serializable {
     public NhanVien() {
     }
 
+    public NhanVien(Integer maNv) {
+        this.maNv = maNv;
+    }
+
     public NhanVien(Integer maNv, String tenNv, String diaChi, int gioiTinh, String email, String sdt, Date ngaySinh, Date ngayTao, Date ngaySua, int trangThai, ChucVu chucvu) {
         this.maNv = maNv;
         this.tenNv = tenNv;

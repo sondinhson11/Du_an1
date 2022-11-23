@@ -79,4 +79,20 @@ public class HoaDonRepository {
         }
         return false;
     }
+    public Boolean updateKhachHang(HoaDon hoaDon, int id) {
+        Transaction transaction = null;
+        Integer check = 0;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            HoaDon hd = session.get(HoaDon.class, id);
+            transaction = session.beginTransaction();
+            hd.setKhachHang(hoaDon.getKhachHang());
+            check = (Integer) session.save(hd);
+            transaction.commit();
+            return check > 0;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+    
 }

@@ -19,4 +19,6 @@ public interface HoaDonService {
     String update(HoaDon hoaDon, int id);
 
     String delete(int id);
+    
+    String updateKH(HoaDon hoaDon, int id);
 }

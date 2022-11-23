@@ -13,7 +13,9 @@ import repository.DangNhapRepository;
  * @author ThisPC
  */
 public class CuaSoChinh extends javax.swing.JFrame {
+
     DangNhapRepository dnr = new DangNhapRepository();
+   public Integer manV ;
     public CuaSoChinh() {
         initComponents();
         jInternalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -21,17 +23,20 @@ public class CuaSoChinh extends javax.swing.JFrame {
         ui.setNorthPane(null);
         setLocationRelativeTo(null);
     }
-    public CuaSoChinh(String User) {
+
+    public CuaSoChinh(String sdt) {
         initComponents();
-        NhanVien a = this.dnr.checkMaa(User);
+        NhanVien a = this.dnr.checkMaa(sdt);
         lbMa.setText(a.getMaNv().toString());
+       manV = a.getMaNv();
     }
 
     public void nhanVienLam(int Ma) {
         lbMa.setText(String.valueOf(Ma));
     }
+
     public int idNhanVien() {
-       return Integer.parseInt(lbMa.getText());
+        return Integer.parseInt(lbMa.getText());
     }
 
     @SuppressWarnings("unchecked")
@@ -329,7 +334,7 @@ public class CuaSoChinh extends javax.swing.JFrame {
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
         manChinhPage.removeAll();
-        BanHangView bhf = new BanHangView();
+        BanHangView bhf = new BanHangView(Integer.valueOf(lbMa.getText()));
         manChinhPage.add(bhf).setVisible(true);
     }//GEN-LAST:event_btnBanHangActionPerformed
 

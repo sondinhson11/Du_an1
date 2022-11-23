@@ -343,7 +343,6 @@ public class HoaDonView extends javax.swing.JFrame {
         int ID = (Integer.parseInt(id));
         JOptionPane.showMessageDialog(this, hdsv.update(getdata(), ID));
         LoadTable();
-
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed

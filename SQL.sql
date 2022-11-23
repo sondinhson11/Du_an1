@@ -180,10 +180,10 @@ CREATE TABLE KHUYENMAI(
 	GiamGia money NOT NULL,
 	NgayTao date not null,
 	NgaySua date not null,
-	TrangThai BIT DEFAULT 1 NOT NULL
+	TrangThai BIT DEFAULT 1  NULL
 	PRIMARY KEY(MaKM)
 )
-insert into KHUYENMAI values (N'KM1','2018-02-02','2019-01-01',500,'2003-01-01','2002-02-02',0)
+insert into KHUYENMAI values (N'KM1','2018-02-02','2019-01-01',0,'2003-01-01','2002-02-02',0)
 insert into KHUYENMAI values (N'KM2','2018-02-02','2019-01-01',100,'2003-01-01','2002-02-02',1)
 insert into KHUYENMAI values (N'KM3','2018-02-02','2019-01-01',600,'2003-01-01','2002-02-02',1)
 insert into KHUYENMAI values (N'KM4','2018-02-02','2019-01-01',700,'2003-01-01','2002-02-02',0)
@@ -194,11 +194,11 @@ CREATE TABLE HOADON(
 	MaKH INT NOT NULL,
 	MaNV INT NOT NULL,	
 	MaHTTT INT NOT NULL,
-	MaKM int NOT NULL,	
+	MaKM int ,	
 	GhiChu NVARCHAR(100) NULL,
-	ThanhTien MONEY NULL,
+	ThanhTien MONEY ,
 	NgayTao date not null,
-	NgaySua date not null,
+	NgaySua date  null,
 	TrangThai BIT DEFAULT 1 NOT NULL
 	PRIMARY KEY(MaHD)
 	FOREIGN KEY(MaKH) REFERENCES dbo.KHACHHANG(MaKH),
