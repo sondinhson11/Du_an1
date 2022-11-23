@@ -13,16 +13,19 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.CHITIETSANPHAM;
 import model.GioHang;
+import model.HINHTHUCTHANHTOAN;
 import model.HoaDon;
 import model.KhachHang;
 import model.KhuyenMai;
 import model.NhanVien;
 import model.SanPham;
 import service.CTSPServices;
+import service.HTTTServices;
 import service.HoaDonService;
 import service.KhuyenMaiService;
 import service.SanPhamService;
 import service.impl.CTSPServicesImpl;
+import service.impl.HTTTServicesImpl;
 import service.impl.HoaDonServiceImpl;
 import service.impl.KhuyenMaiServiceImpl;
 import service.impl.SanPhamServiceImpl;
@@ -36,6 +39,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
     CTSPServicesImpl ctspS = new CTSPServicesImpl();
     DefaultComboBoxModel dtCB;
     KhuyenMaiService km = new KhuyenMaiServiceImpl();
+    HTTTServices httt = new HTTTServicesImpl();
     public BanHangView() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -44,8 +48,14 @@ public class BanHangView extends javax.swing.JInternalFrame {
         loadDataHoaDon();
         loadSanPham();
         loadCBbGiamGia();
+        loadCBBHTTT();
     }
-
+    private void loadCBBHTTT(){
+        dtCB = (DefaultComboBoxModel) this.cbbHTTT.getModel();
+        for (HINHTHUCTHANHTOAN ht : httt.getList()) {
+            dtCB.addElement(ht);
+        }
+    }
     private void loadDonHang() {
         double total = 0;
         double Amount = 0;
@@ -135,7 +145,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
         lblTienThua = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbHTTT = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtGhiCHu = new javax.swing.JTextPane();
@@ -297,7 +307,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
 
         jLabel22.setText("Hình Thức Thanh Toán :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuyển khoản", "Tiền mặt" }));
+        cbbHTTT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chuyển khoản", "Tiền mặt" }));
 
         jLabel23.setText("Ghi Chú :");
 
@@ -375,7 +385,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbbHTTT, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel23)
                             .addComponent(jScrollPane4)
                             .addComponent(btnThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -425,7 +435,7 @@ public class BanHangView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbHTTT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -702,11 +712,11 @@ public class BanHangView extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnThayDoi;
     private javax.swing.JButton btnXoaSPGH;
     private javax.swing.JComboBox<String> cbbGiamGia;
+    private javax.swing.JComboBox<String> cbbHTTT;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;

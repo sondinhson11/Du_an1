@@ -28,7 +28,7 @@ public class ThongKeView extends javax.swing.JFrame {
     public ThongKeView() {
         initComponents();
         this.loadSP();
-        this.loadCTDT();
+        //this.loadCTDT();
     }
     private void loadCTDT()
     {

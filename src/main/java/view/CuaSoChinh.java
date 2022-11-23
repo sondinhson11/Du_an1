@@ -131,6 +131,11 @@ public class CuaSoChinh extends javax.swing.JFrame {
         btnThongKe.setText("Thống Kê");
         btnThongKe.setBorderPainted(false);
         btnThongKe.setContentAreaFilled(false);
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
 
         btnSanPham.setBackground(new java.awt.Color(54, 33, 89));
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -360,6 +365,12 @@ public class CuaSoChinh extends javax.swing.JFrame {
         dn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnDangXuat1ActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        manChinhPage.removeAll();
+        ThongKeView ctspf = new ThongKeView();
+        manChinhPage.add(ctspf).setVisible(true);
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
