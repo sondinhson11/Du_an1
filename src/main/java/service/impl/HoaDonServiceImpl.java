@@ -33,7 +33,7 @@ public class HoaDonServiceImpl implements HoaDonService {
 
     @Override
     public String update(HoaDon hoaDon, int id) {
-        if (hdrp.update(hoaDon)) {
+        if (hdrp.update(hoaDon,id)) {
             return "update Thành Công";
         } else {
             return "update Thất Bại";
@@ -50,7 +50,7 @@ public class HoaDonServiceImpl implements HoaDonService {
 
     }
     public String updateKH(HoaDon hoaDon, int id){
-        if (hdrp.updateKhachHang(hoaDon, id)) {
+        if (hdrp.updateKH(hoaDon, id)) {
             return "update Thành Công";
         } else {
             return "update Thất Bại";

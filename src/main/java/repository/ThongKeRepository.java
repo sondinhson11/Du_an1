@@ -5,6 +5,11 @@
 package repository;
 
 import ConfigHibernate.HibernateConfig;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.persistence.Query;
 import model.SanPham;
@@ -17,6 +22,21 @@ import org.hibernate.Transaction;
  * @author thean
  */
 public class ThongKeRepository {
+    String instance = "";
+    String serverName = "localhost";
+    String portNumber = "1433";
+    String dbName = "DuAn1_QuanLyBanQuanAo";
+    String userID = "sa";
+    String password = "123456";
+
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName=" + dbName;
+        if (instance == null || instance.trim().isEmpty()) {
+            url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
+        }
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        return DriverManager.getConnection(url, userID, password);
+    }
 
     Session session = HibernateConfig.getFACTORY().openSession();
 
@@ -77,5 +97,21 @@ public class ThongKeRepository {
             System.err.println(e.getMessage());
         }
         return false;
+    }
+    public int TongDH(){
+        try{
+           Connection conn = getConnection();
+           String sql = "select count(maTK) as tong from thongKe";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            while(rs.next()){
+                int tondh = rs.getInt("tong");
+                return tondh;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

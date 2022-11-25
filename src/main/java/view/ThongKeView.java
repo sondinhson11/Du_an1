@@ -7,6 +7,7 @@ package view;
 import javax.swing.table.DefaultTableModel;
 import model.HoaDonChiTiet;
 import model.ThongKe;
+import repository.ThongKeRepository;
 import service.DoiTraService;
 import service.HDCTservice;
 import service.ThongKeService;
@@ -24,11 +25,12 @@ public class ThongKeView extends javax.swing.JFrame {
     private ThongKeService tks = new ThongKeServiceImpl();
     private HDCTservice hdct = new HDCTServiceImpl();
     private DoiTraService dts = new DoiTraImpl();
-
+    private ThongKeRepository tkr = new ThongKeRepository();
     public ThongKeView() {
         initComponents();
         this.loadSP();
         //this.loadCTDT();
+        this.lblTongDonHang.setText(String.valueOf(tkr.TongDH()));
     }
     private void loadCTDT()
     {

@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.sql.Date;
 import javax.swing.table.DefaultTableModel;
 import model.KhachHang;
 import service.KhachHangService;
@@ -45,6 +46,28 @@ public class ChonKH extends javax.swing.JFrame {
                 kh.getTrangThai() == 1 ? "Có" : "Không"
             });
         }
+    }
+    public KhachHang getForm(){
+        int row  = tblKhachHang.getSelectedRow();
+        String ten = tblKhachHang.getValueAt(row, 1).toString();
+        Date ngaySinh = Date.valueOf(tblKhachHang.getValueAt(row, 2).toString());
+        int gt;
+        if(tblKhachHang.getValueAt(row, 3).toString().equals("Nam")){
+            gt = 1;
+        }else{
+            gt=0;
+        }
+        String soDienThoai = tblKhachHang.getValueAt(row, 5).toString();
+        String diaChi = tblKhachHang.getValueAt(row, 4).toString();
+        Date ngayTao = Date.valueOf(tblKhachHang.getValueAt(row,6).toString());
+        Date ngaySua = Date.valueOf(java.time.LocalDate.now().toString());
+        int tt;
+        if(tblKhachHang.getValueAt(row,8).toString().equals("Có")){
+            tt = 1;
+        }else{
+            tt=0;
+        }
+        return new KhachHang(0, ten, ngaySinh, gt, soDienThoai, diaChi, ngayTao, ngaySua, tt);
     }
 
     @SuppressWarnings("unchecked")

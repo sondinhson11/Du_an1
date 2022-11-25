@@ -738,14 +738,15 @@ public class BanHangView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnChonKHActionPerformed
 
     private void btnThayDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThayDoiActionPerformed
+        
         int row = tbHoaDon.getSelectedRow();
-        int maHD = Integer.parseInt(tbHoaDon.getValueAt(row, 0).toString());
-        HoaDon hd = HoaDonRepository.getOne(maHD);
-        KhachHang kh1 = new KhachHang();
-        kh1.setMa(maKhTong);
-        hd.setKhachHang(kh1);
-        JOptionPane.showMessageDialog(this, hd);
-        HoaDonRepository.update(hd);
+        int maHD = Integer.valueOf(tbHoaDon.getValueAt(row, 0).toString());
+        ChonKH khv = new ChonKH();
+        KhachHang kh = khv.getForm();
+        HoaDon hd = new HoaDon();
+        hd.setKhachHang(kh);
+        JOptionPane.showMessageDialog(this, maKhTong);
+        HoaDonRepository.updateKH(hd,maHD);
         this.loadDonHang();
     }//GEN-LAST:event_btnThayDoiActionPerformed
 

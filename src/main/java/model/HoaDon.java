@@ -6,17 +6,16 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -28,14 +27,17 @@ public class HoaDon implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST})
     @Column(name = "MaHD")
     private Integer MaHD;
 
     @ManyToOne
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "MaKH", nullable = false)
     private KhachHang khachHang;
 
     @ManyToOne
+    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "MaNV", nullable = false)
     private NhanVien nhanVien;
 
@@ -61,19 +63,21 @@ public class HoaDon implements Serializable {
 
     @Column(name = "TrangThai")
     private Integer TrangThai;
-    
+
 //    @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
 //    private List<HoaDonChiTiet> listChiTiet;
-
     public HoaDon() {
     }
 
+    public HoaDon(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+    
     public HoaDon(Integer MaHD) {
         this.MaHD = MaHD;
     }
-    
-    
-    public HoaDon(Integer MaHD, KhachHang khachHang, NhanVien nhanVien, HINHTHUCTHANHTOAN HTTToan, KhuyenMai khuyenMai,Date NgayTao,int TrangThai) {
+
+    public HoaDon(Integer MaHD, KhachHang khachHang, NhanVien nhanVien, HINHTHUCTHANHTOAN HTTToan, KhuyenMai khuyenMai, Date NgayTao, int TrangThai) {
         this.MaHD = MaHD;
         this.khachHang = khachHang;
         this.nhanVien = nhanVien;
@@ -180,5 +184,5 @@ public class HoaDon implements Serializable {
     public String toString() {
         return MaHD.toString();
     }
-    
+
 }
