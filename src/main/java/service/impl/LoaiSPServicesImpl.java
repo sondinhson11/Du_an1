@@ -25,9 +25,9 @@ public class LoaiSPServicesImpl implements LoaiSPServices {
     @Override
     public String delete(int id) {
         if (LoaiSPRepo.delete(id)) {
-            return "delete Thành Công";
+            return "delete Thất Bại ";
         } else {
-            return "delete Thất Bại";
+            return "delete Thành Công ";
         }
     }
 

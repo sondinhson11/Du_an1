@@ -41,9 +41,9 @@ public class HTTTServicesImpl implements HTTTServices{
     @Override
     public String delete(int id) {
         if (htttR.delete(id)) {
-            return "delete thành công";
+            return "delete Thất bại ";
         } else {
-            return "delete Thất bại";
+            return "delete thành công ";
         }
     }
     

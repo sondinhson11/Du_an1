@@ -32,9 +32,9 @@ public class KichThuocServicesImpl implements KichThuocServices {
     @Override
     public String update(KICHTHUOC kichThuoc, int id) {
         if (ktr.update(kichThuoc, id)) {
-            return "Sua thành công";
+            return "Sửa thành công";
         } else {
-            return "Sua thất bại";
+            return "Sửa thất bại";
         }
 
     }
@@ -42,9 +42,9 @@ public class KichThuocServicesImpl implements KichThuocServices {
     @Override
     public String delete(int id) {
         if (ktr.delete(id)) {
-            return "xoa thành công";
+            return "Xóa thất bại ";
         } else {
-            return "xoa thất bại";
+            return "Xóa thành công ";
         }
     }
 }

@@ -31,9 +31,9 @@ public class MTTServiceImpl implements MTTService{
 
     public String deleteMTT(int id) {
         if (mttr.deleteMTTSQL(id)) {
-            return "Xóa Thành Công";
+            return "Xóa Thất Bại ";
         } else {
-            return "Xóa Thất Bại";
+            return "Xóa Thành Công ";
         }
     }
 }

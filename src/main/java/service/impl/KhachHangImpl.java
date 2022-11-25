@@ -39,9 +39,9 @@ public class KhachHangImpl implements KhachHangService {
     @Override
     public String delete(int id) {
         if (khrp.delete(id)) {
-            return "Xóa Thành Công";
-        } else {
             return "Xóa Thất Bại";
+        } else {
+            return "Xóa Thành Công ";
         }
     }
 

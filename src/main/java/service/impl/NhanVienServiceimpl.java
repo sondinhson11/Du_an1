@@ -33,9 +33,9 @@ public class NhanVienServiceimpl implements NhanVienServices{
     @Override
     public String delete(int id) {
           if (Nvrp.delete(id)) {
-            return "Xóa Thành Công";
+            return "Ẩn Thành Công";
         } else {
-            return "Xóa Thất Bại";
+            return "Ẩn Thất Bại";
         }
     }
 

@@ -30,9 +30,9 @@ public class MauSacServiceimpl implements MauSacService {
     @Override
     public String delete(int id) {
         if (MauSacRepository.delete(id)) {
-            return "Xoá Thành Công";
+            return "Xoá Thất Bại ";
         } else {
-            return "Xóa Thất Bại";
+            return "Xóa Thành Công ";
         }
     }
 

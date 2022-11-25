@@ -61,7 +61,7 @@ public class MauSacRepository {
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             MauSac ms = session.get(MauSac.class, id);
             transaction = session.beginTransaction();
-            check = (Integer) session.save(ms);
+             session.delete(ms);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {
