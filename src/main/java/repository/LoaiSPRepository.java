@@ -52,7 +52,7 @@ public class LoaiSPRepository {
             lsp.setNgaySua(loaiSP.getNgaySua());
             lsp.setTrangThai(loaiSP.getTrangThai());
             transaction = session.beginTransaction();
-            session.update(lsp);
+            check = (Integer) session.save(lsp);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

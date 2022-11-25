@@ -45,7 +45,7 @@ public class MauSacRepository {
             ms.setNgaySua(mauSac.getNgaySua());
             ms.setTrangThai(mauSac.getTrangThai());
             transaction = session.beginTransaction();
-            session.update(ms);
+            check = (Integer) session.save(ms);
             transaction.commit();
 
             return check > 0;
@@ -61,7 +61,7 @@ public class MauSacRepository {
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             MauSac ms = session.get(MauSac.class, id);
             transaction = session.beginTransaction();
-            session.delete(ms);
+            check = (Integer) session.save(ms);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

@@ -66,8 +66,9 @@ public class ChatLieuRepository {
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             CHATLIEU cl = session.get(CHATLIEU.class, id);
+            cl.setTrangThai(0);
             transaction = session.beginTransaction();
-            session.delete(cl);
+           session.delete(cl);
             transaction.commit();
             return check > 0;
         } catch (Exception e) {

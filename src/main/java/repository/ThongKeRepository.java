@@ -89,7 +89,7 @@ public class ThongKeRepository {
             tk1.setNgayban(tk.getNgayban());
             tk1.setTrangThai(tk.getTrangThai());
             transaction = session.beginTransaction();
-            session.update(tk1);
+            check = (Integer) session.save(tk1);
             transaction.commit();
             
             return check > 0;

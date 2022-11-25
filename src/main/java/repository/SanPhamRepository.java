@@ -28,7 +28,7 @@ public class SanPhamRepository {
     public Boolean add(SanPham sp) {
         Transaction transaction = null;
         Integer check = 0;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             check = (Integer) session.save(sp);
             transaction.commit();
@@ -43,7 +43,7 @@ public class SanPhamRepository {
     public Boolean delete(int id) {
         Transaction transaction = null;
         Integer check = 0;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
             SanPham cv = session.get(SanPham.class, id);
             cv.setTrangThai(0);
             transaction = session.beginTransaction();
@@ -59,7 +59,7 @@ public class SanPhamRepository {
     public Boolean hienThi(int id) {
         Transaction transaction = null;
         Integer check = 0;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
             SanPham cv = session.get(SanPham.class, id);
             cv.setTrangThai(1);
             transaction = session.beginTransaction();
@@ -75,17 +75,15 @@ public class SanPhamRepository {
     public Boolean update(SanPham sp, int id) {
         Transaction transaction = null;
         Integer check = 0;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
             SanPham cv = session.get(SanPham.class, id);
             cv.setTensp(sp.getTensp());
             cv.setNgayTao(sp.getNgayTao());
             cv.setNgaySua(sp.getNgaySua());
             cv.setTrangThai(sp.getTrangThai());
-
             transaction = session.beginTransaction();
-            session.update(cv);
+            check = (Integer) session.save(cv);
             transaction.commit();
-
             return check > 0;
         } catch (Exception e) {
             System.err.println(e.getMessage());

@@ -45,7 +45,7 @@ public class CLBrepository {
             clb.setTRANGTHAI(CLB.getTRANGTHAI());
 
             transaction = session.beginTransaction();
-            session.update(clb);
+            check = (Integer) session.save(clb);
             transaction.commit();
 
             return check > 0;

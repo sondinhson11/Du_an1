@@ -62,7 +62,7 @@ public class DoiTraRepository {
             dtt.setNgayBan(dt.getNgayBan());
             dtt.setTrangThai(dt.getTrangThai());
             transaction = session.beginTransaction();
-            session.update(dtt);
+            check = (Integer) session.save(dtt);
             transaction.commit();
             
             return check > 0;

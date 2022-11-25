@@ -173,7 +173,20 @@ public class CTSPViews extends javax.swing.JInternalFrame {
         
         return ctsp;
     }
-    
+    void clear(){
+        txt_maCTSP.setText("");
+        cb_maSP.setSelectedItem("");
+        cb_maLoai.setSelectedItem("");
+        cb_maMauSac.setSelectedItem("");
+        cb_maKichThuoc.setSelectedItem("");
+        cb_maChatLieu.setSelectedItem("");
+        cb_maMTT.setSelectedItem("");
+        txt_gia.setText("");
+        txt_soLuong.setText("");
+        txt_ngayTao.setText("");
+        txt_ngaySua.setText("");
+        cb_trangThai.setSelectedItem("");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -241,6 +254,11 @@ public class CTSPViews extends javax.swing.JInternalFrame {
         jLabel6.setText("Ngày Tạo");
 
         jButton4.setText("Clear");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Giá");
 
@@ -650,6 +668,10 @@ public class CTSPViews extends javax.swing.JInternalFrame {
         ChatLieuView clv = new ChatLieuView();
         clv.setVisible(true);
     }//GEN-LAST:event_btnThemCLActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         clear();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -44,7 +44,7 @@ public class ChucVuRepository {
             cv.setTrangThai(chucVu.getTrangThai());
             
             transaction = session.beginTransaction();
-            session.update(cv);
+            check = (Integer) session.save(cv);
             transaction.commit();
             
             return check >0;

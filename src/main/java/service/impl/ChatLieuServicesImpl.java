@@ -45,9 +45,9 @@ public class ChatLieuServicesImpl implements ChatLieuServices {
     @Override
     public String delete(int id) {
         if (clr.delete(id)) {
-            return "delete thành công";
-        } else {
             return "delete thất bại";
+        } else {
+            return "delete thành công";
         }
     }
 

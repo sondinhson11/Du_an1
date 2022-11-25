@@ -44,7 +44,7 @@ public class MTTRepository {
             mtt.setTRANGTHAI(montt.getTRANGTHAI());
 
             transaction = session.beginTransaction();
-            session.update(mtt);
+            check = (Integer) session.save(mtt);
             transaction.commit();
 
             return check > 0;
